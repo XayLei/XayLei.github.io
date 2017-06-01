@@ -249,7 +249,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可变长度参数"><span class="post-toc-number">1.</span> <span class="post-toc-text">可变长度参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#foreach循环遍历原理"><span class="post-toc-number">2.</span> <span class="post-toc-text">foreach循环遍历原理</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#可变长度参数"><span class="post-toc-number">1.</span> <span class="post-toc-text">可变长度参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#foreach循环遍历原理"><span class="post-toc-number">2.</span> <span class="post-toc-text">foreach循环遍历原理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#自动拆箱和自动装箱"><span class="post-toc-number">3.</span> <span class="post-toc-text">自动拆箱和自动装箱</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -418,6 +418,26 @@
 <p>任何一个集合，不论是JDK提供的还是自己写的，只要想使用foreach循环遍历，就必须正确的实现iterable接口，这就是23种常用的设计模式中的迭代器模式。</p>
 <p>如果不实现这个接口，那在集合中使用foreach遍历时就会报空指针异常</p>
 <p>但是<strong>数组</strong>中并没有实现iterator接口，那为什么可以直接使用iterator接口？？？？后面详细了解了再更新</p>
+<h2 id="自动拆箱和自动装箱"><a href="#自动拆箱和自动装箱" class="headerlink" title="自动拆箱和自动装箱"></a>自动拆箱和自动装箱</h2><p>Java为每种基本数据类型都提供了对应的包装器类型。例如：</p>
+<pre><code>public class TestMain
+{
+   public static void main(String[] args)
+   {
+       Integer i = 10;    //自动根据数值创建对应的Integer对象，就是自动装箱
+   }
+}
+
+public class TestMain
+{
+   public static void main(String[] args)
+   {
+       Integer integer = 10;
+       int i = integer;   //根据包装器类型自动将数据转换为基本类型，这就是自动拆箱
+   }
+}
+</code></pre><p>原理：</p>
+<p>自动装箱：Java虚拟机会自动调用Integer的valueOf方法</p>
+<p>自动拆箱：Java虚拟机会自动调用Integer的intValue方法</p>
 
     
 
