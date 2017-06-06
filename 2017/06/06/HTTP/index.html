@@ -10,7 +10,7 @@
     
     <title>
         
-            &#39;eclipse相关问题&#39; | 
+            HTTP | 
         
         XayLei&#39;s blog
     </title>
@@ -60,7 +60,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="&#39;eclipse相关问题&#39; | XayLei&#39;s blog">
+    <meta property="og:title" content="HTTP | XayLei&#39;s blog">
     <meta property="og:description" content="null">
     
 
@@ -249,7 +249,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HTTP请求GET和POST的区别"><span class="post-toc-number">1.</span> <span class="post-toc-text">HTTP请求GET和POST的区别</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HTTP状态码"><span class="post-toc-number">2.</span> <span class="post-toc-text">HTTP状态码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常见HTTP方法"><span class="post-toc-number">3.</span> <span class="post-toc-text">常见HTTP方法</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -286,7 +286,7 @@
         
     
             <p class="article-headline-p">
-                'eclipse相关问题'
+                HTTP
             </p>
         </div>
 
@@ -305,7 +305,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>XayLei</strong>
-        <span>6月 02, 2017</span>
+        <span>6月 06, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -356,7 +356,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=&#39;eclipse相关问题&#39;&url=http://yoursite.com//2017/06/02/eclipse相关问题/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=HTTP&url=http://yoursite.com//2017/06/06/HTTP/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -365,7 +365,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=&#39;eclipse相关问题&#39;&url=http://yoursite.com//2017/06/02/eclipse相关问题/index.html&via=XayLei" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=HTTP&url=http://yoursite.com//2017/06/06/HTTP/index.html&via=XayLei" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -374,7 +374,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/02/eclipse相关问题/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/06/HTTP/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -383,7 +383,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/02/eclipse相关问题/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/06/HTTP/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -407,14 +407,30 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>1、 在Eclipse中显示.project和.classpath和.setting目录</p>
-<p>选中工程，选择Filters</p>
-<p><img src="http://img.blog.csdn.net/20141124115218046?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2FuZ2hhbnRvbmc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
-<p>取消.resources勾选，点击OK.显示.settings文件夹, .classpath 文件, .project文件, .gitignore文件</p>
-<p><img src="http://img.blog.csdn.net/20141124115818232?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2FuZ2hhbnRvbmc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
-<p>设置结束</p>
-<p>2、java项目下的bin文件夹不显示</p>
-<p>打开“Window”-“Show View”-“Navigator”就可以打开了</p>
+        <h2 id="HTTP请求GET和POST的区别"><a href="#HTTP请求GET和POST的区别" class="headerlink" title="HTTP请求GET和POST的区别"></a>HTTP请求GET和POST的区别</h2><p>1</p>
+<p>GET提交：请求的数据会附在URL之后（就是把数据放置在HTTP协议头＜request-line＞中）</p>
+<p>POST提交：把提交的数据放置在是HTTP包的包体＜request-body＞中</p>
+<p>所以，GET提交的数据会在地址栏中显示出来，而POST提交，地址栏不会改变</p>
+<p>2、传输数据的大小：<br>理论上URL和http对于大小没有限制，但是在实际环境中：</p>
+<p>GET:特定浏览器和服务器对URL长度有限制</p>
+<p>POST:由于不是通过URL传值，理论上数据不受限</p>
+<p>3、在传递敏感信息时，POST的安全性要比GET的安全性高，浅层面上可以这样说，对于get方法，请求的参数我们可以直接在URL中看到，即在地址栏中看到。post方法的请求参数在消息体中，无法直接肉眼看见。但是如果对消息抓包的话，还是可以看见post中的请求参数的。安全性概念有很多方面，就看是怎么看了</p>
+<p>4、GET 仅用来获取查看信息，不能改变服务器信息。POST 用来改变服务器信息</p>
+<p>5、使用GET方法时，浏览器可能会缓存你的地址等信息，还会留下历史记录，而对于POST方法呢，则不会进行缓存</p>
+<h2 id="HTTP状态码"><a href="#HTTP状态码" class="headerlink" title="HTTP状态码"></a>HTTP状态码</h2><p>1xx：指示信息–表示请求已接收，继续处理。</p>
+<p>2xx：成功–表示请求已被成功接收、理解、接受。</p>
+<p>3xx：重定向–要完成请求必须进行更进一步的操作。</p>
+<p>4xx：客户端错误–请求有语法错误或请求无法实现。</p>
+<p>5xx：服务器端错误–服务器未能实现合法的请求。</p>
+<p>常见状态代码：</p>
+<p>200 OK：客户端请求成功。</p>
+<p>400 Bad Request：客户端请求有语法错误，不能被服务器所理解。</p>
+<p>401 Unauthorized：请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用。</p>
+<p>403 Forbidden：服务器收到请求，但是拒绝提供服务。</p>
+<p>404 Not Found：请求资源不存在，举个例子：输入了错误的URL。</p>
+<p>500 Internal Server Error：服务器发生不可预期的错误。</p>
+<p>503 Server Unavailable：服务器当前不能处理客户端的请求，一段时间后可能恢复正常，举个例子：HTTP/1.1 200 OK（CRLF）。</p>
+<h2 id="常见HTTP方法"><a href="#常见HTTP方法" class="headerlink" title="常见HTTP方法"></a>常见HTTP方法</h2><p><img src="http://images0.cnblogs.com/blog2015/776887/201507/031450517829255.png" alt=""></p>
 
     
 
@@ -441,21 +457,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/06/02/equals与-的区别/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/05/31/HashTable与HashMap的区别/" id="post_nav-older" class="next-content">
+        <a href="/2017/06/02/equals与-的区别/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
