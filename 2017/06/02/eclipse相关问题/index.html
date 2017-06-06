@@ -249,7 +249,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、-在Eclipse中显示-project和-classpath和-setting目录"><span class="post-toc-number">1.</span> <span class="post-toc-text">1、 在Eclipse中显示.project和.classpath和.setting目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、java项目下的bin文件夹不显示"><span class="post-toc-number">2.</span> <span class="post-toc-text">2、java项目下的bin文件夹不显示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、Eclipse中设置在创建新类时自动生成注释"><span class="post-toc-number">3.</span> <span class="post-toc-text">3、Eclipse中设置在创建新类时自动生成注释</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -407,14 +407,25 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <p>1、 在Eclipse中显示.project和.classpath和.setting目录</p>
-<p>选中工程，选择Filters</p>
+        <h3 id="1、-在Eclipse中显示-project和-classpath和-setting目录"><a href="#1、-在Eclipse中显示-project和-classpath和-setting目录" class="headerlink" title="1、 在Eclipse中显示.project和.classpath和.setting目录"></a>1、 在Eclipse中显示.project和.classpath和.setting目录</h3><p>选中工程，选择Filters</p>
 <p><img src="http://img.blog.csdn.net/20141124115218046?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2FuZ2hhbnRvbmc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
 <p>取消.resources勾选，点击OK.显示.settings文件夹, .classpath 文件, .project文件, .gitignore文件</p>
 <p><img src="http://img.blog.csdn.net/20141124115818232?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2FuZ2hhbnRvbmc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p>
 <p>设置结束</p>
-<p>2、java项目下的bin文件夹不显示</p>
-<p>打开“Window”-“Show View”-“Navigator”就可以打开了</p>
+<h3 id="2、java项目下的bin文件夹不显示"><a href="#2、java项目下的bin文件夹不显示" class="headerlink" title="2、java项目下的bin文件夹不显示"></a>2、java项目下的bin文件夹不显示</h3><p>打开“Window”-“Show View”-“Navigator”就可以打开了</p>
+<h3 id="3、Eclipse中设置在创建新类时自动生成注释"><a href="#3、Eclipse中设置在创建新类时自动生成注释" class="headerlink" title="3、Eclipse中设置在创建新类时自动生成注释"></a>3、Eclipse中设置在创建新类时自动生成注释</h3><p>windows–&gt;preference </p>
+<p>Java–&gt;Code Style–&gt;Code Templates</p>
+<p>code–&gt;new Java files </p>
+<p>编辑它 </p>
+<p>${filecomment} </p>
+<p>${package_declaration}</p>
+<pre><code>/** 
+* @author 作者 E-mail: 
+* @version 创建时间：${date} ${time} 
+* 类说明 
+*/
+</code></pre><p>${typecomment} </p>
+<p>${type_declaration} </p>
 
     
 
