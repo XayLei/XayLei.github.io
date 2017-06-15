@@ -474,8 +474,10 @@ count = count + 20;
 <p>Ps：不能同时有“var”和“target”属性。“scope” 是可选的，如果没有使用这个属性，则默认为页面作用域。</p>
 <h3 id="c-remove-标签"><a href="#c-remove-标签" class="headerlink" title="c:remove 标签"></a>c:remove 标签</h3><pre><code>&lt;c:set var=&quot;lastName&quot; value=&quot;Bob&quot; &gt;&lt;/c:set&gt;
 &lt;c:out value=&quot;${lastName}&quot;&gt;&lt;/c:out&gt;
-</code></pre><p><hr><br>    <c:set var="firstName" value="Jack"></c:set><br>    <c:remove var="firstName"></c:remove><br>    <c:out value="${firstName}"></c:out></p>
-<p>Ps：remove的对象只能是某一个变量，不能是一个jsp:useBean中的某一个属性。</p>
+&lt;c:set var=&quot;firstName&quot; value=&quot;Jack&quot; &gt;&lt;/c:set&gt;
+&lt;c:remove var=&quot;firstName&quot;&gt;&lt;/c:remove&gt;
+&lt;c:out value=&quot;${firstName}&quot;&gt;&lt;/c:out&gt;
+</code></pre><p>Ps：remove的对象只能是某一个变量，不能是一个jsp:useBean中的某一个属性。</p>
 <h3 id="c-catch-标签"><a href="#c-catch-标签" class="headerlink" title="c:catch 标签"></a>c:catch 标签</h3><p>catch标签中可以包含哪些容易出错的JSTL标签(逻辑)</p>
 <pre><code>`&lt;c:catch var=&quot;error&quot;&gt;
     //如果这段出错，错误信息将保存到error变量中
