@@ -249,7 +249,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ACID特性"><span class="post-toc-number">1.</span> <span class="post-toc-text">ACID特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-原子性"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.原子性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-一致性"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.一致性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-隔离性"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3.隔离性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-持久性"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4.持久性</span></a></li></ol></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ACID特性"><span class="post-toc-number">1.</span> <span class="post-toc-text">ACID特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-原子性"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.原子性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-一致性"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.一致性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-隔离性"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3.隔离性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-持久性"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4.持久性</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库索引"><span class="post-toc-number">2.</span> <span class="post-toc-text">数据库索引</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#事物"><span class="post-toc-number">3.</span> <span class="post-toc-text">事物</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#drop、delete与truncate"><span class="post-toc-number">4.</span> <span class="post-toc-text">drop、delete与truncate</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#超键、候选键、主键、外键"><span class="post-toc-number">5.</span> <span class="post-toc-text">超键、候选键、主键、外键</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#视图"><span class="post-toc-number">6.</span> <span class="post-toc-text">视图</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -420,6 +420,51 @@
 <p>(4)丢失更新</p>
 <p>两个事务同时读取同一条记录，A先修改记录，B也修改记录（B是不知道A修改过），B提交数据后B的修改结果覆盖了A的修改结果。</p>
 <h3 id="4-持久性"><a href="#4-持久性" class="headerlink" title="4.持久性"></a>4.持久性</h3><p>持久性，意味着在事务完成以后，该事务所对数据库所作的更改便持久的保存在数据库之中，并不会被回滚。</p>
+<h2 id="数据库索引"><a href="#数据库索引" class="headerlink" title="数据库索引"></a>数据库索引</h2><p><span style="font-family: comic sans ms,sans-serif;"><span style="color: red;">MySQL索引使用的数据结构是B+tree，Oracle及Sysbase的索引使用的是B-Tree</span></span></p>
+<p>索引是对数据库表中一或多个列的值进行排序的结构，是帮助MySQL高效获取数据的数据结构</p>
+<ul>
+<li>索引加快数据库的检索速度</li>
+<li>索引降低了插入、删除、修改等维护任务的速度</li>
+<li>唯一索引可以确保每一行数据的唯一性</li>
+<li>索引需要占物理和数据空间</li>
+</ul>
+<h2 id="事物"><a href="#事物" class="headerlink" title="事物"></a>事物</h2><p>事物是并发控制的基本单位</p>
+<p>所谓的事务，它是一个操作序列，这些操作要么都执行，要么都不执行，它是一个不可分割的工作单位。事务是数据库维护数据一致性的单位，在每个事务结束时，都能保持数据一致性。</p>
+<h2 id="drop、delete与truncate"><a href="#drop、delete与truncate" class="headerlink" title="drop、delete与truncate"></a>drop、delete与truncate</h2><ul>
+<li>速度,一般来说: drop&gt; truncate &gt;delete </li>
+<li>delete和truncate只删除表的数据不删除表的结构</li>
+<li>不再需要一张表的时候，用drop</li>
+<li>删除部分数据行时候，用delete，并且带上where子句</li>
+<li>保留表而删除所有数据的时候用truncate</li>
+</ul>
+<h2 id="超键、候选键、主键、外键"><a href="#超键、候选键、主键、外键" class="headerlink" title="超键、候选键、主键、外键"></a>超键、候选键、主键、外键</h2><p>主键（PRIMARY KEY）：主键必须包含唯一的值，主键列不能包含null值，每个表都应该有一个主键，每个表都只能有一个主键</p>
+<p>在创建表的时候创建主键约束：</p>
+<pre><code>CREATETABLE Persons(
+    Id_P int NOT NULL,  //声明为主键的列不能有NULL值
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255),
+    PRIMARY KEY (Id_P)
+)
+//如果在表已存在的情况下为 &quot;Id_P&quot; 列创建 PRIMARY KEY 约束，请使用下面的 SQL：
+ALTER TABLE Persons ADD PRIMARY KEY (Id_P)
+
+//撤销 PRIMARY KEY 约束，请使用下面的 SQL
+ALTER TABLE Persons DROP PRIMARY KEY
+</code></pre><p>外键：在一个表中存在的另一个表的主键称此表的外键</p>
+<p><a href="http://blog.csdn.net/lfsfxy9/article/details/5949632" target="_blank" rel="external">理解超键、候选键、主键.</a></p>
+<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><p>视图是一种虚拟的表，具有和物理表相同的功能。可以对视图进行增，改，查三种操作，视图通常是一个表或者多个表的行或列的子集。对视图的修改不影响基本表。它使得我们获取数据更容易，相比多表查询。</p>
+<p>创建视图：</p>
+<pre><code>CREATE VIEW view_name AS
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+</code></pre><p>使用场景：</p>
+<ul>
+<li>当为了安全考虑时，只想要暴露表中的部分字段，这是就可以建一个视图</li>
+<li>查询的数据来源于不同的表，希望以统一的方式查询，这时可以通过建一个视图把多个表的查询结果联合起来，查询者就只需要直接从视图中获取数据即可</li>
+</ul>
 
     
 
