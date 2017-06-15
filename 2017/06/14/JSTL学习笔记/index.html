@@ -436,29 +436,11 @@ Ps：在uri中之所以能找到该http，是因为导入了jar，否则是找�
 <p>如${user.first-name}则为错误的写法，正确的：${user[“first-name”]}；</p>
 <p>2、通过变量动态的取值时：${user[param]}—param可以是name or sex or others，是用户传入的情况。</p>
 <p>而”.”不能动态取值，它的写法是：${user.name}or${user.sex}or…</p>
-<h3 id="EL变量"><a href="#EL变量" class="headerlink" title="EL变量"></a>EL变量</h3><p><table style="float:center"></table></p>
-<p><tr></tr></p>
-<p><td>JSP内置对象</td></p>
-<p><td>EL变量范围</td></p>
-<p><tr></tr></p>
-<p><tr></tr></p>
-<p><td>pagerequest </td></p>
-<p><td>pageScope</td></p>
-<p><tr></tr></p>
-<p><tr></tr></p>
-<p><td>request</td></p>
-<p><td> requestScope </td></p>
-<p><tr></tr></p>
-<p><tr></tr></p>
-<p><td> session</td></p>
-<p><td>sessionScope</td></p>
-<p><tr></tr></p>
-<p><tr></tr></p>
-<p><td> application</td></p>
-<p><td> applicationScope</td></p>
-<p><tr></tr></p>
-<table>
-
+<h3 id="EL变量"><a href="#EL变量" class="headerlink" title="EL变量"></a>EL变量</h3><p>JSP内置对象  || EL变量范围</p>
+<p>pagerequest || pageScope</p>
+<p>request     || requestScope </p>
+<p>session     || sessionScope</p>
+<p>application || applicationScope</p>
 <pre><code>&lt;c:out value=&quot;${username}&quot; /&gt;
 </code></pre><p>运行时，会依次在page-&gt;session-&gt;request-&gt;application范围中寻找名为username的变量，然后输出其值。但是如果没有，就返回空字符串。</p>
 <h3 id="EL自动类型转换"><a href="#EL自动类型转换" class="headerlink" title="EL自动类型转换"></a>EL自动类型转换</h3><p>要取得文本框中的输入，我们需要做类型转换</p>
@@ -610,7 +592,7 @@ password:&lt;c:out value=&quot;${param.password}&quot;&gt;&lt;/c:out&gt;
 
   &lt;c:out value=&quot;“world”是否在“Hello World”字符串尾部？${fn:endsWith(&apos;Hello World&apos;,&apos;world&apos;)}&quot;&gt;&lt;/c:out&gt;
 </code></pre><p><hr><br>    <!-- 不会输出<book>标签 --><br>      <!-- 可输出标签但会出现转义问题 --><br>      <c:out value="${fn:escapeXml('<book>书</book>')}"></c:out><br>      <hr><br>      <!-- 可输出标签且不会出现转义问题 --><br>      <c:out value="<book>书</book>"></c:out><br>      <hr><br>      <!-- indexOf函数用法 --><br>      <c:out value="“Hello World”字符串“llo”出现的index值：${fn:indexOf('Hello World','llo')}"></c:out></p>
-</table>
+
     
 
     
