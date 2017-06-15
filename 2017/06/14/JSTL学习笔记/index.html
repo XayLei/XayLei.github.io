@@ -249,7 +249,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么要是用JSTL？"><span class="post-toc-number">1.</span> <span class="post-toc-text">为什么要是用JSTL？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-什么是EL表达式"><span class="post-toc-number">2.</span> <span class="post-toc-text">1.什么是EL表达式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-EL表达式的格式"><span class="post-toc-number">3.</span> <span class="post-toc-text">2.EL表达式的格式</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#为什么要是用JSTL？"><span class="post-toc-number">1.</span> <span class="post-toc-text">为什么要是用JSTL？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#什么是EL表达式"><span class="post-toc-number">2.</span> <span class="post-toc-text">什么是EL表达式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EL表达式的格式"><span class="post-toc-number">3.</span> <span class="post-toc-text">EL表达式的格式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EL变量"><span class="post-toc-number">4.</span> <span class="post-toc-text">EL变量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EL自动类型转换"><span class="post-toc-number">5.</span> <span class="post-toc-text">EL自动类型转换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#c-out-标签"><span class="post-toc-number">6.</span> <span class="post-toc-text">c:out 标签</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#c-set-标签"><span class="post-toc-number">7.</span> <span class="post-toc-text">c:set 标签</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#c-remove-标签"><span class="post-toc-number">8.</span> <span class="post-toc-text">c:remove 标签</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#c-catch-标签"><span class="post-toc-number">9.</span> <span class="post-toc-text">c:catch 标签</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#c-if-标签"><span class="post-toc-number">10.</span> <span class="post-toc-text">c:if 标签</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#choose-when-otherwise标签"><span class="post-toc-number">11.</span> <span class="post-toc-text">choose-when-otherwise标签</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#foreach-标签"><span class="post-toc-number">12.</span> <span class="post-toc-text">foreach 标签</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#forTokens-标签"><span class="post-toc-number">13.</span> <span class="post-toc-text">forTokens 标签</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#import标签"><span class="post-toc-number">14.</span> <span class="post-toc-text">import标签</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#redirect标签"><span class="post-toc-number">15.</span> <span class="post-toc-text">redirect标签</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JSTL函数"><span class="post-toc-number"></span> <span class="post-toc-text">JSTL函数</span></a>
 
         <!--
         <li class="mdl-menu__item">
@@ -419,13 +419,13 @@ Ps：在uri中之所以能找到该http，是因为导入了jar，否则是找�
 <p>JSTL标签的value属性的属性值可以为变量和常量.</p>
 <p>变量需要通过EL表达式来获取.</p>
 <hr>
-<h3 id="1-什么是EL表达式"><a href="#1-什么是EL表达式" class="headerlink" title="1.什么是EL表达式"></a>1.什么是EL表达式</h3><p>全名为Exoression Language</p>
+<h3 id="什么是EL表达式"><a href="#什么是EL表达式" class="headerlink" title="什么是EL表达式"></a>什么是EL表达式</h3><p>全名为Exoression Language</p>
 <p>经常与JSTL配合使用，使得JSP页面更直观，写法更简单</p>
 <p>普通写法：</p>
 <pre><code>`&lt;%=session.getValue(&quot;name&quot;) %&gt;`
 </code></pre><p>EL表达式：</p>
 <pre><code>&lt;c:out value=&quot;${sessionScope.name}&quot;/&gt;
-</code></pre><h3 id="2-EL表达式的格式"><a href="#2-EL表达式的格式" class="headerlink" title="2.EL表达式的格式"></a>2.EL表达式的格式</h3><p>用美元符号”$”定界,内容包括在花括号”{}”中; <strong>${表达式}</strong></p>
+</code></pre><h3 id="EL表达式的格式"><a href="#EL表达式的格式" class="headerlink" title="EL表达式的格式"></a>EL表达式的格式</h3><p>用美元符号”$”定界,内容包括在花括号”{}”中; <strong>${表达式}</strong></p>
 <p>EL表达式的基本格式：用美元符号“$”定界，内容包括在花括号“{}”中——${表达式}。</p>
 <p><strong>EL表达式中的”.”与”[]”运算符：</strong></p>
 <pre><code>通常情况两者通用，eg:${user.sex}等同于${user[&quot;sex&quot;]}；
@@ -436,7 +436,170 @@ Ps：在uri中之所以能找到该http，是因为导入了jar，否则是找�
 <p>如${user.first-name}则为错误的写法，正确的：${user[“first-name”]}；</p>
 <p>2、通过变量动态的取值时：${user[param]}—param可以是name or sex or others，是用户传入的情况。</p>
 <p>而”.”不能动态取值，它的写法是：${user.name}or${user.sex}or…</p>
+<h3 id="EL变量"><a href="#EL变量" class="headerlink" title="EL变量"></a>EL变量</h3><p><table style="float:center"></table></p>
+<p><tr></tr></p>
+<p><td>JSP内置对象</td></p>
+<p><td>EL变量范围</td></p>
+<p><tr></tr></p>
+<p><tr></tr></p>
+<p><td>pagerequest </td></p>
+<p><td>pageScope</td></p>
+<p><tr></tr></p>
+<p><tr></tr></p>
+<p><td>request</td></p>
+<p><td> requestScope </td></p>
+<p><tr></tr></p>
+<p><tr></tr></p>
+<p><td> session</td></p>
+<p><td>sessionScope</td></p>
+<p><tr></tr></p>
+<p><tr></tr></p>
+<p><td> application</td></p>
+<p><td> applicationScope</td></p>
+<p><tr></tr></p>
+<table>
 
+<pre><code>&lt;c:out value=&quot;${username}&quot; /&gt;
+</code></pre><p>运行时，会依次在page-&gt;session-&gt;request-&gt;application范围中寻找名为username的变量，然后输出其值。但是如果没有，就返回空字符串。</p>
+<h3 id="EL自动类型转换"><a href="#EL自动类型转换" class="headerlink" title="EL自动类型转换"></a>EL自动类型转换</h3><p>要取得文本框中的输入，我们需要做类型转换</p>
+<p>普通写法：</p>
+<pre><code>String str_count = request.getParameter(&quot;count&quot;);
+int count = Integer.parseInt(str_count);
+count = count + 20;
+</code></pre><p>EL会进行自动类型转换，只需要这样写：</p>
+<pre><code>${param.count +20}
+</code></pre><p><img src="http://img.mukewang.com/5941e12a00012f7312800720.jpg" alt=""></p>
+<p><img src="http://img.mukewang.com/58a7c49400018d8d12800720.jpg" alt=""></p>
+<h3 id="c-out-标签"><a href="#c-out-标签" class="headerlink" title="c:out 标签"></a>c:out 标签</h3><pre><code>&lt;!-- 1、使用out标签输出常量 --&gt;
+&lt;c:out value=&quot;慕课网&quot; &gt;&lt;/c:out&gt;
+&lt;hr&gt;
+&lt;!-- 2、使用out标签输出变量 --&gt;
+&lt;!-- 直接输出变量 --&gt;
+&lt;%session.setAttribute(&quot;name&quot;, &quot;Bob&quot;); %&gt;
+&lt;c:out value=&quot;${name}&quot;&gt;&lt;/c:out&gt;
+&lt;hr&gt;
+&lt;!-- 3、当变量不存在时，通过default属性输出默认值 --&gt;
+&lt;c:out value=&quot;${name1}&quot; default=&quot;error&quot;&gt;&lt;/c:out&gt;
+&lt;hr&gt;
+&lt;!-- 4、设置输出转义后的字符需要escapeXml属性值设置成false，escapeXml默认值：true --&gt;
+&lt;c:out value=&quot;&lt;out标签&gt;&quot; escapeXml=&quot;false&quot;&gt;&lt;/c:out&gt;
+</code></pre><h3 id="c-set-标签"><a href="#c-set-标签" class="headerlink" title="c:set 标签"></a>c:set 标签</h3><pre><code>&lt;!-- 第一种写法 --&gt;
+&lt;c:set value=&quot;today&quot; var=&quot;day&quot; scope=&quot;session&quot;&gt;&lt;/c:set&gt;
+&lt;c:out value=&quot;${day}&quot;&gt;&lt;/c:out&gt;
+</code></pre><p><hr><br>    <!-- 第二种写法 --><br>    <c:set var="age" scope="application">four</c:set><br>    <c:out value="${age}"></c:out></p>
+<p><hr><br>    <!-- 通过set标签向person中赋值 --><br>    <jsp:usebean id="person" class="entity.Persion"></jsp:usebean><br>    //将Javabean实例化为person<br>    <c:set target="${person}" property="user" value="admin"></c:set><br>    <c:out value="${person.user}"></c:out></p>
+<p><hr><br>    <c:set target="${person}" property="pwd">123456</c:set><br>    <c:out value="${person.pwd}"></c:out></p>
+<p>Ps：不能同时有“var”和“target”属性。“scope” 是可选的，如果没有使用这个属性，则默认为页面作用域。</p>
+<h3 id="c-remove-标签"><a href="#c-remove-标签" class="headerlink" title="c:remove 标签"></a>c:remove 标签</h3><pre><code>&lt;c:set var=&quot;lastName&quot; value=&quot;Bob&quot; &gt;&lt;/c:set&gt;
+&lt;c:out value=&quot;${lastName}&quot;&gt;&lt;/c:out&gt;
+</code></pre><p><hr><br>    <c:set var="firstName" value="Jack"></c:set><br>    <c:remove var="firstName"></c:remove><br>    <c:out value="${firstName}"></c:out></p>
+<p>Ps：remove的对象只能是某一个变量，不能是一个jsp:useBean中的某一个属性。</p>
+<h3 id="c-catch-标签"><a href="#c-catch-标签" class="headerlink" title="c:catch 标签"></a>c:catch 标签</h3><p>catch标签中可以包含哪些容易出错的JSTL标签(逻辑)</p>
+<pre><code>&lt;c:catch var=&quot;error&quot;&gt;
+    //如果这段出错，错误信息将保存到error变量中
+    &lt;c:set target=&quot;aa&quot; property=&quot;bb&quot;&gt;asasa&lt;/c:set&gt; 
+&lt;/c:catch&gt;
+
+&lt;c:out value=&quot;${error}&quot;&gt;&lt;/c:out&gt; //输出error，即输出错误信息
+</code></pre><h3 id="c-if-标签"><a href="#c-if-标签" class="headerlink" title="c:if 标签"></a>c:if 标签</h3><pre><code>//先构建一个表单
+&lt;form action=&quot;index.jsp&quot; method=&quot;post&quot;&gt;
+    &lt;input type=&quot;text&quot; name=&quot;score&quot; value=&quot;${param.score}&quot; /&gt;
+    &lt;input type=&quot;submit&quot;/&gt; //这是一个提交按钮
+&lt;/form&gt;
+
+&lt;!-- 优秀：score&gt;=90 --&gt;
+&lt;c:if test=&quot;${param.score&gt;=90}&quot; var=&quot;result&quot; scope=&quot;session&quot;&gt;
+    &lt;c:out value=&quot;你的成绩：优秀——${sessionScope.result}&quot;&gt;&lt;/c:out&gt;
+&lt;/c:if&gt;
+</code></pre><p>Ps：$(param.user)相当于&lt;%=request.getParameter(“user”)%&gt;；$(paramValues.favorites[0])相当于&lt;%=request.getParameters(“favorites”)[0]%&gt;。</p>
+<h3 id="choose-when-otherwise标签"><a href="#choose-when-otherwise标签" class="headerlink" title="choose-when-otherwise标签"></a>choose-when-otherwise标签</h3><p>通常这三个标签被放在一起配合使用</p>
+<p><c:choose>标签嵌套在<c:when>和<c:otherwise>标签外面作为他们的父标签来使用</c:otherwise></c:when></c:choose></p>
+<p>其中choose和when标签也可以一起组合使用</p>
+<pre><code>&lt;c:choose&gt;
+    &lt;c:when test=&quot;${param.score&lt;=100 &amp;&amp; param.score&gt;=60 }&quot;&gt;
+        &lt;c:out value=&quot;及格&quot;&gt;&lt;/c:out&gt;
+    &lt;/c:when&gt;
+
+    &lt;c:when test=&quot;${param.score&lt;60 &amp;&amp; param.score&gt;=0 }&quot;&gt;
+        &lt;c:out value=&quot;不及格&quot;&gt;&lt;/c:out&gt;
+    &lt;/c:when&gt;
+
+    &lt;c:otherwise&gt;
+        &lt;c:out value=&quot;请检查你的输入！&quot;&gt;&lt;/c:out&gt;
+    &lt;/c:otherwise&gt;
+&lt;/c:choose&gt;
+</code></pre><h3 id="foreach-标签"><a href="#foreach-标签" class="headerlink" title="foreach 标签"></a>foreach 标签</h3><p>-根据循环条件遍历集合（Collectoin）中的元素</p>
+<ul>
+<li>var设定变量名用于存储从集合中取出元素（必须无默认值）</li>
+<li>items指定要遍历的集合(必须无默认值)</li>
+<li>begin、end用于指定遍历的起始位置和终止位置(有默认)</li>
+<li>step指定循环的步长(有默认)</li>
+<li>varStatus通过index、count、first、last几个状态值，描述begin和end子集中的元素状态<br><hr><br>  &lt;%<pre><code>List&lt;String&gt; fruits=new ArrayList&lt;String&gt;();
+fruits.add(&quot;apple&quot;);
+fruits.add(&quot;pear&quot;);
+fruits.add(&quot;orange&quot;);
+fruits.add(&quot;banana&quot;);
+request.setAttribute(&quot;fruits&quot;, fruits);
+</code></pre>  %&gt;<br><hr>  <!-- forEach标签用法 -->
+  <!-- 用法一：全部遍历 -->
+  <c:foreach var="fruit" items="${fruits}"><pre><code>&lt;c:out value=&quot;${fruit}&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
+</code></pre>  </c:foreach><br><hr>  <!-- 用法二：部分遍历 -->
+  <c:foreach var="fruit" items="${fruits}" begin="1" end="2"><pre><code>&lt;c:out value=&quot;${fruit}&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
+</code></pre>  </c:foreach><br><hr>  <!-- 用法三：部分遍历并带步长 -->
+   <c:foreach var="fruit" items="${fruits}" begin="1" end="3" step="2"><pre><code>&lt;c:out value=&quot;${fruit}&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
+</code></pre>   </c:foreach></li>
+</ul>
+<p>Ps：step默认值：1。</p>
+<p><hr><br>    <!-- 用法四：部分遍历并带状态 --><br>     <c:foreach var="fruit" items="${fruits}" begin="1" end="3" varstatus="fru"><br>         <c:out value="${fruit}——四个属性："></c:out><br><br>         <c:out value="index属性：${fru.index}"></c:out><br><br>         <c:out value="count属性：${fru.count}"></c:out><br><br>         <c:out value="first属性：${fru.first}"></c:out><br><br>         <c:out value="last属性：${fru.last}"></c:out><br><br>         <c:out value="----------"></c:out><br><br>     </c:foreach></p>
+<p>Ps：index从0开始；count从1开始；first是否第一个（boolean）；last是否最后一个（boolean）。</p>
+<h3 id="forTokens-标签"><a href="#forTokens-标签" class="headerlink" title="forTokens 标签"></a>forTokens 标签</h3><pre><code>&lt;c:forTokens items=&quot;400-888888-123&quot; delims=&quot;-&quot; var=&quot;num&quot;&gt;
+     &lt;c:out value=&quot;${num}&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
+&lt;/c:forTokens&gt;
+</code></pre><h3 id="import标签"><a href="#import标签" class="headerlink" title="import标签"></a>import标签</h3><p>语法格式：</p>
+<pre><code>&lt;c:import url=&quot;&quot; context=&quot;&quot; var=&quot;&quot; scope=&quot;&quot; charEncoding=&quot;&quot; varReader=&quot;&quot;&gt;
+&lt;/c:import&gt;
+</code></pre><ul>
+<li>.url被导入资源的URL路径</li>
+<li>.context相同服务器下其他的web工程，必须以”/“开头</li>
+<li>.var以String类型存入北包含文件的内容</li>
+<li>.Scope var变量的JSP范围</li>
+<li>.charEncoding被导入文件的编码格式</li>
+<li>.varReader以Reader类型存储被包含文件内容</li>
+</ul>
+<hr>
+
+<pre><code>&lt;!-- 导入网络上的绝对路径 --&gt;
+&lt;c:catch var=&quot;error0&quot;&gt;
+    &lt;c:import url=&quot;http://www.imooc.com&quot;&gt;&lt;/c:import&gt;
+&lt;/c:catch&gt;
+
+&lt;c:out value=&quot;${error0}&quot;&gt;&lt;/c:out&gt;
+</code></pre><p><hr><br>     <!-- 导入相对路径文件 --><br>     <c:catch var="error1"><br>         <c:import url="Test.txt" charencoding="gbk"></c:import><br>     </c:catch></p>
+<pre><code>&lt;c:out value=&quot;${error1}&quot;&gt;&lt;/c:out&gt;
+</code></pre><p>Ps：由于可能网络中断导致抛出异常，所以常常把import标签放在catch标签里。</p>
+<h3 id="redirect标签"><a href="#redirect标签" class="headerlink" title="redirect标签"></a>redirect标签</h3><ul>
+<li>-该标签用来实现请求的重定向，同时可以在url中加入指定的参数</li>
+<li>.url指定重定向页面的地址，可以是一个string类型的绝对地址或相对地址</li>
+<li>.context用于导入其他web应用中的页面<br><hr><br>  @temp.jsp<br>  username:<c:out value="${param.username}"></c:out><br>  password:<c:out value="${param.password}"></c:out><br><hr><br>  @index.jsp  <!-- redirect标签用法 -->
+   <c:redirect url="temp.jsp"><pre><code>&lt;c:param name=&quot;username&quot;&gt;Lily&lt;/c:param&gt;
+&lt;c:param name=&quot;password&quot;&gt;123456&lt;/c:param&gt;
+</code></pre>   </c:redirect></li>
+</ul>
+<h2 id="JSTL函数"><a href="#JSTL函数" class="headerlink" title="JSTL函数"></a>JSTL函数</h2><pre><code>&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot;%&gt;
+//使用JSTL函数时要有这句
+&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/functions&quot; prefix=&quot;fn&quot;%&gt;
+
+&lt;c:out value=&quot;“Hello World”字符串中是否包含“Hello”？${fn:contains(&apos;Hello World&apos;,&apos;Hello&apos;)}&quot;&gt;&lt;/c:out&gt;
+
+  &lt;c:out value=&quot;“Hello World”字符串中是否包含“ABCD”？${fn:contains(&apos;Hello World&apos;,&apos;ABCD&apos;)}&quot;&gt;&lt;/c:out&gt;
+
+  &lt;c:out value=&quot;“Hello World”字符串中是否包含“hello”（忽略大小写）？${fn:containsIgnoreCase(&apos;Hello World&apos;,&apos;hello&apos;)}&quot;&gt;&lt;/c:out&gt;
+
+  &lt;c:out value=&quot;“Hello”是否在“Hello World”字符串开头？${fn:startsWith(&apos;Hello World&apos;,&apos;Hello&apos;)}&quot;&gt;&lt;/c:out&gt;
+
+  &lt;c:out value=&quot;“world”是否在“Hello World”字符串尾部？${fn:endsWith(&apos;Hello World&apos;,&apos;world&apos;)}&quot;&gt;&lt;/c:out&gt;
+</code></pre><p><hr><br>    <!-- 不会输出<book>标签 --><br>      <book>书</book><br>      <!-- 可输出标签但会出现转义问题 --><br>      <c:out value="${fn:escapeXml('<book>书</book>')}"></c:out><br>      <hr><br>      <!-- 可输出标签且不会出现转义问题 --><br>      <c:out value="<book>书</book>"></c:out><br>      <hr><br>      <!-- indexOf函数用法 --><br>      <c:out value="“Hello World”字符串“llo”出现的index值：${fn:indexOf('Hello World','llo')}"></c:out></p>
+</table>
     
 
     
