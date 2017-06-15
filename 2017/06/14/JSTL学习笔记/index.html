@@ -495,13 +495,13 @@ count = count + 20;
 </code></pre><p><hr><br>    <c:set var="firstName" value="Jack"></c:set><br>    <c:remove var="firstName"></c:remove><br>    <c:out value="${firstName}"></c:out></p>
 <p>Ps：remove的对象只能是某一个变量，不能是一个jsp:useBean中的某一个属性。</p>
 <h3 id="c-catch-标签"><a href="#c-catch-标签" class="headerlink" title="c:catch 标签"></a>c:catch 标签</h3><p>catch标签中可以包含哪些容易出错的JSTL标签(逻辑)</p>
-<pre><code>&lt;c:catch var=&quot;error&quot;&gt;
+<pre><code>`&lt;c:catch var=&quot;error&quot;&gt;
     //如果这段出错，错误信息将保存到error变量中
     &lt;c:set target=&quot;aa&quot; property=&quot;bb&quot;&gt;asasa&lt;/c:set&gt; 
 &lt;/c:catch&gt;
 
-&lt;c:out value=&quot;${error}&quot;&gt;&lt;/c:out&gt; //输出error，即输出错误信息
-</code></pre><h3 id="c-if-标签"><a href="#c-if-标签" class="headerlink" title="c:if 标签"></a>c:if 标签</h3><pre><code>//先构建一个表单
+&lt;c:out value=&quot;${error}&quot;&gt;&lt;/c:out&gt; //输出error，即输出错误信息`
+</code></pre><h3 id="c-if-标签"><a href="#c-if-标签" class="headerlink" title="c:if 标签"></a>c:if 标签</h3><pre><code>`//先构建一个表单
 &lt;form action=&quot;index.jsp&quot; method=&quot;post&quot;&gt;
     &lt;input type=&quot;text&quot; name=&quot;score&quot; value=&quot;${param.score}&quot; /&gt;
     &lt;input type=&quot;submit&quot;/&gt; //这是一个提交按钮
@@ -510,12 +510,12 @@ count = count + 20;
 &lt;!-- 优秀：score&gt;=90 --&gt;
 &lt;c:if test=&quot;${param.score&gt;=90}&quot; var=&quot;result&quot; scope=&quot;session&quot;&gt;
     &lt;c:out value=&quot;你的成绩：优秀——${sessionScope.result}&quot;&gt;&lt;/c:out&gt;
-&lt;/c:if&gt;
+&lt;/c:if&gt;`
 </code></pre><p>Ps：$(param.user)相当于&lt;%=request.getParameter(“user”)%&gt;；$(paramValues.favorites[0])相当于&lt;%=request.getParameters(“favorites”)[0]%&gt;。</p>
 <h3 id="choose-when-otherwise标签"><a href="#choose-when-otherwise标签" class="headerlink" title="choose-when-otherwise标签"></a>choose-when-otherwise标签</h3><p>通常这三个标签被放在一起配合使用</p>
 <p><c:choose>标签嵌套在<c:when>和<c:otherwise>标签外面作为他们的父标签来使用</c:otherwise></c:when></c:choose></p>
 <p>其中choose和when标签也可以一起组合使用</p>
-<pre><code>&lt;c:choose&gt;
+<pre><code>`&lt;c:choose&gt;
     &lt;c:when test=&quot;${param.score&lt;=100 &amp;&amp; param.score&gt;=60 }&quot;&gt;
         &lt;c:out value=&quot;及格&quot;&gt;&lt;/c:out&gt;
     &lt;/c:when&gt;
@@ -527,30 +527,35 @@ count = count + 20;
     &lt;c:otherwise&gt;
         &lt;c:out value=&quot;请检查你的输入！&quot;&gt;&lt;/c:out&gt;
     &lt;/c:otherwise&gt;
-&lt;/c:choose&gt;
+&lt;/c:choose&gt;`
 </code></pre><h3 id="foreach-标签"><a href="#foreach-标签" class="headerlink" title="foreach 标签"></a>foreach 标签</h3><p>-根据循环条件遍历集合（Collectoin）中的元素</p>
 <ul>
 <li>var设定变量名用于存储从集合中取出元素（必须无默认值）</li>
 <li>items指定要遍历的集合(必须无默认值)</li>
 <li>begin、end用于指定遍历的起始位置和终止位置(有默认)</li>
 <li>step指定循环的步长(有默认)</li>
-<li>varStatus通过index、count、first、last几个状态值，描述begin和end子集中的元素状态<br><hr><br>  &lt;%<pre><code>List&lt;String&gt; fruits=new ArrayList&lt;String&gt;();
+<li>varStatus通过index、count、first、last几个状态值，描述begin和end子集中的元素状态<br><hr><br>  `&lt;%<pre><code>List&lt;String&gt; fruits=new ArrayList&lt;String&gt;();
 fruits.add(&quot;apple&quot;);
 fruits.add(&quot;pear&quot;);
 fruits.add(&quot;orange&quot;);
 fruits.add(&quot;banana&quot;);
 request.setAttribute(&quot;fruits&quot;, fruits);
-</code></pre>  %&gt;<br><hr>  <!-- forEach标签用法 -->
-  <!-- 用法一：全部遍历 -->
+</code></pre>  %&gt;<code>&lt;hr&gt;</code><!-- forEach标签用法 -->  <!-- 用法一：全部遍历 -->
   <c:foreach var="fruit" items="${fruits}"><pre><code>&lt;c:out value=&quot;${fruit}&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
-</code></pre>  </c:foreach><br><hr>  <!-- 用法二：部分遍历 -->
-  <c:foreach var="fruit" items="${fruits}" begin="1" end="2"><pre><code>&lt;c:out value=&quot;${fruit}&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
-</code></pre>  </c:foreach><br><hr>  <!-- 用法三：部分遍历并带步长 -->
-   <c:foreach var="fruit" items="${fruits}" begin="1" end="3" step="2"><pre><code>&lt;c:out value=&quot;${fruit}&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
-</code></pre>   </c:foreach></li>
+</code></pre>  </c:foreach><code>&lt;hr&gt;</code><!-- 用法二：部分遍历 --><br>  <c:foreach var="fruit" items="${fruits}" begin="1" end="2"><pre><code>&lt;c:out value=&quot;${fruit}&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
+</code></pre>  </c:foreach><code>&lt;hr&gt;</code><!-- 用法三：部分遍历并带步长 --><br>   <c:foreach var="fruit" items="${fruits}" begin="1" end="3" step="2"><pre><code>&lt;c:out value=&quot;${fruit}&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
+</code></pre>   </c:foreach>`</li>
 </ul>
 <p>Ps：step默认值：1。</p>
-<p><hr><br>    <!-- 用法四：部分遍历并带状态 --><br>     <c:foreach var="fruit" items="${fruits}" begin="1" end="3" varstatus="fru"><br>         <c:out value="${fruit}——四个属性："></c:out><br><br>         <c:out value="index属性：${fru.index}"></c:out><br><br>         <c:out value="count属性：${fru.count}"></c:out><br><br>         <c:out value="first属性：${fru.first}"></c:out><br><br>         <c:out value="last属性：${fru.last}"></c:out><br><br>         <c:out value="----------"></c:out><br><br>     </c:foreach></p>
+<p><hr><br>    <code>&lt;!-- 用法四：部分遍历并带状态 --&gt;
+     &lt;c:forEach var=&quot;fruit&quot; items=&quot;${fruits}&quot; begin=&quot;1&quot; end=&quot;3&quot; varStatus=&quot;fru&quot;&gt;
+         &lt;c:out value=&quot;${fruit}——四个属性：&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
+         &lt;c:out value=&quot;index属性：${fru.index}&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
+         &lt;c:out value=&quot;count属性：${fru.count}&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
+         &lt;c:out value=&quot;first属性：${fru.first}&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
+         &lt;c:out value=&quot;last属性：${fru.last}&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
+         &lt;c:out value=&quot;----------&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
+     &lt;/c:forEach&gt;</code></p>
 <p>Ps：index从0开始；count从1开始；first是否第一个（boolean）；last是否最后一个（boolean）。</p>
 <h3 id="forTokens-标签"><a href="#forTokens-标签" class="headerlink" title="forTokens 标签"></a>forTokens 标签</h3><pre><code>&lt;c:forTokens items=&quot;400-888888-123&quot; delims=&quot;-&quot; var=&quot;num&quot;&gt;
      &lt;c:out value=&quot;${num}&quot;&gt;&lt;/c:out&gt;&lt;br&gt;
@@ -568,22 +573,28 @@ request.setAttribute(&quot;fruits&quot;, fruits);
 </ul>
 <hr>
 
-<pre><code>&lt;!-- 导入网络上的绝对路径 --&gt;
+<pre><code>`&lt;!-- 导入网络上的绝对路径 --&gt;
 &lt;c:catch var=&quot;error0&quot;&gt;
     &lt;c:import url=&quot;http://www.imooc.com&quot;&gt;&lt;/c:import&gt;
 &lt;/c:catch&gt;
 
-&lt;c:out value=&quot;${error0}&quot;&gt;&lt;/c:out&gt;
-</code></pre><p><hr><br>     <!-- 导入相对路径文件 --><br>     <c:catch var="error1"><br>         <c:import url="Test.txt" charencoding="gbk"></c:import><br>     </c:catch></p>
-<pre><code>&lt;c:out value=&quot;${error1}&quot;&gt;&lt;/c:out&gt;
+&lt;c:out value=&quot;${error0}&quot;&gt;&lt;/c:out&gt;`
+</code></pre><p><hr><br>     `<!-- 导入相对路径文件 --><br>     <c:catch var="error1"><br>         <c:import url="Test.txt" charencoding="gbk"></c:import><br>     </c:catch></p>
+<pre><code>&lt;c:out value=&quot;${error1}&quot;&gt;&lt;/c:out&gt;`
 </code></pre><p>Ps：由于可能网络中断导致抛出异常，所以常常把import标签放在catch标签里。</p>
 <h3 id="redirect标签"><a href="#redirect标签" class="headerlink" title="redirect标签"></a>redirect标签</h3><ul>
 <li>-该标签用来实现请求的重定向，同时可以在url中加入指定的参数</li>
 <li>.url指定重定向页面的地址，可以是一个string类型的绝对地址或相对地址</li>
-<li>.context用于导入其他web应用中的页面<br><hr><br>  @temp.jsp<br>  username:<c:out value="${param.username}"></c:out><br>  password:<c:out value="${param.password}"></c:out><br><hr><br>  @index.jsp  <!-- redirect标签用法 -->
-   <c:redirect url="temp.jsp"><pre><code>&lt;c:param name=&quot;username&quot;&gt;Lily&lt;/c:param&gt;
-&lt;c:param name=&quot;password&quot;&gt;123456&lt;/c:param&gt;
-</code></pre>   </c:redirect></li>
+<li>.context用于导入其他web应用中的页面<br><hr><pre><code>@temp.jsp
+username:&lt;c:out value=&quot;${param.username}&quot;&gt;&lt;/c:out&gt;
+password:&lt;c:out value=&quot;${param.password}&quot;&gt;&lt;/c:out&gt;
+</code></pre><hr><pre><code>@index.jsp
+&lt;!-- redirect标签用法 --&gt;
+ &lt;c:redirect url=&quot;temp.jsp&quot;&gt;
+     &lt;c:param name=&quot;username&quot;&gt;Lily&lt;/c:param&gt;
+     &lt;c:param name=&quot;password&quot;&gt;123456&lt;/c:param&gt;
+ &lt;/c:redirect&gt;
+</code></pre></li>
 </ul>
 <h2 id="JSTL函数"><a href="#JSTL函数" class="headerlink" title="JSTL函数"></a>JSTL函数</h2><pre><code>&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot;%&gt;
 //使用JSTL函数时要有这句
@@ -598,7 +609,7 @@ request.setAttribute(&quot;fruits&quot;, fruits);
   &lt;c:out value=&quot;“Hello”是否在“Hello World”字符串开头？${fn:startsWith(&apos;Hello World&apos;,&apos;Hello&apos;)}&quot;&gt;&lt;/c:out&gt;
 
   &lt;c:out value=&quot;“world”是否在“Hello World”字符串尾部？${fn:endsWith(&apos;Hello World&apos;,&apos;world&apos;)}&quot;&gt;&lt;/c:out&gt;
-</code></pre><p><hr><br>    <!-- 不会输出<book>标签 --><br>      <book>书</book><br>      <!-- 可输出标签但会出现转义问题 --><br>      <c:out value="${fn:escapeXml('<book>书</book>')}"></c:out><br>      <hr><br>      <!-- 可输出标签且不会出现转义问题 --><br>      <c:out value="<book>书</book>"></c:out><br>      <hr><br>      <!-- indexOf函数用法 --><br>      <c:out value="“Hello World”字符串“llo”出现的index值：${fn:indexOf('Hello World','llo')}"></c:out></p>
+</code></pre><p><hr><br>    <!-- 不会输出<book>标签 --><br>      <!-- 可输出标签但会出现转义问题 --><br>      <c:out value="${fn:escapeXml('<book>书</book>')}"></c:out><br>      <hr><br>      <!-- 可输出标签且不会出现转义问题 --><br>      <c:out value="<book>书</book>"></c:out><br>      <hr><br>      <!-- indexOf函数用法 --><br>      <c:out value="“Hello World”字符串“llo”出现的index值：${fn:indexOf('Hello World','llo')}"></c:out></p>
 </table>
     
 
