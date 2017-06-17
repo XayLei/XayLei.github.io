@@ -10,7 +10,7 @@
     
     <title>
         
-            maven相关问题 | 
+            数据库索引 | 
         
         XayLei&#39;s blog
     </title>
@@ -60,7 +60,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="maven相关问题 | XayLei&#39;s blog">
+    <meta property="og:title" content="数据库索引 | XayLei&#39;s blog">
     <meta property="og:description" content="null">
     
 
@@ -249,7 +249,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一次安装和使用maven"><span class="post-toc-number">1.</span> <span class="post-toc-text">第一次安装和使用maven</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#索引目的"><span class="post-toc-number">1.</span> <span class="post-toc-text">索引目的</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#索引原理"><span class="post-toc-number">2.</span> <span class="post-toc-text">索引原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#索引类别"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">索引类别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#磁盘I-O与预读"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">磁盘I/O与预读</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#B-树索引"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">B+树索引</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#索引的优点"><span class="post-toc-number">3.</span> <span class="post-toc-text">索引的优点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建索引"><span class="post-toc-number">4.</span> <span class="post-toc-text">创建索引</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -286,7 +286,7 @@
         
     
             <p class="article-headline-p">
-                maven相关问题
+                数据库索引
             </p>
         </div>
 
@@ -305,7 +305,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>XayLei</strong>
-        <span>6月 06, 2017</span>
+        <span>6月 17, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -356,7 +356,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=maven相关问题&url=http://yoursite.com//2017/06/06/maven相关问题/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=数据库索引&url=http://yoursite.com//2017/06/17/数据库索引/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -365,7 +365,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=maven相关问题&url=http://yoursite.com//2017/06/06/maven相关问题/index.html&via=XayLei" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=数据库索引&url=http://yoursite.com//2017/06/17/数据库索引/index.html&via=XayLei" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -374,7 +374,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/06/maven相关问题/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/17/数据库索引/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -383,7 +383,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/06/maven相关问题/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/17/数据库索引/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -407,18 +407,52 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="第一次安装和使用maven"><a href="#第一次安装和使用maven" class="headerlink" title="第一次安装和使用maven"></a>第一次安装和使用maven</h2><p>第一，虽然eclipse for Java EE里面自带了maven的插件，但是这个插件的版本比较旧。最好还是在自己电脑上再装一次maven，然后在eclipse里面设置一下使用external maven。设置方法是：window -&gt; preference -&gt; maven -&gt; installations点击add按钮，选择maven安装的路径，然后把它勾选上。</p>
-<p>第二，maven作为一个项目管理工具确实非常好用，但是在国内这个网络条件下实在是让人恼火。之前oschina的中央仓库可用，现在oschina的maven服务器关了，一直没找到国内镜像来替代。今天发现阿里云公开了一个中央仓库，大家可以试试。</p>
-<p>修改maven根目录下的conf文件夹中的setting.xml文件，内容如下：</p>
-<pre><code>&lt;mirrors&gt;
-    &lt;mirror&gt;
-          &lt;id&gt;alimaven&lt;/id&gt;
-          &lt;name&gt;aliyun maven&lt;/name&gt;
-          &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;
-          &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;        
-    &lt;/mirror&gt;
-&lt;/mirrors&gt;
-</code></pre><p>第三，eclipse里面的maven插件m2eclipse有点问题，每次打开的时候都会去下载maven的索引文件。而这个索引文件非常大，下载速度又很慢，所以卡在Updating index central|<a href="http://repo1.maven.org/maven2这个地方。其实可以把这个关掉的。window" target="_blank" rel="external">http://repo1.maven.org/maven2这个地方。其实可以把这个关掉的。window</a> -&gt; preference -&gt; maven然后把download repository index updates on startup去掉即可。</p>
+        <p>索引是存储引擎用于快速找到记录的一种数据结构。</p>
+<h2 id="索引目的"><a href="#索引目的" class="headerlink" title="索引目的"></a>索引目的</h2><p>索引的目的在于提高查询效率，可以类比字典，如果要查“mysql”这个单词，我们肯定需要定位到m字母，然后从下往下找到y字母，再找到剩下的sql</p>
+<h2 id="索引原理"><a href="#索引原理" class="headerlink" title="索引原理"></a>索引原理</h2><h3 id="索引类别"><a href="#索引类别" class="headerlink" title="索引类别"></a>索引类别</h3><ul>
+<li><p>大多数索引指的是B-树索引，InnoDB索引使用的数据结构是B+Tree</p>
+</li>
+<li><p>MySQL中的MEMORY存储引擎显示支持哈希索引，哈希索引基于哈希表实现，只有精确匹配索引所有列的查询才有效，存储引擎会对所有的索引列计算一个哈希码，哈希索引将所有的哈希码存储在索引中，同时在哈希表中保存指向每个数据行的指针。如果哈希值发生冲突，哈希索引会以链表的方式存储多个记录指针到同一个哈希条目中</p>
+</li>
+<li><p>空间数据索引：MyISAM存储引擎支持，无需前缀查询，会从所有维度来索引数据。</p>
+</li>
+</ul>
+<h3 id="磁盘I-O与预读"><a href="#磁盘I-O与预读" class="headerlink" title="磁盘I/O与预读"></a>磁盘I/O与预读</h3><p>磁盘读取数据靠的是机械运动，每次读取数据花费的时间可以分为寻道时间、旋转延迟、传输时间三个部分：</p>
+<ul>
+<li>寻道时间指的是磁臂移动到指定磁道所需要的时间，主流磁盘一般在5ms以下；</li>
+<li>旋转延迟就是我们经常听说的磁盘转速，比如一个磁盘7200转，表示每分钟能转7200次，也就是说1秒钟能转120次，旋转延迟就是1/120/2 = 4.17ms；</li>
+<li>传输时间指的是从磁盘读出或将数据写入磁盘的时间，一般在零点几毫秒，相对于前两个时间可以忽略不计。</li>
+</ul>
+<p>那么访问一次磁盘的时间，即一次磁盘IO的时间约等于5+4.17 = 9ms左右，听起来还挺不错的，但要知道一台500 -MIPS的机器每秒可以执行5亿条指令，因为指令依靠的是电的性质，换句话说执行一次IO的时间可以执行40万条指令，数据库动辄十万百万乃至千万级数据，每次9毫秒的时间，显然是个灾难。</p>
+<p>考虑到磁盘IO是非常高昂的操作，计算机操作系统做了一些优化，当一次IO时，不光把当前磁盘地址的数据，而是把相邻的数据也都读取到内存缓冲区内，因为局部预读性原理告诉我们，当计算机访问一个地址的数据的时候，与其相邻的数据也会很快被访问到。每一次IO读取的数据我们称之为一页(page)，也就是读取一页内的数据时候，实际上才发生了一次IO</p>
+<h3 id="B-树索引"><a href="#B-树索引" class="headerlink" title="B+树索引"></a>B+树索引</h3><p>B+树是B树的一种变种，B树是一个节点可以拥有超过2个子节点的二叉查找树。</p>
+<p><img src="http://tech.meituan.com/img/mysql_index/btree.jpg" alt=""></p>
+<p>如上图所示，浅蓝色是磁盘块，深蓝色代表数据项，黄色代表指针</p>
+<p>叶子节点存储真实的数据，非叶子节点只存储指引方向的数据项。如磁盘块1包含数据项17和35，包含指针P1、P2、P3，P1表示小于17的磁盘块，P2表示在17和35之间的磁盘块，P3表示大于35的磁盘块。</p>
+<p>查找过程：</p>
+<p>如图所示，如果要查找数据项29，那么首先会把磁盘块1由磁盘加载到内存，此时发生一次IO；</p>
+<p>在内存中用二分查找确定29在17和35之间，锁定磁盘块1的P2指针，内存时间因为非常短（相比磁盘的IO）可以忽略不计，通过磁盘块1的P2指针的磁盘地址把磁盘块3由磁盘加载到内存，发生第二次IO；</p>
+<p>29在26和30之间，锁定磁盘块3的P2指针，通过指针加载磁盘块8到内存，发生第三次IO，同时内存中做二分查找找到29，结束查询，总计三次IO；</p>
+<p>真实的情况是，3层的b+树可以表示上百万的数据，如果上百万的数据查找只需要三次IO，性能提高将是巨大的，如果没有索引，每个数据项都要发生一次IO，那么总共需要百万次的IO，显然成本非常非常高。</p>
+<h2 id="索引的优点"><a href="#索引的优点" class="headerlink" title="索引的优点"></a>索引的优点</h2><ol>
+<li>索引大大减少了服务器需要扫描的数据量</li>
+<li>帮助服务器避免排序和临时表</li>
+<li>可以将随机I/O变为顺序I/O</li>
+</ol>
+<h2 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h2><p>唯一的索引 (Unique Index)：在表格上面创建某个一个唯一的索引。唯一的索引意味着两个行不能拥有相同的索引值。</p>
+<pre><code>CREATE UNIQUE INDEX 索引名称 ON 表名称 (列名称) 
+</code></pre><p>列名称规定需要索引的列</p>
+<p>简单索引：省略UNIQUE值，这样就可以使用重复的值</p>
+<p>实例：</p>
+<pre><code>CREATE INDEX PersonIndex ON Person (LastName)
+
+//索引不止一列时，使用逗号隔开列名
+CREATE INDEX PersonIndex ON Person (LastName, FirstName)
+</code></pre><p>参考：</p>
+<blockquote>
+<p><a href="http://tech.meituan.com/mysql-index.html" target="_blank" rel="external">http://tech.meituan.com/mysql-index.html</a></p>
+<p><a href="http://blog.jobbole.com/24006/" target="_blank" rel="external">http://blog.jobbole.com/24006/</a></p>
+</blockquote>
 
     
 
@@ -445,7 +479,7 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/06/07/TCP/" id="post_nav-newer" class="prev-content">
+        <a href="/2017/06/17/B树与B-树/" id="post_nav-newer" class="prev-content">
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
                 <i class="material-icons">arrow_back</i>
             </button>
@@ -459,7 +493,7 @@
 
     <!-- Next Nav -->
     
-        <a href="/2017/06/06/HTTP/" id="post_nav-older" class="next-content">
+        <a href="/2017/06/14/数据库学习笔记/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

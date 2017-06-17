@@ -10,7 +10,7 @@
     
     <title>
         
-            maven相关问题 | 
+            B树与B+树 | 
         
         XayLei&#39;s blog
     </title>
@@ -60,7 +60,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="maven相关问题 | XayLei&#39;s blog">
+    <meta property="og:title" content="B树与B+树 | XayLei&#39;s blog">
     <meta property="og:description" content="null">
     
 
@@ -249,7 +249,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第一次安装和使用maven"><span class="post-toc-number">1.</span> <span class="post-toc-text">第一次安装和使用maven</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#B树与B-树的区别"><span class="post-toc-number">1.</span> <span class="post-toc-text">B树与B+树的区别</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#B-树的优点"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">B+树的优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#B树的优点"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">B树的优点</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -286,7 +286,7 @@
         
     
             <p class="article-headline-p">
-                maven相关问题
+                B树与B+树
             </p>
         </div>
 
@@ -305,7 +305,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>XayLei</strong>
-        <span>6月 06, 2017</span>
+        <span>6月 17, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -356,7 +356,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=maven相关问题&url=http://yoursite.com//2017/06/06/maven相关问题/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=B树与B+树&url=http://yoursite.com//2017/06/17/B树与B-树/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -365,7 +365,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=maven相关问题&url=http://yoursite.com//2017/06/06/maven相关问题/index.html&via=XayLei" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=B树与B+树&url=http://yoursite.com//2017/06/17/B树与B-树/index.html&via=XayLei" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -374,7 +374,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/06/maven相关问题/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/17/B树与B-树/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -383,7 +383,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/06/maven相关问题/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/17/B树与B-树/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -407,18 +407,11 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="第一次安装和使用maven"><a href="#第一次安装和使用maven" class="headerlink" title="第一次安装和使用maven"></a>第一次安装和使用maven</h2><p>第一，虽然eclipse for Java EE里面自带了maven的插件，但是这个插件的版本比较旧。最好还是在自己电脑上再装一次maven，然后在eclipse里面设置一下使用external maven。设置方法是：window -&gt; preference -&gt; maven -&gt; installations点击add按钮，选择maven安装的路径，然后把它勾选上。</p>
-<p>第二，maven作为一个项目管理工具确实非常好用，但是在国内这个网络条件下实在是让人恼火。之前oschina的中央仓库可用，现在oschina的maven服务器关了，一直没找到国内镜像来替代。今天发现阿里云公开了一个中央仓库，大家可以试试。</p>
-<p>修改maven根目录下的conf文件夹中的setting.xml文件，内容如下：</p>
-<pre><code>&lt;mirrors&gt;
-    &lt;mirror&gt;
-          &lt;id&gt;alimaven&lt;/id&gt;
-          &lt;name&gt;aliyun maven&lt;/name&gt;
-          &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;
-          &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;        
-    &lt;/mirror&gt;
-&lt;/mirrors&gt;
-</code></pre><p>第三，eclipse里面的maven插件m2eclipse有点问题，每次打开的时候都会去下载maven的索引文件。而这个索引文件非常大，下载速度又很慢，所以卡在Updating index central|<a href="http://repo1.maven.org/maven2这个地方。其实可以把这个关掉的。window" target="_blank" rel="external">http://repo1.maven.org/maven2这个地方。其实可以把这个关掉的。window</a> -&gt; preference -&gt; maven然后把download repository index updates on startup去掉即可。</p>
+        <h2 id="B树与B-树的区别"><a href="#B树与B-树的区别" class="headerlink" title="B树与B+树的区别"></a>B树与B+树的区别</h2><p>B+树的非叶子结点只包含导航信息，不包含实际的值，所有的叶子结点和相连的节点使用链表相连，便于区间查找和遍历。</p>
+<p>B+树非叶结点仅具有索引作用，跟记录有关的信息均存放在叶结点中</p>
+<h3 id="B-树的优点"><a href="#B-树的优点" class="headerlink" title="B+树的优点"></a>B+树的优点</h3><p>B+树的内部节点不含数据信息，因此在内存页中能够存放更多的key。 数据存放的更加紧密，具有更好的空间局部性。因此访问叶子几点上关联的数据也具有更好的缓存命中率。</p>
+<p>B+树的叶子结点都是相链的，因此对整棵树的便利只需要一次线性遍历叶子结点即可。而且由于数据顺序排列并且相连，所以便于区间查找和搜索。</p>
+<h3 id="B树的优点"><a href="#B树的优点" class="headerlink" title="B树的优点"></a>B树的优点</h3><p>由于B树的每一个节点都包含key和value，因此经常访问的元素可能离根节点更近，因此访问也更迅速。</p>
 
     
 
@@ -445,21 +438,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/06/07/TCP/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/06/06/HTTP/" id="post_nav-older" class="next-content">
+        <a href="/2017/06/17/数据库索引/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
