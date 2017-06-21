@@ -249,7 +249,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#索引目的"><span class="post-toc-number">1.</span> <span class="post-toc-text">索引目的</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#索引原理"><span class="post-toc-number">2.</span> <span class="post-toc-text">索引原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#索引类别"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">索引类别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#磁盘I-O与预读"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">磁盘I/O与预读</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#B-树索引"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">B+树索引</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#索引的优点"><span class="post-toc-number">3.</span> <span class="post-toc-text">索引的优点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建索引"><span class="post-toc-number">4.</span> <span class="post-toc-text">创建索引</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#索引目的"><span class="post-toc-number">1.</span> <span class="post-toc-text">索引目的</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#索引原理"><span class="post-toc-number">2.</span> <span class="post-toc-text">索引原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#索引类别"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">索引类别</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#磁盘I-O与预读"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">磁盘I/O与预读</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#B-树索引"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">B+树索引</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#索引的优点"><span class="post-toc-number">3.</span> <span class="post-toc-text">索引的优点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建索引"><span class="post-toc-number">4.</span> <span class="post-toc-text">创建索引</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#索引分类："><span class="post-toc-number">5.</span> <span class="post-toc-text">索引分类：</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -453,6 +453,13 @@ CREATE INDEX PersonIndex ON Person (LastName, FirstName)
 <p><a href="http://tech.meituan.com/mysql-index.html" target="_blank" rel="external">http://tech.meituan.com/mysql-index.html</a></p>
 <p><a href="http://blog.jobbole.com/24006/" target="_blank" rel="external">http://blog.jobbole.com/24006/</a></p>
 </blockquote>
+<hr>
+<h2 id="索引分类："><a href="#索引分类：" class="headerlink" title="索引分类："></a>索引分类：</h2><p>普通索引：创建普通索引时，没有任何限制条件</p>
+<p>唯一性索引：使用UNIQUE关键字创建，主键就是一种特殊的唯一性索引</p>
+<p>全文索引：FULLTEXT，只能创建在CHAR、VARCHAR或TEXT类型的字段上。只有MyISAM存储引擎支持全文检索</p>
+<p>单列索引：在表中的单个字段上创建索引</p>
+<p>多列索引：在表的多个字段创建一个索引</p>
+<p>空间索引：使用SPATIAL参数，空间索引只能建立在空间数据类型上，只有MyISAM存储引擎支持，且索引字段必须非空。</p>
 
     
 
@@ -585,7 +592,7 @@ CREATE INDEX PersonIndex ON Person (LastName, FirstName)
             </a>
             <ul class="dropdown-menu">
             <li>
-                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">10</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">4</span></a>
+                <a class="sidebar_archives-link" href="/archives/2017/06/">六月 2017<span class="sidebar_archives-count">12</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/05/">五月 2017<span class="sidebar_archives-count">4</span></a>
             </ul>
         </li>
         
