@@ -10,7 +10,7 @@
     
     <title>
         
-            数据库学习笔记 | 
+            悲观锁与乐观锁 | 
         
         XayLei&#39;s blog
     </title>
@@ -60,7 +60,7 @@
     <!-- The Open Graph protocol -->
     <meta property="og:url" content="http://yoursite.com">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="数据库学习笔记 | XayLei&#39;s blog">
+    <meta property="og:title" content="悲观锁与乐观锁 | XayLei&#39;s blog">
     <meta property="og:description" content="null">
     
 
@@ -249,7 +249,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ACID特性"><span class="post-toc-number">1.</span> <span class="post-toc-text">ACID特性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-原子性"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.原子性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-一致性"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.一致性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-隔离性"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3.隔离性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-持久性"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4.持久性</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库索引"><span class="post-toc-number">2.</span> <span class="post-toc-text">数据库索引</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#事物"><span class="post-toc-number">3.</span> <span class="post-toc-text">事物</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#drop、delete与truncate"><span class="post-toc-number">4.</span> <span class="post-toc-text">drop、delete与truncate</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#超键、候选键、主键、外键"><span class="post-toc-number">5.</span> <span class="post-toc-text">超键、候选键、主键、外键</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#视图"><span class="post-toc-number">6.</span> <span class="post-toc-text">视图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库引擎"><span class="post-toc-number">7.</span> <span class="post-toc-text">数据库引擎</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#InnoDB引擎："><span class="post-toc-number">7.1.</span> <span class="post-toc-text">InnoDB引擎：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MyISAM存储引擎："><span class="post-toc-number">7.2.</span> <span class="post-toc-text">MyISAM存储引擎：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MEMORY存储引擎："><span class="post-toc-number">7.3.</span> <span class="post-toc-text">MEMORY存储引擎：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ARCHIVE存储引擎"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">ARCHIVE存储引擎</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CSV存储引擎"><span class="post-toc-number">7.5.</span> <span class="post-toc-text">CSV存储引擎</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BLACKHOLE存储引擎"><span class="post-toc-number">7.6.</span> <span class="post-toc-text">BLACKHOLE存储引擎</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FEDERATED存储引擎"><span class="post-toc-number">7.7.</span> <span class="post-toc-text">FEDERATED存储引擎</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关键字"><span class="post-toc-number">8.</span> <span class="post-toc-text">关键字</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库的四种隔离级别"><span class="post-toc-number">9.</span> <span class="post-toc-text">数据库的四种隔离级别</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库层面的悲观锁与乐观锁"><span class="post-toc-number">1.</span> <span class="post-toc-text">数据库层面的悲观锁与乐观锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#悲观锁"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">悲观锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#乐观锁"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">乐观锁</span></a></li></ol></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -286,7 +286,7 @@
         
     
             <p class="article-headline-p">
-                数据库学习笔记
+                悲观锁与乐观锁
             </p>
         </div>
 
@@ -305,7 +305,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>XayLei</strong>
-        <span>6月 14, 2017</span>
+        <span>6月 26, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -356,7 +356,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=数据库学习笔记&url=http://yoursite.com//2017/06/14/数据库学习笔记/index.html&pic=&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=悲观锁与乐观锁&url=http://yoursite.com//2017/06/26/悲观锁与乐观锁/index.html&pic=&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -365,7 +365,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=数据库学习笔记&url=http://yoursite.com//2017/06/14/数据库学习笔记/index.html&via=XayLei" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=悲观锁与乐观锁&url=http://yoursite.com//2017/06/26/悲观锁与乐观锁/index.html&via=XayLei" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -374,7 +374,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/14/数据库学习笔记/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com//2017/06/26/悲观锁与乐观锁/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -383,7 +383,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/14/数据库学习笔记/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com//2017/06/26/悲观锁与乐观锁/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -407,103 +407,14 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="ACID特性"><a href="#ACID特性" class="headerlink" title="ACID特性"></a>ACID特性</h2><h3 id="1-原子性"><a href="#1-原子性" class="headerlink" title="1.原子性"></a>1.原子性</h3><p>原子性是指事务是一个不可再分割的工作单位，事务中的操作要么都发生，要么都不发生。</p>
-<h3 id="2-一致性"><a href="#2-一致性" class="headerlink" title="2.一致性"></a>2.一致性</h3><p>一致性是指在事务开始之前和事务结束以后，数据库的完整性约束没有被破坏。这是说数据库事务不能破坏关系数据的完整性以及业务逻辑上的一致性。</p>
-<h3 id="3-隔离性"><a href="#3-隔离性" class="headerlink" title="3.隔离性"></a>3.隔离性</h3><p>多个事务并发访问时，事务之间是隔离的，一个事务不应该影响其它事务运行效果。</p>
-<p>事务之间的相互影响分为几种，分别为：脏读，不可重复读，幻读，丢失更新</p>
-<p>(1)脏读</p>
-<p>脏读意味着一个事务读取了另一个事务未提交的数据，而这个数据是有可能回滚的</p>
-<p>(2)不可重复读</p>
-<p>不可重复读意味着，在数据库访问中，一个事务范围内两个相同的查询却返回了不同数据。这是由于查询时系统中其他事务修改的提交而引起的。</p>
-<p>(3)幻读（虚读）</p>
-<p>幻读，是指当事务不是独立执行时发生的一种现象，例如第一个事务对一个表中的数据进行了修改，这种修改涉及到表中的全部数据行。同时，第二个事务也修改这个表中的数据，这种修改是向表中插入一行新数据。那么，以后就会发生操作第一个事务的用户发现表中还有没有修改的数据行，就好象发生了幻觉一样.</p>
-<p>(4)丢失更新</p>
-<p>两个事务同时读取同一条记录，A先修改记录，B也修改记录（B是不知道A修改过），B提交数据后B的修改结果覆盖了A的修改结果。</p>
-<h3 id="4-持久性"><a href="#4-持久性" class="headerlink" title="4.持久性"></a>4.持久性</h3><p>持久性，意味着在事务完成以后，该事务对数据库所作的更改便持久的保存在数据库之中，并不会被回滚。</p>
-<h2 id="数据库索引"><a href="#数据库索引" class="headerlink" title="数据库索引"></a>数据库索引</h2><p><span style="font-family: comic sans ms,sans-serif;"><span style="color: red;">MySQL索引使用的数据结构是B+tree，Oracle及Sysbase的索引使用的是B-Tree</span></span></p>
-<p>索引是对数据库表中一或多个列的值进行排序的结构，是帮助MySQL高效获取数据的数据结构</p>
-<ul>
-<li>索引加快数据库的检索速度</li>
-<li>索引降低了插入、删除、修改等维护任务的速度</li>
-<li>唯一索引可以确保每一行数据的唯一性</li>
-<li>索引需要占物理和数据空间</li>
-</ul>
-<h2 id="事物"><a href="#事物" class="headerlink" title="事物"></a>事物</h2><p>事物是并发控制的基本单位</p>
-<p>所谓的事务，它是一个操作序列，这些操作要么都执行，要么都不执行，它是一个不可分割的工作单位。事务是数据库维护数据一致性的单位，在每个事务结束时，都能保持数据一致性。</p>
-<h2 id="drop、delete与truncate"><a href="#drop、delete与truncate" class="headerlink" title="drop、delete与truncate"></a>drop、delete与truncate</h2><ul>
-<li>速度,一般来说: drop&gt; truncate &gt;delete </li>
-<li>delete和truncate只删除表的数据不删除表的结构</li>
-<li>不再需要一张表的时候，用drop</li>
-<li>删除部分数据行时候，用delete，并且带上where子句</li>
-<li>保留表而删除所有数据的时候用truncate</li>
-</ul>
-<h2 id="超键、候选键、主键、外键"><a href="#超键、候选键、主键、外键" class="headerlink" title="超键、候选键、主键、外键"></a>超键、候选键、主键、外键</h2><p>主键（PRIMARY KEY）：主键必须包含唯一的值，主键列不能包含null值，每个表都应该有一个主键，每个表都只能有一个主键</p>
-<p>在创建表的时候创建主键约束：</p>
-<pre><code>CREATETABLE Persons(
-    Id_P int NOT NULL,  //声明为主键的列不能有NULL值
-    LastName varchar(255) NOT NULL,
-    FirstName varchar(255),
-    Address varchar(255),
-    City varchar(255),
-    PRIMARY KEY (Id_P)
-)
-//如果在表已存在的情况下为 &quot;Id_P&quot; 列创建 PRIMARY KEY 约束，请使用下面的 SQL：
-ALTER TABLE Persons ADD PRIMARY KEY (Id_P)
-
-//撤销 PRIMARY KEY 约束，请使用下面的 SQL
-ALTER TABLE Persons DROP PRIMARY KEY
-</code></pre><p>外键：在一个表中存在的另一个表的主键称此表的外键</p>
-<p><a href="http://blog.csdn.net/lfsfxy9/article/details/5949632" target="_blank" rel="external">理解超键、候选键、主键.</a></p>
-<hr>
-<h2 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h2><p><strong>视图既可以由数据库中1个或多个基本表导出，也可以由已存在的视图导出</strong></p>
-<p>视图是一种虚拟的表，具有和物理表相同的功能。可以对视图进行增，改，查三种操作，视图通常是一个表或者多个表的行或列的子集。对视图的修改不影响基本表。它使得我们获取数据更容易，相比多表查询。</p>
-<p>创建视图：</p>
-<pre><code>CREATE VIEW view_name AS
-SELECT column_name(s)
-FROM table_name
-WHERE condition
-</code></pre><p>使用场景：</p>
-<ul>
-<li>当为了安全考虑时，只想要暴露表中的部分字段，这是就可以建一个视图</li>
-<li>查询的数据来源于不同的表，希望以统一的方式查询，这时可以通过建一个视图把多个表的查询结果联合起来，查询者就只需要直接从视图中获取数据即可</li>
-</ul>
-<hr>
-<h2 id="数据库引擎"><a href="#数据库引擎" class="headerlink" title="数据库引擎"></a>数据库引擎</h2><p>什么是存储引擎？</p>
-<p>简而言之，存储引擎就是指表的类型，数据库的存储引擎决定了表在计算机中的存储方式。</p>
-<h3 id="InnoDB引擎："><a href="#InnoDB引擎：" class="headerlink" title="InnoDB引擎："></a>InnoDB引擎：</h3><p>优势：提供了良好的事务管理、崩溃修复能力和并发控制，支持外键（FOREIGN KEY）和自增列(AUTO_INCREMENT)</p>
-<p>缺点：读写效率差，占用的数据空间相对较大</p>
-<p>应用场景：对事物完整性的要求较高，要求实现并发控制，需要频繁的更新、删除操作</p>
-<h3 id="MyISAM存储引擎："><a href="#MyISAM存储引擎：" class="headerlink" title="MyISAM存储引擎："></a>MyISAM存储引擎：</h3><p>这种引擎的表存储为三种类型：frm，MYD，MYI，分别存储表的结构，表中数据和表的索引。</p>
-<p>优点：占用空间小，插入数据快</p>
-<p>缺点：不支持事物的完整性和并发性</p>
-<p>应用场景：插入和读出操作频繁</p>
-<h3 id="MEMORY存储引擎："><a href="#MEMORY存储引擎：" class="headerlink" title="MEMORY存储引擎："></a>MEMORY存储引擎：</h3><p>默认使用哈希索引，所有数据都在内存中，使用内存中的内容创建表</p>
-<p>优点：数据处理速度快，</p>
-<p>缺点：安全性不高，数据易丢失，生命周期短，</p>
-<p>适用于创建小型表</p>
-<h3 id="ARCHIVE存储引擎"><a href="#ARCHIVE存储引擎" class="headerlink" title="ARCHIVE存储引擎"></a>ARCHIVE存储引擎</h3><p>拥有很好的压缩机制，仅支持最基本的插入和查询两种功能</p>
-<h3 id="CSV存储引擎"><a href="#CSV存储引擎" class="headerlink" title="CSV存储引擎"></a>CSV存储引擎</h3><p>把数据以逗号分隔的格式存储在文本文件中。</p>
-<h3 id="BLACKHOLE存储引擎"><a href="#BLACKHOLE存储引擎" class="headerlink" title="BLACKHOLE存储引擎"></a>BLACKHOLE存储引擎</h3><p>接受但不存储数据，并且检索总是返回一个空集</p>
-<h3 id="FEDERATED存储引擎"><a href="#FEDERATED存储引擎" class="headerlink" title="FEDERATED存储引擎"></a>FEDERATED存储引擎</h3><p>把数据存在远程数据库中</p>
-<hr>
-<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p><strong>DISTINCT</strong> 用于返回唯一不同的值</p>
-<p>MySQL中<strong>BETWEEN</strong>的边界问题：两边都包含，相当于&gt;=和&lt;=</p>
-<p><strong>LIKE</strong>关键字可以匹配字符串是否相等，“%”可以代表任意长度的字符串，“_”只能表示单个字符。在实际使用时，需要匹配的字符串需要加引号，既可以是单引号，也可以是双引号</p>
-<p>连接查询：将两个或两个以上的表按照某个条件连接起来，从中选取需要的数据。<br>分为内连接和外连接，外连接又有左连接和右连接。</p>
-<ul>
-<li>INNER JOIN: 如果表中有至少一个匹配，则返回行</li>
-<li>LEFT JOIN: 即使右表中没有匹配，也从左表返回所有的行</li>
-<li>RIGHT JOIN: 即使左表中没有匹配，也从右表返回所有的行</li>
-<li>FULL JOIN: 只要其中一个表中存在匹配，就返回行</li>
-</ul>
-<hr>
-<h2 id="数据库的四种隔离级别"><a href="#数据库的四种隔离级别" class="headerlink" title="数据库的四种隔离级别"></a>数据库的四种隔离级别</h2><p>在数据库操作中，为了保证并发读取数据的正确性，提出了事物隔离级别概念</p>
-<ul>
-<li>未提交读(Read Uncommitted)：允许脏读，也就是可能读取到其他会话中未提交事务修改的数据</li>
-<li>提交读(Read Committed)：只能读取到已经提交的数据。Oracle等多数数据库默认都是该级别 (不重复读)</li>
-<li>可重复读(Repeated Read)：可重复读。在同一个事务内的查询都是事务开始时刻一致的，InnoDB默认级别。在SQL标准中，该隔离级别消除了不可重复读，但是还存在幻读</li>
-<li>串行读(Serializable)：完全串行化的读，每次读都需要获得表级共享锁，读写相互都会阻塞</li>
-</ul>
+        <h2 id="数据库层面的悲观锁与乐观锁"><a href="#数据库层面的悲观锁与乐观锁" class="headerlink" title="数据库层面的悲观锁与乐观锁"></a>数据库层面的悲观锁与乐观锁</h2><h3 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h3><p>数据库中，<strong>悲观并发控制</strong>是一种并发控制的方法，这种方法简称是悲观锁。它可以阻止一个事物以影响其他用户的方式来修改数据。如果一个事物的某个操作应用了锁，那只有这个事物把锁释放时，其他事物才能够执行与该锁冲突的操作。</p>
+<p>主要应用于数据争用激烈的场合，以及发生并发冲突时使用锁保护数据的成本低于事物回滚成本的环境中。</p>
+<p>悲观锁实际上是采用了“先取锁再访问”的保守策略，使数据处理更加安全，但是，这样就增加了数据库的开销，而且还有死锁的可能。并且在只读操作中，是不需要加锁的，盲目的加锁只会增加系统的负载。</p>
+<h3 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a><span style="font-family:Comic Sans MS">乐观锁</span></h3><p>乐观锁的全称是乐观并发控制，也是一种并发控制方法。它假设多用户并发的事物在实际操作时不会彼此影响，各个事物能够在不加锁的情况下处理各自影响的那部分数据。</p>
+<p>在提交数据更新之前，每个事务会先检查在该事务读取数据后，有没有其他事务又修改了该数据。如果其他事务有更新的话，正在提交的事务会进行回滚。</p>
+<p>可以发现，悲观锁是通过加锁实现并发控制，乐观锁是通过回滚实现并发控制。</p>
+<p>应用场景：与悲观锁正好相反，乐观并发控制多数用于数据争用不大、冲突较少的环境中，这种环境中，偶尔回滚事务的成本会低于读取数据时锁定数据的成本，因此可以获得比其他并发控制方法更高的吞吐量。</p>
+<p>虽然乐观锁减少了数据库的开销和系统的负载，也不会产生死锁，但还是会发生不可预期的结果。</p>
 
     
 
@@ -530,21 +441,13 @@ WHERE condition
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2017/06/17/数据库索引/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/06/14/JSTL学习笔记/" id="post_nav-older" class="next-content">
+        <a href="/2017/06/21/Java杂记/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
