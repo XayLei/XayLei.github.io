@@ -249,7 +249,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#String类可以继承吗"><span class="post-toc-number">1.</span> <span class="post-toc-text">String类可以继承吗</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#String类可以继承吗"><span class="post-toc-number">1.</span> <span class="post-toc-text">String类可以继承吗</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#String-相关问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">String 相关问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#synchronized与ReentrantLock"><span class="post-toc-number">3.</span> <span class="post-toc-text">synchronized与ReentrantLock</span></a></li></ol>
 
         <!--
         <li class="mdl-menu__item">
@@ -419,6 +419,33 @@
 <p>为什么要用final修饰String呢？</p>
 <p>1、<strong>Security</strong>: the system can hand out sensitive bits of read-only information without worrying that they will be altered</p>
 <p>2、<strong>Performance</strong>: immutable data is very useful in making things thread-safe.</p>
+<h3 id="String-相关问题"><a href="#String-相关问题" class="headerlink" title="String 相关问题"></a>String 相关问题</h3><p>1、“==”是用来检测俩引用是不是指向内存中的同一个对象，而equals()方法则检测的是两个对象的值是否相等</p>
+<p>2、String、StringBuffer和StringBuilder:</p>
+<ul>
+<li>都是final类，都不允许被继承</li>
+<li>String的长度时不可变的，其它两个的长度是可变的。String是不可变的对象, 因此在每次对String 类型进行改变的时候，都会生成一个<strong>新的 String 对象</strong>，然后将<strong>指针</strong>指向新的 String 对象，所以经常改变内容的字符串最好不要用 String ，因为每次生成对象都会对系统性能产生影响，特别当内存中无引用对象多了以后，JVM 的 GC 就会开始工作，性能就会降低。</li>
+<li>StringBuffer是线程安全的，StringBuilder是线程不安全的</li>
+</ul>
+<p>使用基本原则：如果只是操作少量数据，使用String；如果单线程操作大量数据，选用StringBuilder;如果多线程操作大量数据，选用StringBuffer。</p>
+<p>3、如何使用空格分割字符串：</p>
+<pre><code>String[] strArray = aString.split(&quot;\\s+&quot;);
+</code></pre><p>4、String c = new String(“java”);这个语句背后的发生过程：</p>
+<ul>
+<li>1）在heap上为String对象申请内存</li>
+<li>2）尝试从常量池中获取“java”字符串，如果常量池中不存在，则在常量池中新建“java”字符串，并返回</li>
+<li>3）调用构造方法，初始化String对象</li>
+</ul>
+<p>java中String对象使用char数组存储字符串，变量c指向Java堆的String对象，且该对象的char数组指向常量池的”java”字符串。</p>
+<p><img src="http://incdn1.b0.upaiyun.com/2016/09/dca37659a4da9a595fe59232a0278414.png" alt=""></p>
+<pre><code>String a = &quot;hello &quot;;
+String b = &quot;world&quot;;
+String c = a + b; //字符串变量的连接动作，在编译阶段会被转化成StringBuilder的append操作，变量c最终指向Java堆上新建String对象
+String d = &quot;hello world&quot;;//变量d指向常量池的”hello world”字符串，所以 c != d。
+</code></pre><p><a href="http://www.importnew.com/21711.html" target="_blank" rel="external">浅谈java String内幕（上）</a><br><br><a href="http://www.importnew.com/21720.html" target="_blank" rel="external">String.intern()原理</a></p>
+<h3 id="synchronized与ReentrantLock"><a href="#synchronized与ReentrantLock" class="headerlink" title="synchronized与ReentrantLock"></a>synchronized与ReentrantLock</h3><p>ReentrantLock在加锁和提供内存可见性上的功能与内置锁相同。但是，ReentrantLock还有一些其他更灵活的加锁功能，如可定时锁，轮询锁，可中断锁，公平锁和非公平锁，实现非块结构的加锁。其中，定时锁与轮询锁由tryLock()方法实现。可中断锁由lockInterruptibly()方法实现，公平锁与非公平锁可由ReentrantLock的构造函数实现。</p>
+<p>在高并发环境中，ReentrantLock的性能优于内置锁。</p>
+<p>既然ReentrantLock锁这么好，那为什么java还不弃用内置锁呢？</p>
+<p>原因是：内置锁为许多开发人员所熟悉，并且简洁紧凑。ReentrantLock则有一定的危险性，如果在finally块中忘记调用unlock（）方法，则会产生一些潜在的危险。仅当内置锁无法满足需求时，才可以考虑使用ReentrantLock。</p>
 
     
 
