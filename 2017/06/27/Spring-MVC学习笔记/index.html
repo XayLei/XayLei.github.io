@@ -444,16 +444,36 @@
     &lt;url-pattern&gt;/&lt;/url-pattern&gt;
 &lt;/servlet-mapping&gt;
 </code></pre><p>然后创建springmvc-servlet.xml，配置视图解析器和包扫描</p>
-<pre><code>&lt;context:annotation-config /&gt;    
-&lt;context:component-scan base-package=&quot;com.xrq.controller&quot;/&gt;
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
+    xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;
+    xmlns:context=&quot;http://www.springframework.org/schema/context&quot;
+    xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd 
+    http://www.springframework.org/schema/mvc 
+    http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt;
 
-&lt;!-- 配置视图解析器 --&gt;
-&lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;  
-    &lt;!-- WebRoot到一指定文件夹文件路径 --&gt; 
-    &lt;property name=&quot;prefix&quot; value=&quot;/&quot; /&gt;  
-    &lt;!-- 视图名称后缀  --&gt; 
-    &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot; /&gt;  
-&lt;/bean&gt;
+    &lt;!-- 配置springMVC --&gt;
+    &lt;!-- 1.开启springMVC注解模式 --&gt;
+    &lt;mvc:annotation-driven /&gt;
+    &lt;!--2.静态资源默认servlet配置--&gt;
+    &lt;!--
+            1).加入对静态资源处理：js,gif,png
+            2).允许使用 &quot;/&quot; 做整体映射
+    --&gt;
+    &lt;mvc:default-servlet-handler/&gt;
+    &lt;!--3：配置JSP 显示ViewResolver--&gt;
+    &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;
+        &lt;property name=&quot;viewClass&quot; value=&quot;org.springframework.web.servlet.view.JstlView&quot;/&gt;
+        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;/&gt;
+        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt;
+       &lt;/bean&gt;
+    &lt;!--4:扫描web相关的bean--&gt;
+    &lt;context:component-scan base-package=&quot;org.seckill.web&quot;/&gt;
+&lt;/beans&gt;
 </code></pre>
     
 
