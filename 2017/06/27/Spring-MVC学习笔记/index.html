@@ -428,7 +428,8 @@
 <p>1、afterCompletion：在整个视图渲染完毕之后执行方法里面的内容，主要用于释放一些资源</p>
 <p>2、postHandle：在Controller执行之后，视图渲染之前执行方法里面的内容，也就是说postHandle方法可以对Model进行操作</p>
 <p>3、preHandle：在Controller执行之前，执行方法里面的内容，注意该方法是有返回值的，当方法返回false时整个请求就结束了</p>
-<h3 id="springMVC配置"><a href="#springMVC配置" class="headerlink" title="springMVC配置"></a>springMVC配置</h3><p>首先是在web.xml中配置前端控制器</p>
+<h3 id="springMVC配置"><a href="#springMVC配置" class="headerlink" title="springMVC配置"></a>springMVC配置</h3><p>通过maven创建web工程时，自动创建的web.xml中的文件头中用的servlet版本为2.3，需修改为3.1<br><br>web.xml的3.1版头文件可以在B:\tomcat_9\apache-tomcat-8.0.43\webapps\examples\WEB-INF\web.xml中去复制，也就是到Tomcat的安装路径中去找</p>
+<p>首先是在web.xml中配置前端控制器</p>
 <pre><code>&lt;servlet&gt;
     &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
     &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
