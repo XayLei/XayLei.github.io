@@ -368,7 +368,7 @@
     <link href="http://yoursite.com/2017/05/28/Java%E8%AF%AD%E6%B3%95%E7%B3%96/"/>
     <id>http://yoursite.com/2017/05/28/Java语法糖/</id>
     <published>2017-05-28T12:30:40.000Z</published>
-    <updated>2017-06-01T13:39:01.144Z</updated>
+    <updated>2017-12-01T04:11:03.335Z</updated>
     
     <content type="html"><![CDATA[<p><strong>语法糖</strong></p><p>编译器实现的小把戏，编译期间以特定的字节码或者特定的方式对这些语法做一些处理，开发者就可以用了</p><p>这些方法不会为程序提供任何实质性的功能改进，但是他们可以提高性能，提升语法的严谨性，减少编码出错的机会</p><h2 id="可变长度参数"><a href="#可变长度参数" class="headerlink" title="可变长度参数"></a>可变长度参数</h2><p>1、可以使用遍历数组的方式去遍历可变参数</p><p>2、可变参数是利用数组实现的</p><p>3、可变长度参数必须作为方法参数列表中的最后一个参数</p><p>4、方法参数列表中只能有一个可变长度参数</p><h2 id="foreach循环遍历原理"><a href="#foreach循环遍历原理" class="headerlink" title="foreach循环遍历原理"></a>foreach循环遍历原理</h2><p>编译的时候编译器会自动将for这个关键字的使用转化为对目标的迭代器的使用，这就是foreach的循环原理</p><p>任何一个集合，不论是JDK提供的还是自己写的，只要想使用foreach循环遍历，就必须正确的实现iterable接口，这就是23种常用的设计模式中的迭代器模式。</p><p>如果不实现这个接口，那在集合中使用foreach遍历时就会报空指针异常</p><p>但是<strong>数组</strong>中并没有实现iterator接口，那为什么可以直接使用iterator接口？？？？后面详细了解了再更新</p><h2 id="自动拆箱和自动装箱"><a href="#自动拆箱和自动装箱" class="headerlink" title="自动拆箱和自动装箱"></a>自动拆箱和自动装箱</h2><p>Java为每种基本数据类型都提供了对应的包装器类型。例如：</p><pre><code>public class TestMain{   public static void main(String[] args)   {       Integer i = 10;    //自动根据数值创建对应的Integer对象，就是自动装箱   }}public class TestMain{   public static void main(String[] args)   {       Integer integer = 10;       int i = integer;   //根据包装器类型自动将数据转换为基本类型，这就是自动拆箱   }}</code></pre><p>原理：</p><p>自动装箱：Java虚拟机会自动调用Integer的valueOf方法</p><p>自动拆箱：Java虚拟机会自动调用Integer的intValue方法</p>]]></content>
     
@@ -383,6 +383,10 @@
     
     </summary>
     
+      <category term="Tech" scheme="http://yoursite.com/categories/Tech/"/>
+    
+    
+      <category term="java" scheme="http://yoursite.com/tags/java/"/>
     
   </entry>
   
