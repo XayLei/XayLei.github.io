@@ -12,6 +12,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
 
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #ff009e; /*��������ɫ*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #ff009e, 0 0 5px #ff009e; /*��Ӱ��ɫ*/
+    }
+    .pace .pace-activity {
+        border-top-color: #ff009e;    /*�ϱ߿���ɫ*/
+        border-left-color: #ff009e;    /*���߿���ɫ*/
+    }
+</style>
 
 
 
@@ -24,6 +39,8 @@
 <meta http-equiv="Cache-Control" content="no-siteapp" />
 
 
+
+  <meta name="google-site-verification" content="google6f2418325be21c01.html" />
 
 
 
@@ -190,16 +207,6 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             Home
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
           </a>
         </li>
       
@@ -473,6 +480,15 @@ String d = &quot;hello world&quot;;//变量d指向常量池的”hello world”�
 
       
       
+	  
+	  <div>
+	    <p id="div-border-left-red">
+	   <b>���Ļ���<a target="_blank" title="Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)" href="http://creativecommons.org/licenses/by-sa/4.0/"> ֪ʶ��������-��ͬ��ʽ���� 4.0 </a>��������Э�鷢��</b><br/>
+	    <span>
+	    <b>���ĵ�ַ��</b><a href="/2017/06/21/Java杂记/" title="Java杂记">http://yoursite.com/2017/06/21/Java杂记/</a><br/><b>ת����ע��������лл��</b>
+	    </span>
+	    </p>
+		</div>
     </footer>
   </div>
   
@@ -654,7 +670,8 @@ String d = &quot;hello world&quot;;//变量d指向常量池的”hello world”�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+        
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -1162,10 +1179,20 @@ String d = &quot;hello world&quot;;//变量d指向常量池的”hello world”�
   
 
   
+  
+
 
   
 
   
+
+  
+<script type="text/javascript">
+    //΢�Ŷ�ά�����������ر�
+    $('body').delegate('.-mob-share-weixin-qrcode-bg','click', function(){
+         $(".-mob-share-weixin-qrcode-close").trigger("click");
+    }); 
+</script>
 
 </body>
 </html>
