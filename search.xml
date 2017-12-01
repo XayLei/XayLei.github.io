@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[算法]]></title>
+    <url>%2F2017%2F06%2F29%2F%E7%AE%97%E6%B3%95%2F</url>
+    <content type="text"><![CDATA[DFS算法原理：选择一个起始点V作为当前节点 1、访问当前节点，并标注为已访问，到下一步 2、如果存在和当前节点相邻并且还没有被访问的节点U，则将U设为当前节点，返回上一步 3、如果当前节点没有未被访问的相邻节点，则回溯，回退到上一个当前节点 上面所说的当前节点用栈来维护，每次访问到的节点入栈，回溯的时候出栈 伪代码： DFS（V） visited[v] = true; dosomething(v); for u in adjecnt_list[v] if visited[u] == false DFS(u) BFS选择一个起点v放入先进先出队列中 1、如果队列不为空，弹出队列首元素作为当前节点，执行下一步；如果队列为空，则算法结束 2、将与当前节点相邻且未被访问的所有节点信息更新，并全部放入队列，继续执行上一步 伪代码： BFS(v): resetArray(visited,false); visted[v] = true; queue.push(v); while(!queue.isEmpty()){ v = queue.poll(); for u in adjecent_list[v]: if(visited[u] == false) dosomething(u); queue.push(u); }]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+  </entry>
+  <entry>
+    <title><![CDATA[Spring-MVC学习笔记]]></title>
+    <url>%2F2017%2F06%2F27%2FSpring-MVC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[Spring-MVC执行流程 客户端发起request请求 请求到前端控制器（DispatcherServlet） 前端控制器请求HandlerMapping根据请求的URL查找Handler 处理器映射器（HandlerMapping）向前端控制器返回Handler 前端控制器调用处理器适配器去执行Handler 处理器适配器（HandlerAdapter）执行Handler，就是平常所说的controler执行 Handler执行完以后给HandlerAdapter返回ModelAndView 处理器适配器向前端控制器返回ModelAndView 前端控制器请求视图解析器（view resolver）进行视图解析 由视图解析器根据ModelAndView得到实际的view对象，向前端控制器返回view 前端控制器进行视图渲染，将模型数据填充到request域中 前端控制器向用户响应结果 spring-MVC是什么？MVC是一种设计模式，通过分离模型、视图与控制器在应用程序中的角色将业务逻辑从界面中解耦。spring-MVC是spring的一个重要模块，它以强大的IOC容器为基础，充分利用容器的特性来简化配置。 拦截器（Interceptor）Spring-MVC中的拦截器相当于JavaEE中的过滤器，用于拦截用户的请求并进行相应的处理。 如何使用拦截器呢？ 首先是实现HandlerInterceptor接口，然后实现afterCompletion、postHandle、preHandle三个抽象方法，最后再springMVC-servlet.xml中添加拦截器配置。 1、afterCompletion：在整个视图渲染完毕之后执行方法里面的内容，主要用于释放一些资源 2、postHandle：在Controller执行之后，视图渲染之前执行方法里面的内容，也就是说postHandle方法可以对Model进行操作 3、preHandle：在Controller执行之前，执行方法里面的内容，注意该方法是有返回值的，当方法返回false时整个请求就结束了 springMVC配置通过maven创建web工程时，自动创建的web.xml中的文件头中用的servlet版本为2.3，需修改为3.1web.xml的3.1版头文件可以在B:\tomcat_9\apache-tomcat-8.0.43\webapps\examples\WEB-INF\web.xml中去复制，也就是到Tomcat的安装路径中去找 首先是在web.xml中配置前端控制器 &lt;servlet&gt; &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt; &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt; &lt;init-param&gt; &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt; &lt;param-value&gt;classpath:springmvc-servlet.xml&lt;/param-value&gt; &lt;/init-param&gt; &lt;load-on-startup&gt;1&lt;/load-on-startup&gt; &lt;/servlet&gt; &lt;servlet-mapping&gt; &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt; &lt;url-pattern&gt;/&lt;/url-pattern&gt; &lt;/servlet-mapping&gt; 然后创建springmvc-servlet.xml，配置视图解析器和包扫描 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot; xmlns:context=&quot;http://www.springframework.org/schema/context&quot; xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd&quot;&gt; &lt;!-- 配置springMVC --&gt; &lt;!-- 1.开启springMVC注解模式 --&gt; &lt;mvc:annotation-driven /&gt; &lt;!--2.静态资源默认servlet配置--&gt; &lt;!-- 1).加入对静态资源处理：js,gif,png 2).允许使用 &quot;/&quot; 做整体映射 --&gt; &lt;mvc:default-servlet-handler/&gt; &lt;!--3：配置JSP 显示ViewResolver--&gt; &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt; &lt;property name=&quot;viewClass&quot; value=&quot;org.springframework.web.servlet.view.JstlView&quot;/&gt; &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/jsp/&quot;/&gt; &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;/&gt; &lt;/bean&gt; &lt;!--4:扫描web相关的bean--&gt; &lt;context:component-scan base-package=&quot;org.seckill.web&quot;/&gt; &lt;/beans&gt;]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[悲观锁与乐观锁]]></title>
+    <url>%2F2017%2F06%2F26%2F%E6%82%B2%E8%A7%82%E9%94%81%E4%B8%8E%E4%B9%90%E8%A7%82%E9%94%81%2F</url>
+    <content type="text"><![CDATA[数据库层面的悲观锁与乐观锁悲观锁数据库中，悲观并发控制是一种并发控制的方法，这种方法简称是悲观锁。它可以阻止一个事物以影响其他用户的方式来修改数据。如果一个事物的某个操作应用了锁，那只有这个事物把锁释放时，其他事物才能够执行与该锁冲突的操作。 主要应用于数据争用激烈的场合，以及发生并发冲突时使用锁保护数据的成本低于事物回滚成本的环境中。 悲观锁实际上是采用了“先取锁再访问”的保守策略，使数据处理更加安全，但是，这样就增加了数据库的开销，而且还有死锁的可能。并且在只读操作中，是不需要加锁的，盲目的加锁只会增加系统的负载。 乐观锁乐观锁的全称是乐观并发控制，也是一种并发控制方法。它假设多用户并发的事物在实际操作时不会彼此影响，各个事物能够在不加锁的情况下处理各自影响的那部分数据。 在提交数据更新之前，每个事务会先检查在该事务读取数据后，有没有其他事务又修改了该数据。如果其他事务有更新的话，正在提交的事务会进行回滚。 可以发现，悲观锁是通过加锁实现并发控制，乐观锁是通过回滚实现并发控制。 应用场景：与悲观锁正好相反，乐观并发控制多数用于数据争用不大、冲突较少的环境中，这种环境中，偶尔回滚事务的成本会低于读取数据时锁定数据的成本，因此可以获得比其他并发控制方法更高的吞吐量。 虽然乐观锁减少了数据库的开销和系统的负载，也不会产生死锁，但还是会发生不可预期的结果。]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java杂记]]></title>
+    <url>%2F2017%2F06%2F21%2FJava%E6%9D%82%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[java进制转换： java的整型封装类Integer和Long提供toString（int i,int radix）静态方法，可以将一个任意进制的整数转换为其他进制的整数。 使用Integer或Long的toBinaryString方法将整数转换为二进制。 使用Integer或Long的toOctalString方法将整数转换为八进制。 使用Integer或Long的toHexString方法将整数转换为十六进制。 使用Integer或Long的toString(int i)方法可以将其他进制的整数转换为十进制的整数的字符串表示 String类可以继承吗String类是被final修饰的，所以不可以被继承； 为什么要用final修饰String呢？ 1、Security: the system can hand out sensitive bits of read-only information without worrying that they will be altered 2、Performance: immutable data is very useful in making things thread-safe. String 相关问题1、“==”是用来检测俩引用是不是指向内存中的同一个对象，而equals()方法则检测的是两个对象的值是否相等 2、String、StringBuffer和StringBuilder: 都是final类，都不允许被继承 String的长度时不可变的，其它两个的长度是可变的。String是不可变的对象, 因此在每次对String 类型进行改变的时候，都会生成一个新的 String 对象，然后将指针指向新的 String 对象，所以经常改变内容的字符串最好不要用 String ，因为每次生成对象都会对系统性能产生影响，特别当内存中无引用对象多了以后，JVM 的 GC 就会开始工作，性能就会降低。 StringBuffer是线程安全的，StringBuilder是线程不安全的 使用基本原则：如果只是操作少量数据，使用String；如果单线程操作大量数据，选用StringBuilder;如果多线程操作大量数据，选用StringBuffer。 3、如何使用空格分割字符串： String[] strArray = aString.split(&quot;\\s+&quot;); 4、String c = new String(“java”);这个语句背后的发生过程： 1）在heap上为String对象申请内存 2）尝试从常量池中获取“java”字符串，如果常量池中不存在，则在常量池中新建“java”字符串，并返回 3）调用构造方法，初始化String对象 java中String对象使用char数组存储字符串，变量c指向Java堆的String对象，且该对象的char数组指向常量池的”java”字符串。 String a = &quot;hello &quot;; String b = &quot;world&quot;; String c = a + b; //字符串变量的连接动作，在编译阶段会被转化成StringBuilder的append操作，变量c最终指向Java堆上新建String对象 String d = &quot;hello world&quot;;//变量d指向常量池的”hello world”字符串，所以 c != d。 浅谈java String内幕（上）String.intern()原理 synchronized与ReentrantLockReentrantLock在加锁和提供内存可见性上的功能与内置锁相同。但是，ReentrantLock还有一些其他更灵活的加锁功能，如可定时锁，轮询锁，可中断锁，公平锁和非公平锁，实现非块结构的加锁。其中，定时锁与轮询锁由tryLock()方法实现。可中断锁由lockInterruptibly()方法实现，公平锁与非公平锁可由ReentrantLock的构造函数实现。 在高并发环境中，ReentrantLock的性能优于内置锁。 既然ReentrantLock锁这么好，那为什么java还不弃用内置锁呢？ 原因是：内置锁为许多开发人员所熟悉，并且简洁紧凑。ReentrantLock则有一定的危险性，如果在finally块中忘记调用unlock（）方法，则会产生一些潜在的危险。仅当内置锁无法满足需求时，才可以考虑使用ReentrantLock。]]></content>
+      <categories>
+        <category>语法</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[多线程学习笔记]]></title>
+    <url>%2F2017%2F06%2F21%2F%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[Executor、ExecutorService和ExecutorsA：Executor是一个抽象层面的核心接口，将任务的提交过程和执行过程解耦。 B：ExecutorService对executor接口进行了扩展，添加了一些用于生命周期管理的方法，如返回future对象，终止、关闭线程池等方法。 A与B的区别： 1、B是A的子接口 2、A定义execute（）方法来接收Runnable接口的对象， B中的submit方法可以接受runnable接口和callable接口的对象 3、execute方法不返回任何结果， submit方法可以通过future对象返回运算结果 4、B提供了管理线程池的方法 Executors是一个工具类，提供工厂方法来创建不同类型的线程池 如何正确的停止一个线程： Thread.stop或Thread.susupend(已废弃) 使用interupt()方法 使用条件变量 具体见： http://ibruce.info/2013/12/19/how-to-stop-a-java-thread/ 进程与线程的区别 线程是进程的子集，一个进程可以有多个线程，每条线程并行执行不同的任务 不同的进程拥有不同的内存空间，而所有的线程共享同一块内存空间 每个线程都有单独的栈内存来存储本地数据 线程是操作系统能够进行运算调度的最小单位，它被包含在进程中，是进程的实际运作单位]]></content>
+      <categories>
+        <category>语法</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[B树与B+树]]></title>
+    <url>%2F2017%2F06%2F17%2FB%E6%A0%91%E4%B8%8EB-%E6%A0%91%2F</url>
+    <content type="text"><![CDATA[B树与B+树的区别B+树的非叶子结点只包含导航信息，不包含实际的值，所有的叶子结点和相连的节点使用链表相连，便于区间查找和遍历。 B+树非叶结点仅具有索引作用，跟记录有关的信息均存放在叶结点中 B+树的优点B+树的内部节点不含数据信息，因此在内存页中能够存放更多的key。 数据存放的更加紧密，具有更好的空间局部性。因此访问叶子几点上关联的数据也具有更好的缓存命中率。 B+树的叶子结点都是相链的，因此对整棵树的便利只需要一次线性遍历叶子结点即可。而且由于数据顺序排列并且相连，所以便于区间查找和搜索。 B树的优点由于B树的每一个节点都包含key和value，因此经常访问的元素可能离根节点更近，因此访问也更迅速。]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据库索引]]></title>
+    <url>%2F2017%2F06%2F17%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95%2F</url>
+    <content type="text"><![CDATA[索引是存储引擎用于快速找到记录的一种数据结构。 索引目的索引的目的在于提高查询效率，可以类比字典，如果要查“mysql”这个单词，我们肯定需要定位到m字母，然后从下往下找到y字母，再找到剩下的sql 索引原理索引类别 大多数索引指的是B-树索引，InnoDB索引使用的数据结构是B+Tree MySQL中的MEMORY存储引擎显示支持哈希索引，哈希索引基于哈希表实现，只有精确匹配索引所有列的查询才有效，存储引擎会对所有的索引列计算一个哈希码，哈希索引将所有的哈希码存储在索引中，同时在哈希表中保存指向每个数据行的指针。如果哈希值发生冲突，哈希索引会以链表的方式存储多个记录指针到同一个哈希条目中 空间数据索引：MyISAM存储引擎支持，无需前缀查询，会从所有维度来索引数据。 磁盘I/O与预读磁盘读取数据靠的是机械运动，每次读取数据花费的时间可以分为寻道时间、旋转延迟、传输时间三个部分： 寻道时间指的是磁臂移动到指定磁道所需要的时间，主流磁盘一般在5ms以下； 旋转延迟就是我们经常听说的磁盘转速，比如一个磁盘7200转，表示每分钟能转7200次，也就是说1秒钟能转120次，旋转延迟就是1/120/2 = 4.17ms； 传输时间指的是从磁盘读出或将数据写入磁盘的时间，一般在零点几毫秒，相对于前两个时间可以忽略不计。 那么访问一次磁盘的时间，即一次磁盘IO的时间约等于5+4.17 = 9ms左右，听起来还挺不错的，但要知道一台500 -MIPS的机器每秒可以执行5亿条指令，因为指令依靠的是电的性质，换句话说执行一次IO的时间可以执行40万条指令，数据库动辄十万百万乃至千万级数据，每次9毫秒的时间，显然是个灾难。 考虑到磁盘IO是非常高昂的操作，计算机操作系统做了一些优化，当一次IO时，不光把当前磁盘地址的数据，而是把相邻的数据也都读取到内存缓冲区内，因为局部预读性原理告诉我们，当计算机访问一个地址的数据的时候，与其相邻的数据也会很快被访问到。每一次IO读取的数据我们称之为一页(page)，也就是读取一页内的数据时候，实际上才发生了一次IO B+树索引B+树是B树的一种变种，B树是一个节点可以拥有超过2个子节点的二叉查找树。 如上图所示，浅蓝色是磁盘块，深蓝色代表数据项，黄色代表指针 叶子节点存储真实的数据，非叶子节点只存储指引方向的数据项。如磁盘块1包含数据项17和35，包含指针P1、P2、P3，P1表示小于17的磁盘块，P2表示在17和35之间的磁盘块，P3表示大于35的磁盘块。 查找过程： 如图所示，如果要查找数据项29，那么首先会把磁盘块1由磁盘加载到内存，此时发生一次IO； 在内存中用二分查找确定29在17和35之间，锁定磁盘块1的P2指针，内存时间因为非常短（相比磁盘的IO）可以忽略不计，通过磁盘块1的P2指针的磁盘地址把磁盘块3由磁盘加载到内存，发生第二次IO； 29在26和30之间，锁定磁盘块3的P2指针，通过指针加载磁盘块8到内存，发生第三次IO，同时内存中做二分查找找到29，结束查询，总计三次IO； 真实的情况是，3层的b+树可以表示上百万的数据，如果上百万的数据查找只需要三次IO，性能提高将是巨大的，如果没有索引，每个数据项都要发生一次IO，那么总共需要百万次的IO，显然成本非常非常高。 索引的优点 索引大大减少了服务器需要扫描的数据量 帮助服务器避免排序和临时表 可以将随机I/O变为顺序I/O 创建索引唯一的索引 (Unique Index)：在表格上面创建某个一个唯一的索引。唯一的索引意味着两个行不能拥有相同的索引值。 CREATE UNIQUE INDEX 索引名称 ON 表名称 (列名称) 列名称规定需要索引的列 简单索引：省略UNIQUE值，这样就可以使用重复的值 实例： CREATE INDEX PersonIndex ON Person (LastName) //索引不止一列时，使用逗号隔开列名 CREATE INDEX PersonIndex ON Person (LastName, FirstName) 参考： http://tech.meituan.com/mysql-index.html http://blog.jobbole.com/24006/ 索引分类：普通索引：创建普通索引时，没有任何限制条件 唯一性索引：使用UNIQUE关键字创建，主键就是一种特殊的唯一性索引 全文索引：FULLTEXT，只能创建在CHAR、VARCHAR或TEXT类型的字段上。只有MyISAM存储引擎支持全文检索 单列索引：在表中的单个字段上创建索引 多列索引：在表的多个字段创建一个索引 空间索引：使用SPATIAL参数，空间索引只能建立在空间数据类型上，只有MyISAM存储引擎支持，且索引字段必须非空。]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[数据库学习笔记]]></title>
+    <url>%2F2017%2F06%2F14%2F%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[ACID特性1.原子性原子性是指事务是一个不可再分割的工作单位，事务中的操作要么都发生，要么都不发生。 2.一致性一致性是指在事务开始之前和事务结束以后，数据库的完整性约束没有被破坏。这是说数据库事务不能破坏关系数据的完整性以及业务逻辑上的一致性。 3.隔离性多个事务并发访问时，事务之间是隔离的，一个事务不应该影响其它事务运行效果。 事务之间的相互影响分为几种，分别为：脏读，不可重复读，幻读，丢失更新 (1)脏读 脏读意味着一个事务读取了另一个事务未提交的数据，而这个数据是有可能回滚的 (2)不可重复读 不可重复读意味着，在数据库访问中，一个事务范围内两个相同的查询却返回了不同数据。这是由于查询时系统中其他事务修改的提交而引起的。 (3)幻读（虚读） 幻读，是指当事务不是独立执行时发生的一种现象，例如第一个事务对一个表中的数据进行了修改，这种修改涉及到表中的全部数据行。同时，第二个事务也修改这个表中的数据，这种修改是向表中插入一行新数据。那么，以后就会发生操作第一个事务的用户发现表中还有没有修改的数据行，就好象发生了幻觉一样. (4)丢失更新 两个事务同时读取同一条记录，A先修改记录，B也修改记录（B是不知道A修改过），B提交数据后B的修改结果覆盖了A的修改结果。 4.持久性持久性，意味着在事务完成以后，该事务对数据库所作的更改便持久的保存在数据库之中，并不会被回滚。 数据库索引MySQL索引使用的数据结构是B+tree，Oracle及Sysbase的索引使用的是B-Tree 索引是对数据库表中一或多个列的值进行排序的结构，是帮助MySQL高效获取数据的数据结构 索引加快数据库的检索速度 索引降低了插入、删除、修改等维护任务的速度 唯一索引可以确保每一行数据的唯一性 索引需要占物理和数据空间 事物事物是并发控制的基本单位 所谓的事务，它是一个操作序列，这些操作要么都执行，要么都不执行，它是一个不可分割的工作单位。事务是数据库维护数据一致性的单位，在每个事务结束时，都能保持数据一致性。 drop、delete与truncate 速度,一般来说: drop&gt; truncate &gt;delete delete和truncate只删除表的数据不删除表的结构 不再需要一张表的时候，用drop 删除部分数据行时候，用delete，并且带上where子句 保留表而删除所有数据的时候用truncate 超键、候选键、主键、外键主键（PRIMARY KEY）：主键必须包含唯一的值，主键列不能包含null值，每个表都应该有一个主键，每个表都只能有一个主键 在创建表的时候创建主键约束： CREATETABLE Persons( Id_P int NOT NULL, //声明为主键的列不能有NULL值 LastName varchar(255) NOT NULL, FirstName varchar(255), Address varchar(255), City varchar(255), PRIMARY KEY (Id_P) ) //如果在表已存在的情况下为 &quot;Id_P&quot; 列创建 PRIMARY KEY 约束，请使用下面的 SQL： ALTER TABLE Persons ADD PRIMARY KEY (Id_P) //撤销 PRIMARY KEY 约束，请使用下面的 SQL ALTER TABLE Persons DROP PRIMARY KEY 外键：在一个表中存在的另一个表的主键称此表的外键 理解超键、候选键、主键. 视图视图既可以由数据库中1个或多个基本表导出，也可以由已存在的视图导出 视图是一种虚拟的表，具有和物理表相同的功能。可以对视图进行增，改，查三种操作，视图通常是一个表或者多个表的行或列的子集。对视图的修改不影响基本表。它使得我们获取数据更容易，相比多表查询。 创建视图： CREATE VIEW view_name AS SELECT column_name(s) FROM table_name WHERE condition 使用场景： 当为了安全考虑时，只想要暴露表中的部分字段，这是就可以建一个视图 查询的数据来源于不同的表，希望以统一的方式查询，这时可以通过建一个视图把多个表的查询结果联合起来，查询者就只需要直接从视图中获取数据即可 数据库引擎什么是存储引擎？ 简而言之，存储引擎就是指表的类型，数据库的存储引擎决定了表在计算机中的存储方式。 InnoDB引擎：优势：提供了良好的事务管理、崩溃修复能力和并发控制，支持外键（FOREIGN KEY）和自增列(AUTO_INCREMENT) 缺点：读写效率差，占用的数据空间相对较大 应用场景：对事物完整性的要求较高，要求实现并发控制，需要频繁的更新、删除操作 MyISAM存储引擎：这种引擎的表存储为三种类型：frm，MYD，MYI，分别存储表的结构，表中数据和表的索引。 优点：占用空间小，插入数据快 缺点：不支持事物的完整性和并发性 应用场景：插入和读出操作频繁 MEMORY存储引擎：默认使用哈希索引，所有数据都在内存中，使用内存中的内容创建表 优点：数据处理速度快， 缺点：安全性不高，数据易丢失，生命周期短， 适用于创建小型表 ARCHIVE存储引擎拥有很好的压缩机制，仅支持最基本的插入和查询两种功能 CSV存储引擎把数据以逗号分隔的格式存储在文本文件中。 BLACKHOLE存储引擎接受但不存储数据，并且检索总是返回一个空集 FEDERATED存储引擎把数据存在远程数据库中 关键字DISTINCT 用于返回唯一不同的值 MySQL中BETWEEN的边界问题：两边都包含，相当于&gt;=和&lt;= LIKE关键字可以匹配字符串是否相等，“%”可以代表任意长度的字符串，“_”只能表示单个字符。在实际使用时，需要匹配的字符串需要加引号，既可以是单引号，也可以是双引号 连接查询：将两个或两个以上的表按照某个条件连接起来，从中选取需要的数据。分为内连接和外连接，外连接又有左连接和右连接。 INNER JOIN: 如果表中有至少一个匹配，则返回行 LEFT JOIN: 即使右表中没有匹配，也从左表返回所有的行 RIGHT JOIN: 即使左表中没有匹配，也从右表返回所有的行 FULL JOIN: 只要其中一个表中存在匹配，就返回行 数据库的四种隔离级别在数据库操作中，为了保证并发读取数据的正确性，提出了事物隔离级别概念 未提交读(Read Uncommitted)：允许脏读，也就是可能读取到其他会话中未提交事务修改的数据 提交读(Read Committed)：只能读取到已经提交的数据。Oracle等多数数据库默认都是该级别 (不重复读) 可重复读(Repeated Read)：可重复读。在同一个事务内的查询都是事务开始时刻一致的，InnoDB默认级别。在SQL标准中，该隔离级别消除了不可重复读，但是还存在幻读 串行读(Serializable)：完全串行化的读，每次读都需要获得表级共享锁，读写相互都会阻塞 数据库范式为什么需要范式？范式有什么作用？ 范式可以减少数据冗余、消除异常、让数据组织更加和谐。 数据冗余是指一个字段在多个表中重复出现 什么是范式？ 范式是为了消除重复数据，减少冗余数据，让数据库中的数据更好的一种组织，让磁盘空间得到有效利用的一种标准化组织 什么是第一范式？ 第一范式就是每一个属性都不可再分。不符合第一范式则不能称为关系数据库。 什么是第二范式? 表中的属性必须完全依赖于全部主键，而不是部分主键.所以只有一个主键的表如果符合第一范式，那一定是第二范式。 第三范式：3NF是为了消除数据库中关键字之间的依赖关系 还有BC范式和第四范式。 参考资料1]]></content>
+      <categories>
+        <category>数据库</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[JSTL学习笔记]]></title>
+    <url>%2F2017%2F06%2F14%2FJSTL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[JSTL是java中的一个定制标记库集,全称为JSP Standard Tag Library。 为什么要是用JSTL？1、实现了JSP页面中的代码复用 2、书写JSP页面时可读性更强 在JSP页面中使用JSTL标记时，需要添加下面这个指令 &lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot;%&gt; &lt;c:out value=&quot;输出内容&quot;&gt;&lt;/c:out&gt; //核心库 Ps：在uri中之所以能找到该http，是因为导入了jar，否则是找不到的。prefix=&quot;c&quot;，里面的名字可以自定义，一般为“c”。 标签属于核心库 JSTL总共有6个标签库，分别是核心库、格式化库、数据库标签库、XML库、函数库、TLV JSTL标签的value属性的属性值可以为变量和常量. 变量需要通过EL表达式来获取. 什么是EL表达式全名为Exoression Language 经常与JSTL配合使用，使得JSP页面更直观，写法更简单 普通写法： `&lt;%=session.getValue(&quot;name&quot;) %&gt;` EL表达式： &lt;c:out value=&quot;${sessionScope.name}&quot;/&gt; EL表达式的格式用美元符号”$”定界,内容包括在花括号”{}”中; ${表达式} EL表达式的基本格式：用美元符号“$”定界，内容包括在花括号“{}”中——${表达式}。 EL表达式中的”.”与”[]”运算符： 通常情况两者通用，eg:${user.sex}等同于${user[&quot;sex&quot;]}； 其中&quot;[]&quot;还可以用来进行集合元素中的定位${booklist[0].price}。 不通用的情况： 1、包含特殊符号： 如${user.first-name}则为错误的写法，正确的：${user[“first-name”]}； 2、通过变量动态的取值时：${user[param]}—param可以是name or sex or others，是用户传入的情况。 而”.”不能动态取值，它的写法是：${user.name}or${user.sex}or… EL变量JSP内置对象 || EL变量范围 pagerequest || pageScope request || requestScope session || sessionScope application || applicationScope &lt;c:out value=&quot;${username}&quot; /&gt; 运行时，会依次在page-&gt;session-&gt;request-&gt;application范围中寻找名为username的变量，然后输出其值。但是如果没有，就返回空字符串。 EL自动类型转换要取得文本框中的输入，我们需要做类型转换 普通写法： String str_count = request.getParameter(&quot;count&quot;); int count = Integer.parseInt(str_count); count = count + 20; EL会进行自动类型转换，只需要这样写： ${param.count +20} c:out 标签&lt;!-- 1、使用out标签输出常量 --&gt; &lt;c:out value=&quot;慕课网&quot; &gt;&lt;/c:out&gt; &lt;hr&gt; &lt;!-- 2、使用out标签输出变量 --&gt; &lt;!-- 直接输出变量 --&gt; &lt;%session.setAttribute(&quot;name&quot;, &quot;Bob&quot;); %&gt; &lt;c:out value=&quot;${name}&quot;&gt;&lt;/c:out&gt; &lt;hr&gt; &lt;!-- 3、当变量不存在时，通过default属性输出默认值 --&gt; &lt;c:out value=&quot;${name1}&quot; default=&quot;error&quot;&gt;&lt;/c:out&gt; &lt;hr&gt; &lt;!-- 4、设置输出转义后的字符需要escapeXml属性值设置成false，escapeXml默认值：true --&gt; &lt;c:out value=&quot;&lt;out标签&gt;&quot; escapeXml=&quot;false&quot;&gt;&lt;/c:out&gt; c:set 标签&lt;!-- 第一种写法 --&gt; &lt;c:set value=&quot;today&quot; var=&quot;day&quot; scope=&quot;session&quot;&gt;&lt;/c:set&gt; &lt;c:out value=&quot;${day}&quot;&gt;&lt;/c:out&gt; four //将Javabean实例化为person 123456 Ps：不能同时有“var”和“target”属性。“scope” 是可选的，如果没有使用这个属性，则默认为页面作用域。 c:remove 标签&lt;c:set var=&quot;lastName&quot; value=&quot;Bob&quot; &gt;&lt;/c:set&gt; &lt;c:out value=&quot;${lastName}&quot;&gt;&lt;/c:out&gt; &lt;c:set var=&quot;firstName&quot; value=&quot;Jack&quot; &gt;&lt;/c:set&gt; &lt;c:remove var=&quot;firstName&quot;&gt;&lt;/c:remove&gt; &lt;c:out value=&quot;${firstName}&quot;&gt;&lt;/c:out&gt; Ps：remove的对象只能是某一个变量，不能是一个jsp:useBean中的某一个属性。 c:catch 标签catch标签中可以包含哪些容易出错的JSTL标签(逻辑) `&lt;c:catch var=&quot;error&quot;&gt; //如果这段出错，错误信息将保存到error变量中 &lt;c:set target=&quot;aa&quot; property=&quot;bb&quot;&gt;asasa&lt;/c:set&gt; &lt;/c:catch&gt; &lt;c:out value=&quot;${error}&quot;&gt;&lt;/c:out&gt; //输出error，即输出错误信息` c:if 标签`//先构建一个表单 &lt;form action=&quot;index.jsp&quot; method=&quot;post&quot;&gt; &lt;input type=&quot;text&quot; name=&quot;score&quot; value=&quot;${param.score}&quot; /&gt; &lt;input type=&quot;submit&quot;/&gt; //这是一个提交按钮 &lt;/form&gt; &lt;!-- 优秀：score&gt;=90 --&gt; &lt;c:if test=&quot;${param.score&gt;=90}&quot; var=&quot;result&quot; scope=&quot;session&quot;&gt; &lt;c:out value=&quot;你的成绩：优秀——${sessionScope.result}&quot;&gt;&lt;/c:out&gt; &lt;/c:if&gt;` Ps：$(param.user)相当于&lt;%=request.getParameter(“user”)%&gt;；$(paramValues.favorites[0])相当于&lt;%=request.getParameters(“favorites”)[0]%&gt;。 choose-when-otherwise标签通常这三个标签被放在一起配合使用 标签嵌套在和标签外面作为他们的父标签来使用 其中choose和when标签也可以一起组合使用 `&lt;c:choose&gt; &lt;c:when test=&quot;${param.score&lt;=100 &amp;&amp; param.score&gt;=60 }&quot;&gt; &lt;c:out value=&quot;及格&quot;&gt;&lt;/c:out&gt; &lt;/c:when&gt; &lt;c:when test=&quot;${param.score&lt;60 &amp;&amp; param.score&gt;=0 }&quot;&gt; &lt;c:out value=&quot;不及格&quot;&gt;&lt;/c:out&gt; &lt;/c:when&gt; &lt;c:otherwise&gt; &lt;c:out value=&quot;请检查你的输入！&quot;&gt;&lt;/c:out&gt; &lt;/c:otherwise&gt; &lt;/c:choose&gt;` foreach 标签-根据循环条件遍历集合（Collectoin）中的元素 var设定变量名用于存储从集合中取出元素（必须无默认值） items指定要遍历的集合(必须无默认值) begin、end用于指定遍历的起始位置和终止位置(有默认) step指定循环的步长(有默认) varStatus通过index、count、first、last几个状态值，描述begin和end子集中的元素状态 `&lt;%List&lt;String&gt; fruits=new ArrayList&lt;String&gt;(); fruits.add(&quot;apple&quot;); fruits.add(&quot;pear&quot;); fruits.add(&quot;orange&quot;); fruits.add(&quot;banana&quot;); request.setAttribute(&quot;fruits&quot;, fruits); %&gt;&lt;hr&gt; &lt;c:out value=&quot;${fruit}&quot;&gt;&lt;/c:out&gt;&lt;br&gt; &lt;hr&gt; &lt;c:out value=&quot;${fruit}&quot;&gt;&lt;/c:out&gt;&lt;br&gt; &lt;hr&gt; &lt;c:out value=&quot;${fruit}&quot;&gt;&lt;/c:out&gt;&lt;br&gt; ` Ps：step默认值：1。 &lt;!-- 用法四：部分遍历并带状态 --&gt; &lt;c:forEach var=&quot;fruit&quot; items=&quot;${fruits}&quot; begin=&quot;1&quot; end=&quot;3&quot; varStatus=&quot;fru&quot;&gt; &lt;c:out value=&quot;${fruit}——四个属性：&quot;&gt;&lt;/c:out&gt;&lt;br&gt; &lt;c:out value=&quot;index属性：${fru.index}&quot;&gt;&lt;/c:out&gt;&lt;br&gt; &lt;c:out value=&quot;count属性：${fru.count}&quot;&gt;&lt;/c:out&gt;&lt;br&gt; &lt;c:out value=&quot;first属性：${fru.first}&quot;&gt;&lt;/c:out&gt;&lt;br&gt; &lt;c:out value=&quot;last属性：${fru.last}&quot;&gt;&lt;/c:out&gt;&lt;br&gt; &lt;c:out value=&quot;----------&quot;&gt;&lt;/c:out&gt;&lt;br&gt; &lt;/c:forEach&gt; Ps：index从0开始；count从1开始；first是否第一个（boolean）；last是否最后一个（boolean）。 forTokens 标签&lt;c:forTokens items=&quot;400-888888-123&quot; delims=&quot;-&quot; var=&quot;num&quot;&gt; &lt;c:out value=&quot;${num}&quot;&gt;&lt;/c:out&gt;&lt;br&gt; &lt;/c:forTokens&gt; import标签语法格式： &lt;c:import url=&quot;&quot; context=&quot;&quot; var=&quot;&quot; scope=&quot;&quot; charEncoding=&quot;&quot; varReader=&quot;&quot;&gt; &lt;/c:import&gt; .url被导入资源的URL路径 .context相同服务器下其他的web工程，必须以”/“开头 .var以String类型存入北包含文件的内容 .Scope var变量的JSP范围 .charEncoding被导入文件的编码格式 .varReader以Reader类型存储被包含文件内容 `&lt;!-- 导入网络上的绝对路径 --&gt; &lt;c:catch var=&quot;error0&quot;&gt; &lt;c:import url=&quot;http://www.imooc.com&quot;&gt;&lt;/c:import&gt; &lt;/c:catch&gt; &lt;c:out value=&quot;${error0}&quot;&gt;&lt;/c:out&gt;` ` &lt;c:out value=&quot;${error1}&quot;&gt;&lt;/c:out&gt;` Ps：由于可能网络中断导致抛出异常，所以常常把import标签放在catch标签里。 redirect标签 -该标签用来实现请求的重定向，同时可以在url中加入指定的参数 .url指定重定向页面的地址，可以是一个string类型的绝对地址或相对地址 .context用于导入其他web应用中的页面@temp.jsp username:&lt;c:out value=&quot;${param.username}&quot;&gt;&lt;/c:out&gt; password:&lt;c:out value=&quot;${param.password}&quot;&gt;&lt;/c:out&gt; @index.jsp &lt;!-- redirect标签用法 --&gt; &lt;c:redirect url=&quot;temp.jsp&quot;&gt; &lt;c:param name=&quot;username&quot;&gt;Lily&lt;/c:param&gt; &lt;c:param name=&quot;password&quot;&gt;123456&lt;/c:param&gt; &lt;/c:redirect&gt; JSTL函数&lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/core&quot; prefix=&quot;c&quot;%&gt; //使用JSTL函数时要有这句 &lt;%@ taglib uri=&quot;http://java.sun.com/jsp/jstl/functions&quot; prefix=&quot;fn&quot;%&gt; &lt;c:out value=&quot;“Hello World”字符串中是否包含“Hello”？${fn:contains(&apos;Hello World&apos;,&apos;Hello&apos;)}&quot;&gt;&lt;/c:out&gt; &lt;c:out value=&quot;“Hello World”字符串中是否包含“ABCD”？${fn:contains(&apos;Hello World&apos;,&apos;ABCD&apos;)}&quot;&gt;&lt;/c:out&gt; &lt;c:out value=&quot;“Hello World”字符串中是否包含“hello”（忽略大小写）？${fn:containsIgnoreCase(&apos;Hello World&apos;,&apos;hello&apos;)}&quot;&gt;&lt;/c:out&gt; &lt;c:out value=&quot;“Hello”是否在“Hello World”字符串开头？${fn:startsWith(&apos;Hello World&apos;,&apos;Hello&apos;)}&quot;&gt;&lt;/c:out&gt; &lt;c:out value=&quot;“world”是否在“Hello World”字符串尾部？${fn:endsWith(&apos;Hello World&apos;,&apos;world&apos;)}&quot;&gt;&lt;/c:out&gt;]]></content>
+      <categories>
+        <category>语法</category>
+      </categories>
+      <tags>
+        <tag>JSTL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[阿里文娱面试题]]></title>
+    <url>%2F2017%2F06%2F13%2F%E9%98%BF%E9%87%8C%E6%96%87%E5%A8%B1%E9%9D%A2%E8%AF%95%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[Java中的8种基本数据类型类型：二进制位数，所占字节（1字节=8bit位），数据范围 byte：8位，1字节，最大存储数据量是255，存放的数据范围是-128~127之间。 short：16位，2字节，最大数据存储量是65536，数据范围是-32768~32767之间。 int：32位，4字节，最大数据存储容量是2的32次方减1，数据范围是负的2的31次方到正的2的31次方减1。 long：64位，8字节，最大数据存储容量是2的64次方减1，数据范围为负的2的63次方到正的2的63次方减1。 float：32位，4字节，数据范围在3.4e-45~1.4e38，直接赋值时必须在数字后加上f或F。 double：64位，8字节，数据范围在4.9e-324~1.8e308，赋值时可以加d或D也可以不加。 boolean：1位，1字节，只有true和false两个取值。 char：16位，2字节，存储Unicode码，用单引号赋值。 汉字可以转换为char吗？可以！ char是按照字符存储的，不管英文还是中文，固定占用占用2个字节，用来储存Unicode字符。范围在0-65536。unicode编码字符集中包含了汉字，所以，char型变量中当然可以存储汉字啦。不过，如果某个特殊的汉字没有被包含在unicode编码字符集中，那么，这个char型变量中就不能存储这个特殊汉字。 Unicode（统一码、万国码、单一码）是一种在计算机上使用的字符编码。它为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。 ###数据库中的数据类型 ### 数值类型 类型大小范围（有符号）范围（无符号）用途TINYINT1 字节(-128，127)(0，255)小整数值SMALLINT2 字节(-32 768，32 767)(0，65 535)大整数值MEDIUMINT3 字节(-8 388 608，8 388 607)(0，16 777 215)大整数值INT或INTEGER4 字节(-2 147 483 648，2 147 483 647)(0，4 294 967 295)大整数值BIGINT8 字节(-9 233 372 036 854 775 808，9 223 372 036 854 775 807)(0，18 446 744 073 709 551 615)极大整数值FLOAT4 字节(-3.402 823 466 E+38，-1.175 494 351 E-38)，0，(1.175 494 351 E-38，3.402 823 466 351 E+38)0，(1.175 494 351 E-38，3.402 823 466 E+38)单精度浮点数值DOUBLE8 字节(-1.797 693 134 862 315 7 E+308，-2.225 073 858 507 201 4 E-308)，0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)双精度浮点数值DECIMAL对DECIMAL(M,D) ，如果M&gt;D，为M+2否则为D+2依赖于M和D的值依赖于M和D的值小数值日期和时间类型类型大小(字节)范围格式用途DATE31000-01-01/9999-12-31YYYY-MM-DD日期值TIME3‘-838:59:59’/‘838:59:59’HH:MM:SS时间值或持续时间YEAR11901/2155YYYY年份值DATETIME81000-01-01 00:00:00/9999-12-31 23:59:59YYYY-MM-DD HH:MM:SS混合日期和时间值TIMESTAMP41970-01-01 00:00:00/2037 年某时YYYYMMDD HHMMSS混合日期和时间值，时间戳字符串类型类型大小用途CHAR0-255字节定长字符串VARCHAR0-65535 字节变长字符串TINYBLOB0-255字节不超过 255 个字符的二进制字符串TINYTEXT0-255字节短文本字符串BLOB0-65 535字节二进制形式的长文本数据TEXT0-65 535字节长文本数据MEDIUMBLOB0-16 777 215字节二进制形式的中等长度文本数据MEDIUMTEXT0-16 777 215字节中等长度文本数据LONGBLOB0-4 294 967 295字节二进制形式的极大文本数据LONGTEXT0-4 294 967 295字节极大文本数据 http://www.runoob.com/mysql/mysql-data-types.html java与javac的区别1，javac命令用来编译java文件，例如编写一个Test.java文件，使用javac Test.java可以执行编译操作，将生成一个Test.class文件。 2，java命令可以执行生成的class文件，使用java Test可以执行编写的代码。 如何在cmd编译Java程序时倒入其他包？ https://benweizhu.github.io/blog/2014/04/07/write-java-code-without-ide/ java中如何将一个字符转换为ascii码方法1： char c = &apos;a &apos;； byte b =(byte)c； 方法2： 直接将这个字符转化为int型就可以得到ascii码值 char c = &apos;a &apos;； int b = c； //字符的ascii码值 同理将一个ascii码转换为相应的字符： 例如：字符a int d = 97; char e = (char)d; Java中的进制转换1）十进制转成十六进制： Integer.toHexString(int i) 2）十进制转成八进制 Integer.toOctalString(int i) 3）十进制转成二进制 Integer.toBinaryString(int i) 4）十六进制转成十进制 Integer.valueOf(“FFFF”,16).toString() 5）八进制转成十进制 Integer.valueOf(“876”,8).toString() 6）二进制转十进制 Integer.valueOf(“0101”,2).toString() 7）有什么方法可以直接将2,8,16进制直接转换为10进制的吗? java.lang.Integer类 parseInt(String s, int radix) “ java比较文件内容是否相同的方法”MySQL数据库引擎浅谈MySql的存储引擎（表类型） Mysql数据库引擎类型与特性对比 还有一些关于数据库如何写自增主键的问题，和数据结构的问题，这些需要详细复习，例如哈夫曼树，搜索所用的数据结构等，单词树就是trie树，这个也用于搜索引擎。 都是些非常非常基础的问题，其它的问题都知道，但就是回答的不是很好，记得不清楚，还需要复习。 面试官还说JSP中的对象等问题也要熟。总之，基础！！！]]></content>
+      <tags>
+        <tag>其余</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[TCP]]></title>
+    <url>%2F2017%2F06%2F07%2FTCP%2F</url>
+    <content type="text"><![CDATA[三次握手三次握手的目的 同步连接双方的序列号和确认号并交换 TCP窗口大小信息 1 第一次握手：建立连接。 客户端发送连接请求报文段，将SYN位置为1，Sequence Number为x；然后，客户端进入SYN_SEND状态，等待服务器的确认； 2 第二次握手：服务器收到SYN报文段。 服务器收到客户端的SYN报文段，需要对这个SYN报文段进行确认，设置Acknowledgment Number为x+1(Sequence Number+1)；同时，自己自己还要发送SYN请求信息，将SYN位置为1，Sequence Number为y；服务器端将上述所有信息放到一个报文段（即SYN+ACK报文段）中，一并发送给客户端，此时服务器进入SYN_RECV状态； 3 第三次握手：客户端收到服务器的SYN+ACK报文段。 然后将Acknowledgment Number设置为y+1，向服务器发送ACK报文段，这个报文段发送完毕以后，客户端和服务器端都进入ESTABLISHED状态，完成TCP三次握手。 四次分手第一次分手：主机1（可以使客户端，也可以是服务器端），设置Sequence Number和Acknowledgment Number，向主机2发送一个FIN报文段；此时，主机1 进入FIN _ WAIT_1 状态；这表示主机1没有数据要发送给主机2了； 第二次分手：主机2收到了主机1发送的FIN报文段，向主机1回一个ACK报文段，Acknowledgment Number为Sequence Number加1；主机1进入FIN_ WAIT_2状态；主机2告诉主机1，我“同意”你的关闭请求； 第三次分手：主机2向主机1发送FIN报文段，请求关闭连接，同时主机2进入LAST_ACK状态； 第四次分手：主机1收到主机2发送的FIN报文段，向主机2发送ACK报文段，然后主机1进入TIME_WAIT状态；主机2收到主机1的ACK报文段以后，就关闭连接；此时，主机1 等待2MSL后依然没有收到回复，则证明Server端已正常关闭，那好，主机1也可以关闭连接了。 为什么要三次握手为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误。 “已失效的连接请求报文段”的产生在这样一种情况下：client发出的第一个连接请求报文段并没有丢失，而是在某个网络结点长时间的滞留了，以致延误到连接释放以后的某个时间才到达server。本来这是一个早已失效的报文段。但server收到此失效的连接请求报文段后，就误认为是client再次发出的一个新的连接请求。于是就向client发出确认报文段，同意建立连接。假设不采用“三次握手”，那么只要server发出确认，新的连接就建立了。由于现在client并没有发出建立连接的请求，因此不会理睬server的确认，也不会向server发送数据。但server却以为新的运输连接已经建立，并一直等待client发来数据。这样，server的很多资源就白白浪费掉了。采用“三次握手”的办法可以防止上述现象发生。例如刚才那种情况，client不会向server的确认发出确认。server由于收不到确认，就知道client并没有要求建立连接。” 为什么要四次分手当主机1发出FIN报文段时，只是表示主机1已经没有数据要发送了，主机1告诉主机2，它的数据已经全部发送完毕了； 但是，这个时候主机1还是可以接受来自主机2的数据； 当主机2返回ACK报文段时，表示它已经知道主机1没有数据发送了，但是主机2还是可以发送数据到主机1的； 当主机2也发送了FIN报文段时，这个时候就表示主机2也没有数据要发送了，就会告诉主机1，我也没有数据要发送了，之后彼此就会愉快的中断这次TCP连接 四次分手状态解释FIN WAIT 1: 这个状态要好好解释一下，其实FIN WAIT 1和FIN WAIT 2状态的真正含义都是表示等待对方的FIN报文。而这两种状态的区别是：FIN WAIT 1状态实际上是当SOCKET在ESTABLISHED状态时，它想主动关闭连接，向对方发送了FIN报文，此时该SOCKET即进入到FIN WAIT 1状态。而当对方回应ACK报文后，则进入到FIN WAIT 2状态，当然在实际的正常情况下，无论对方何种情况下，都应该马上回应ACK报文，所以FIN WAIT 1状态一般是比较难见到的，而FIN_ WAIT_2状态还有时常常可以用netstat看到。（主动方） FIN WAIT 2：上面已经详细解释了这种状态，实际上FIN_ WAIT_2状态下的SOCKET，表示半连接，也即有一方要求close连接，但另外还告诉对方，我暂时还有点数据需要传送给你(ACK信息)，稍后再关闭连接。（主动方） CLOSE_WAIT：这种状态的含义其实是表示在等待关闭。怎么理解呢？当对方close一个SOCKET后发送FIN报文给自己，你系统毫无疑问地会回应一个ACK报文给对方，此时则进入到CLOSE_WAIT状态。接下来呢，实际上你真正需要考虑的事情是察看你是否还有数据发送给对方，如果没有的话，那么你也就可以 close这个SOCKET，发送FIN报文给对方，也即关闭连接。所以你在CLOSE_WAIT状态下，需要完成的事情是等待你去关闭连接。（被动方） LAST_ACK: 这个状态还是比较容易好理解的，它是被动关闭一方在发送FIN报文后，最后等待对方的ACK报文。当收到ACK报文后，也即可以进入到CLOSED可用状态了。（被动方） TIME_ WAIT: 表示收到了对方的FIN报文，并发送出了ACK报文，就等2MSL后即可回到CLOSED可用状态了。如果FINWAIT1状态下，收到了对方同时带FIN标志和ACK标志的报文时，可以直接进入到TIMEWAIT状态，而无须经过**FIN WAIT_ 2**状态。（主动方） CLOSED: 表示连接中断。]]></content>
+      <categories>
+        <category>网络</category>
+      </categories>
+      <tags>
+        <tag>TCP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[maven相关问题]]></title>
+    <url>%2F2017%2F06%2F06%2Fmaven%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[第一次安装和使用maven第一，虽然eclipse for Java EE里面自带了maven的插件，但是这个插件的版本比较旧。最好还是在自己电脑上再装一次maven，然后在eclipse里面设置一下使用external maven。设置方法是：window -&gt; preference -&gt; maven -&gt; installations点击add按钮，选择maven安装的路径，然后把它勾选上。 第二，maven作为一个项目管理工具确实非常好用，但是在国内这个网络条件下实在是让人恼火。之前oschina的中央仓库可用，现在oschina的maven服务器关了，一直没找到国内镜像来替代。今天发现阿里云公开了一个中央仓库，大家可以试试。 修改maven根目录下的conf文件夹中的setting.xml文件，内容如下： &lt;mirrors&gt; &lt;mirror&gt; &lt;id&gt;alimaven&lt;/id&gt; &lt;name&gt;aliyun maven&lt;/name&gt; &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt; &lt;mirrorOf&gt;central&lt;/mirrorOf&gt; &lt;/mirror&gt; &lt;/mirrors&gt; 第三，eclipse里面的maven插件m2eclipse有点问题，每次打开的时候都会去下载maven的索引文件。而这个索引文件非常大，下载速度又很慢，所以卡在Updating index central|http://repo1.maven.org/maven2这个地方。其实可以把这个关掉的。window -&gt; preference -&gt; maven然后把download repository index updates on startup去掉即可。]]></content>
+      <categories>
+        <category>框架</category>
+      </categories>
+      <tags>
+        <tag>maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[HTTP]]></title>
+    <url>%2F2017%2F06%2F06%2FHTTP%2F</url>
+    <content type="text"><![CDATA[HTTP请求GET和POST的区别1 GET提交：请求的数据会附在URL之后（就是把数据放置在HTTP协议头＜request-line＞中） POST提交：把提交的数据放置在是HTTP包的包体＜request-body＞中 所以，GET提交的数据会在地址栏中显示出来，而POST提交，地址栏不会改变 2、传输数据的大小：理论上URL和http对于大小没有限制，但是在实际环境中： GET:特定浏览器和服务器对URL长度有限制 POST:由于不是通过URL传值，理论上数据不受限 3、在传递敏感信息时，POST的安全性要比GET的安全性高，浅层面上可以这样说，对于get方法，请求的参数我们可以直接在URL中看到，即在地址栏中看到。post方法的请求参数在消息体中，无法直接肉眼看见。但是如果对消息抓包的话，还是可以看见post中的请求参数的。安全性概念有很多方面，就看是怎么看了 4、GET 仅用来获取查看信息，不能改变服务器信息。POST 用来改变服务器信息 5、使用GET方法时，浏览器可能会缓存你的地址等信息，还会留下历史记录，而对于POST方法呢，则不会进行缓存 HTTP状态码1xx：指示信息–表示请求已接收，继续处理。 2xx：成功–表示请求已被成功接收、理解、接受。 3xx：重定向–要完成请求必须进行更进一步的操作。 4xx：客户端错误–请求有语法错误或请求无法实现。 5xx：服务器端错误–服务器未能实现合法的请求。 常见状态代码： 200 OK：客户端请求成功。 400 Bad Request：客户端请求有语法错误，不能被服务器所理解。 401 Unauthorized：请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用。 403 Forbidden：服务器收到请求，但是拒绝提供服务。 404 Not Found：请求资源不存在，举个例子：输入了错误的URL。 500 Internal Server Error：服务器发生不可预期的错误。 503 Server Unavailable：服务器当前不能处理客户端的请求，一段时间后可能恢复正常，举个例子：HTTP/1.1 200 OK（CRLF）。 常见HTTP方法]]></content>
+      <categories>
+        <category>网络</category>
+      </categories>
+      <tags>
+        <tag>http</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA['equals与==的区别']]></title>
+    <url>%2F2017%2F06%2F02%2Fequals%E4%B8%8E-%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[1、 ==如果作用于基本数据类型的变量，则直接比较其存储的的“值”是否相等； 如果作用于引用类型的变量，则比较的是所指向的对象的地址 2、equals注意：equals方法不能作用于基本数据类型 如果没有对equals方法重写，则比较的是引用类型的变量所指向的对象的地址 诸如String、Date等类对equals方法进行了重写，比较的是所指向的对象的内容]]></content>
+      <categories>
+        <category>语法</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA['eclipse相关问题']]></title>
+    <url>%2F2017%2F06%2F02%2Feclipse%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[1、 在Eclipse中显示.project和.classpath和.setting目录选中工程，选择Filters 取消.resources勾选，点击OK.显示.settings文件夹, .classpath 文件, .project文件, .gitignore文件 设置结束 2、java项目下的bin文件夹不显示打开“Window”-“Show View”-“Navigator”就可以打开了 3、Eclipse中设置在创建新类时自动生成注释windows–&gt;preference Java–&gt;Code Style–&gt;Code Templates code–&gt;new Java files 编辑它 ${filecomment} ${package_declaration} /** * @author 作者 E-mail: * @version 创建时间：${date} ${time} * 类说明 */ ${typecomment} ${type_declaration} 4、在Eclipse中自动生成接口和JUnit测试类“百度经验”]]></content>
+      <categories>
+        <category>IDE</category>
+      </categories>
+      <tags>
+        <tag>eclipse</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[HashTable与HashMap的区别]]></title>
+    <url>%2F2017%2F05%2F31%2FHashTable%E4%B8%8EHashMap%E7%9A%84%E5%8C%BA%E5%88%AB%2F</url>
+    <content type="text"><![CDATA[1、时间HT产生于JDK1.1，HM产生于JDK1.2 2、作者HT是3个作者，HM是4个作者，多了个Doug Lea 3、APIHashMap继承自抽象类AbstractMap HashTable继承自抽象类Dictionary HashMap在实现时对null做了特殊处理，将null的hashCode值定为了0，从而将其存放在哈希表的第0个bucket中。所以HashMap支持null键和null值 HashTable在遇到null时，会抛出NullPointerException异常 4、实现原理HashMap/HashTable内部用Entry数组实现哈希表，而对于映射到同一个哈希桶（数组的同一个位置）的键值对，使用Entry链表来存储(解决hash冲突)。 HashTable默认的初始大小为11，之后每次扩充为原来的2n+1。 HashMap默认的初始化大小为16，之后每次扩充为原来的2倍。 5、线程安全HashTable是同步的，HashMap不是 实现：公开的方法比如get都使用了synchronized描述符。而遍历视图比如keySet都使用了Collections.synchronizedXXX进行了同步包装 6、推荐使用如果你不需要线程安全，那么使用HashMap，如果需要线程安全，那么使用ConcurrentHashMap。HashTable已经被淘汰了，不要在新的代码中再使用它。]]></content>
+      <categories>
+        <category>数据结构</category>
+      </categories>
+      <tags>
+        <tag>Hash</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java语法糖]]></title>
+    <url>%2F2017%2F05%2F28%2FJava%E8%AF%AD%E6%B3%95%E7%B3%96%2F</url>
+    <content type="text"><![CDATA[语法糖 编译器实现的小把戏，编译期间以特定的字节码或者特定的方式对这些语法做一些处理，开发者就可以用了 这些方法不会为程序提供任何实质性的功能改进，但是他们可以提高性能，提升语法的严谨性，减少编码出错的机会 可变长度参数1、可以使用遍历数组的方式去遍历可变参数 2、可变参数是利用数组实现的 3、可变长度参数必须作为方法参数列表中的最后一个参数 4、方法参数列表中只能有一个可变长度参数 foreach循环遍历原理编译的时候编译器会自动将for这个关键字的使用转化为对目标的迭代器的使用，这就是foreach的循环原理 任何一个集合，不论是JDK提供的还是自己写的，只要想使用foreach循环遍历，就必须正确的实现iterable接口，这就是23种常用的设计模式中的迭代器模式。 如果不实现这个接口，那在集合中使用foreach遍历时就会报空指针异常 但是数组中并没有实现iterator接口，那为什么可以直接使用iterator接口？？？？后面详细了解了再更新 自动拆箱和自动装箱Java为每种基本数据类型都提供了对应的包装器类型。例如： public class TestMain { public static void main(String[] args) { Integer i = 10; //自动根据数值创建对应的Integer对象，就是自动装箱 } } public class TestMain { public static void main(String[] args) { Integer integer = 10; int i = integer; //根据包装器类型自动将数据转换为基本类型，这就是自动拆箱 } } 原理： 自动装箱：Java虚拟机会自动调用Integer的valueOf方法 自动拆箱：Java虚拟机会自动调用Integer的intValue方法]]></content>
+      <categories>
+        <category>语法</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[java中的Unsafe和CAS]]></title>
+    <url>%2F2017%2F05%2F28%2Fjava%E4%B8%AD%E7%9A%84Unsafe%E5%92%8CCAS%2F</url>
+    <content type="text"><![CDATA[Unsafe Java只能通过本地方法访问本地操作系统 不过，还有一个后门，那就是JDK提供Unsafe类，这个类可以提供硬件级别的原子操作 Unsafe类的使用是受限制的，只有授信的代码才可以获得该类的实例 CAS Compare and Swap(比较与交换) JUC包的实现基础就是CAS，CAS是通过Unsafe类实现的，Unsafe是CAS的核心类 CAS有三个操作数：内存值V，旧的预期值A，要修改的值B 当且仅当A==V时，将内存值修改为B并返回true 否则什么都不做并返回false 传统的compareandswap方法加锁同步来实现原子操作，CAS同样，比较和交换也是一组原子操作，先获取到当前内存中的内存值V，再将V与A比较，要是相等就修改为B。由于CAS都是硬件级别的操作，所以效率高。 CAS的缺点 CAS存在一个逻辑漏洞，如果一个变量V初次读取的时候是A值，并且在准备赋值的时候检查到没变，那我们就能说明它的值没被其它的线程修改过吗？？？？ 如果在这段时间内它的值曾经被修改为B，然后又改回了A，那CAS操作就会误认为他从来都没有被修改过，这个漏洞称为CAS的“ABA”问题 JUC为了解决这个问题，提供了一个带有标记的原子引用类“AtomicStampedReference”，他可以通过控制变量值的版本来保证CAS的正确性]]></content>
+      <categories>
+        <category>语法</category>
+      </categories>
+      <tags>
+        <tag>java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[搭建个人博客，Hexo&Github]]></title>
+    <url>%2F2017%2F05%2F20%2F%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%EF%BC%8CHexo-Github%2F</url>
+    <content type="text"><![CDATA[一、环境配置系统：windows 7 64位，编辑器： notepad++ ，控制台：cmder 搭建博客使用hexo&amp;&amp;Github cmder是一个用于替代Windows下CMD的一个工具，官网的下载特别慢，可能被墙了，下面直接给出百度云的连接，cmder分mini和full两个版本，下面给出的是full版。 cmder下载 下载下来后直接解压后就可以用了，具体使用配置点这里 配置Github首先注册、登录 https://github.com/ 记住自己的Username（很重要） 然后右上角选择 Create a new repository https://github.com/new Repository name （填自己的名字） yourname.github.io(yourname与你的注册用户名一致,这个就是你博客的域名了) node、git安装配置1、安装 Node.js https://nodejs.org/en/ 这里提一下，现在最新版本的Node.js里已经集成了npm，不用另外下载安装了。 这里给出具体的安装教程链接http://www.jianshu.com/p/03a76b2e7e00 2、安装 Git https://github.com/waylau/git-for-win 3、安装完成后，在开始菜单里找到“Git”-&gt;“Git Bash”，名称和邮箱是Github上的 4、安装 Hexo。所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。 在任意文件夹界面鼠标右键，选择Cmder Here，进入cmder界面 输入： λ npm install -g hexo-cli 到这里，环境配置就结束另外。 二、 编写，发布接下来我们需要用Hexo初始化一个博客，然后更改一些自定义的配置，或者加上自己喜欢的主题，写上第一篇文章，然后发布到自己的个人GitHub网站(username.github.io) 在电脑F盘（自己随意）目录下新建文件夹 test（这个文件夹名称随你自己，不固定，这个文件夹就是用来放你的博客项目文件夹的），进入test，点击鼠标右键，打开cmder 1、初始化博客将下面的 username 替换成你自己的username(其实也无所谓，作者强迫症)，执行成功后，会创建出一个名为 username.github.io 的文件夹。 hexo init username.github.io 稍微等待下，速度有点慢。成功提示 INFO Start blogging with Hexo! 因为你初始化hexo 之后source目录下自带一篇hello world文章, 所以直接执行下方命令 $ hexo generate # 启动本地服务器 $ hexo server # 在浏览器输入 http://localhost:4000/就可以看见网页和模板了 INFO Start processing INFO Hexo is running at http://localhost:4000/. Press Ctrl+C to stop. 访问http://localhost:4000/，便可以看到网站初步的模样，如下图所示 注意： 如果这里的这个页面无法打开，可能是因为你的4000端口被占用了，所以你按照上面的提示stop hexo,然后输入 hexo server -p 3600 换一个端口就可以了，然后登陆http://localhost:3600/ 这个端口你可以随你喜好，不一定非要3600 2、配置博客主题更改 为了使博客不太难看，我们需要安装一个主题，在cmder中切换至刚刚生成博客主目录，即（username.github.io），安装主题 λ git clone https://github.com/iissnan/hexo-theme-next themes/next //“themes”是“username.github.io”文件夹里面的一个文件夹 //“next”是对即将下载的一个主题包文件的命名 如果想要使用其他主题只需要点击更多主题进入后选中其中一个在详情页面中找到GitHub的标志点击，然后复制地址替换上面的: https://github.com/iissnan/hexo-theme-next 并且为其改一个名字即可， 另一个获取主题的简单方式就是直接在GitHub中搜索”hexo-theme”就能够获得无数主题，随便找几个喜欢的下载,获取地址的操作步骤如下面两图： 主题安装完成后，要对主题进行必要的设置 基础配置文件在username.github.io/themes/next/_config.yml中修改，这里略过。更多设置…. 基础配置 使用notepad++打开文件username.github.io/_config.yml修改，下面把几个必须设置的列出来按需求修改，记得保存， 还有注意配置的键值之间一定要有空格Hexo官网更多配置 title: 勇不言弃 //你博客的名字 subtitle: //显示在博客名字下方，类似于个性签名 description: //网页描述 author: XayLei //你的名字 language: zh-Hans //语言 中文 或者也可以是 zh-CN timezone: Asia/Shanghai 注意： 在上面的配置中，如果有中文信息，最后的页面显示中可能会有乱码，具体还没有解决方法，如果出现了乱码请自行Google解决，或者不用中文。 # Extensions ## Plugins: https://hexo.io/plugins/ ## Themes: https://hexo.io/themes/ theme: landscape //themes文件夹目录下任意一个主题的名称 # Deployment # Docs: https://hexo.io/docs/deployment.html deploy: type: git //使用Git 发布 repo: https://github.com/XayLei/XayLei.github.io.git // 刚创建的GitHub仓库（可能需要自己添加此行） branch: master 3、发表文章在博客主文件夹中右键打开cmder，输入： λ hexo new &quot;测试文章&quot; INFO Created: F:\test\username.github.io\source\_posts\测试文章.md hexo就会自动在博客中的source文件夹中新建一个md文件。 找到该文章，使用markdown编辑器打开编辑即可，编辑完后保存。 最后一步，发布到网上 安装hexo-deployer-git自动部署发布工具，与上面一样，打开cmder,输入： λ npm install hexo-deployer-git --save 发布 测试没问题后，我们就生成静态网页文件发布至我们的GitHub pages 中。 λ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d 终端可能会让你输入GitHub的邮箱和密码，正确输入后，骚等片刻，就会把你的博客上传至GitHub 了。以后在每次把博客写完后，执行一下这个命令就可以直接发布了，非常方便。 查看效果 恭喜你能走到这一步，你的博客已经完成了，在浏览器中输入 https://username.github.io 就能够访问了。 最后应该是类似这个样子的 三、总结发布文章的步骤： 1、hexo new 创建文章 2、Markdown语法编辑文章 3、部署（所有打开CMD都是在username.github.io目录下） hexo clean #清除缓存 网页正常情况下可以忽略此条命令 hexo generate #生成 hexo server #启动服务预览，非必要，可本地浏览网页 hexo deploy #部署发布 简写Tips： hexo n “我的博客” == hexo new “我的博客” #新建文章 hexo p == hexo publish hexo g == hexo generate#生成 hexo s == hexo server #启动服务预览 hexo d == hexo deploy#部署 好了，全部过程就是这样，如果遇到了文章中没有提到的问题，自己Google，都有解决方法的。 参考资料： 【1】崔斯特的博客 【2】简书-李勇92]]></content>
+      <tags>
+        <tag>其余</tag>
+      </tags>
+  </entry>
+</search>
