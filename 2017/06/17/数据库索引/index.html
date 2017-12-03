@@ -362,17 +362,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/06/17/数据库索引/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="2017/06/17/数据库索引/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -517,6 +506,33 @@ CREATE INDEX PersonIndex ON Person (LastName, FirstName)
 
     <div class="post-spread">
       
+        
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      },
+      "slide": {
+        "bdImg": "5",
+        "bdPos": "left",
+        "bdTop": "100"
+      }
+    }
+  </script>
+
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
     </div>
   </div>
 
@@ -528,12 +544,7 @@ CREATE INDEX PersonIndex ON Person (LastName, FirstName)
           
   
     <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
+      <div id="vcomments"></div>
     </div>
   
 
@@ -720,6 +731,11 @@ CREATE INDEX PersonIndex ON Person (LastName, FirstName)
 
 
 
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">total word15.9k</span>
+</div>
+
         
 <div class="busuanzi-count">
   <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -851,26 +867,6 @@ CREATE INDEX PersonIndex ON Person (LastName, FirstName)
 
   
 
-    
-      <script id="dsq-count-scr" src="https://Ray.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2017/06/17/数据库索引/';
-          this.page.identifier = '2017/06/17/数据库索引/';
-          this.page.title = '数据库索引';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://Ray.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -886,8 +882,27 @@ CREATE INDEX PersonIndex ON Person (LastName, FirstName)
 
 
 
+  
 
 
+
+
+
+
+  
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine@1.1.4/dist/Valine.min.js"></script>
+  <script type="text/javascript">
+    new Valine({
+        av: AV,
+        el: '#vcomments' ,
+        verify: false,
+        notify: false,
+        app_id: 'HHz9fH48hDh1QMNR557g9Dsj-gzGzoHsz',
+        app_key: 'Grsxgn4Ayc8SsDlP3QiznG2k',
+        placeholder: 'Say what u want to say...'
+    });
+  </script>
 
 
 
