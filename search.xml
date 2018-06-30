@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Ubuntu相关问题]]></title>
+    <url>%2F2018%2F06%2F30%2FUbuntu%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[1、安装Ubuntu虚拟机时，内存需设置为主机内存的1/3，否则容易电脑卡死。 2、当执行spt-get安装时，出现“无法定位软件包”的提示时，输入： sudo apt-get update 3、当出现无法获得锁 /var/lib/apt/lists/lock - open(11:资源暂时不可用)，输入： sudo rm /var/lib/apt/lists/lock sudo rm /var/lib/dpkg/lock 4、实现虚拟机与win主机之间粘贴复制 https://blog.csdn.net/teacher20133/article/details/54601816]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[算法]]></title>
     <url>%2F2017%2F06%2F29%2F%E7%AE%97%E6%B3%95%2F</url>
     <content type="text"><![CDATA[DFS算法原理：选择一个起始点V作为当前节点 1、访问当前节点，并标注为已访问，到下一步 2、如果存在和当前节点相邻并且还没有被访问的节点U，则将U设为当前节点，返回上一步 3、如果当前节点没有未被访问的相邻节点，则回溯，回退到上一个当前节点 上面所说的当前节点用栈来维护，每次访问到的节点入栈，回溯的时候出栈 伪代码： DFS（V） visited[v] = true; dosomething(v); for u in adjecnt_list[v] if visited[u] == false DFS(u) BFS选择一个起点v放入先进先出队列中 1、如果队列不为空，弹出队列首元素作为当前节点，执行下一步；如果队列为空，则算法结束 2、将与当前节点相邻且未被访问的所有节点信息更新，并全部放入队列，继续执行上一步 伪代码： BFS(v): resetArray(visited,false); visted[v] = true; queue.push(v); while(!queue.isEmpty()){ v = queue.poll(); for u in adjecent_list[v]: if(visited[u] == false) dosomething(u); queue.push(u); }]]></content>

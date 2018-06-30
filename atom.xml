@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-01T04:25:29.947Z</updated>
+  <updated>2018-06-30T15:05:02.553Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu相关问题</title>
+    <link href="http://yoursite.com/2018/06/30/Ubuntu%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2018/06/30/Ubuntu相关问题/</id>
+    <published>2018-06-30T14:04:58.000Z</published>
+    <updated>2018-06-30T15:05:02.553Z</updated>
+    
+    <content type="html"><![CDATA[<p>1、安装Ubuntu虚拟机时，内存需设置为主机内存的1/3，否则容易电脑卡死。</p><p>2、当执行spt-get安装时，出现“无法定位软件包”的提示时，输入：</p><pre><code>sudo apt-get update</code></pre><p>3、当出现无法获得锁 /var/lib/apt/lists/lock - open(11:资源暂时不可用)，输入：</p><pre><code>sudo rm /var/lib/apt/lists/locksudo rm /var/lib/dpkg/lock</code></pre><p>4、实现虚拟机与win主机之间粘贴复制</p><p><a href="https://blog.csdn.net/teacher20133/article/details/54601816" target="_blank" rel="external">https://blog.csdn.net/teacher20133/article/details/54601816</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;1、安装Ubuntu虚拟机时，内存需设置为主机内存的1/3，否则容易电脑卡死。&lt;/p&gt;
+&lt;p&gt;2、当执行spt-get安装时，出现“无法定位软件包”的提示时，输入：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get update
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;3、当
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>算法</title>
