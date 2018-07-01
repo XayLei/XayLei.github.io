@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[tensorflow相关问题]]></title>
+    <url>%2F2018%2F07%2F01%2Ftensorflow%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[如何安装TensorFlow呢？官方文档写的很清楚，可以参考官方文档。但是安装过程中也会出现一些问题，在这里记录一下。 我是在虚拟机里装了个64位的Ubuntu虚拟机，强烈建议在linux上玩TensorFlow，方便。我是按照官方推荐的VirtualEnv方法安装的。 在安装到 (tensorflow)$ pip install –upgrade &lt;$url_to_binary.whl&gt;这一步时，要记着将$url_to_binary.whl用实际的链接代替。 我用的是 pip install --upgrade &apos;https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.8.0-cp27-none-linux_x86_64.whl&apos; 后面到 cd tensorflow/models/image/mnist 这一步时，路径错误，可能每个人使用pip安装的，配置的路径都会存在不同的差异性，所以如果找不到相应的路径，记得仔细查找。 我的是在 cd lib/python2.7/site-packages/tensorflow/models/image/mnist 记着把前面的TensorFlow去掉，不然出错。]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[博客运行问题及解决]]></title>
     <url>%2F2018%2F07%2F01%2F%E5%8D%9A%E5%AE%A2%E8%BF%90%E8%A1%8C%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%2F</url>
     <content type="text"><![CDATA[好久没有更新博客了，昨天写了点东西，hexo d的时候却出错了，不能部署。今天终于解决了，在这里记录一下。 遇到的第一个问题，hexo d的时候，出现： fatal: could not read Username for &apos;https://github.com&apos;: Invalid argument Error: bash: /dev/tty: No such device or address error: failed to execute prompt script (exit code 1) fatal: could not read Username for &apos;https://github.com&apos;: Invalid argument 解决方法： 之前在_config.yml中的deploy要改一下，改为： deploy: type: git repo:git@github.com:your_github_user_name/your_github_user_name.github.io.git branch: master 然后重新生成SSH key，并添加到GitHub的账户中，把之前的删掉即可 生成KEY的命令： $ ssh-keygen -t rsa -C greenovia@qq.com（换成你的邮箱地址） 生成过程中一直回车和yes即可。 最后会在/c/Users/Administrator/.ssh/id_rsa文件中就生成了公钥，即id_rsa.pub中的内容，将公钥添加入GitHub中即可。 之后再次hexo d时，又出现新的问题 Error: Host key verification failed. fatal: Could not read from remote repository. Please make sure you have the correct access rights and the repository exists. 发现在/c/Users/Administrator/.ssh/文件夹中没有know_hosts文件，执行 $ ssh git@github.com 我输入这条命令后，文件夹中就会出现know_hosts文件，并且hexo d成功。]]></content>
