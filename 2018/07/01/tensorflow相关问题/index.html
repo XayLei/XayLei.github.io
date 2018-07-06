@@ -104,7 +104,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/07/01/tensorflow相关问题/index.html">
 <meta property="og:site_name" content="XayLei&#39;s blog">
 <meta property="og:description" content="如何安装TensorFlow呢？官方文档写的很清楚，可以参考官方文档。但是安装过程中也会出现一些问题，在这里记录一下。 我是在虚拟机里装了个64位的Ubuntu虚拟机，强烈建议在linux上玩TensorFlow，方便。我是按照官方推荐的VirtualEnv方法安装的。 在安装到 (tensorflow)$ pip install --upgrade &amp;lt;$url_to_binary.whl&amp;">
-<meta property="og:updated_time" content="2018-07-06T12:56:05.245Z">
+<meta property="og:updated_time" content="2018-07-06T13:26:16.240Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tensorflow相关问题">
 <meta name="twitter:description" content="如何安装TensorFlow呢？官方文档写的很清楚，可以参考官方文档。但是安装过程中也会出现一些问题，在这里记录一下。 我是在虚拟机里装了个64位的Ubuntu虚拟机，强烈建议在linux上玩TensorFlow，方便。我是按照官方推荐的VirtualEnv方法安装的。 在安装到 (tensorflow)$ pip install --upgrade &amp;lt;$url_to_binary.whl&amp;">
@@ -360,7 +360,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  377
+                  450
                 </span>
               
 
@@ -376,7 +376,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  2
                 </span>
               
             </div>
@@ -415,7 +415,20 @@
 <p><a href="https://blog.csdn.net/pegasuswang_/article/details/41484783" target="_blank" rel="external">Gtest install step on ubuntu</a></p>
 <p>下面这个网址介绍了Gtest压缩包中各个文件的作用</p>
 <p><a href="https://www.cnblogs.com/Jessica-jie/p/6705067.html" target="_blank" rel="external">https://www.cnblogs.com/Jessica-jie/p/6705067.html</a></p>
-
+<p>tensorflow开始步骤：</p>
+<pre><code>$ cd ~/tensorflow
+$ source bin/activate  # 如果使用 bash
+(tensorflow)$ deactivate  # 停用 virtualenv
+</code></pre><p>使用TensorFlow时，进入Python编译环境</p>
+<pre><code>import tensorflow as tf
+</code></pre><p>查看TensorFlow版本</p>
+<pre><code>tf.__version__
+</code></pre><p>查询tensorflow安装路径为:</p>
+<pre><code>tf.__path__
+</code></pre><p>更新TensorFlow</p>
+<pre><code>(tensorflow)$ pip install --upgrade tensorflow  # for Python 2.7
+(tensorflow)$ pip3 install --upgrade tensorflow # for Python 3.n
+</code></pre>
       
     </div>
     
@@ -676,7 +689,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">16.7k</span>
+    <span title="Site words total count">16.8k</span>
   
 </div>
 
