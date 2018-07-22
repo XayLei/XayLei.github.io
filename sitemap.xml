@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2018/07/22/jupyter-notebook-install/</loc>
+    
+    <lastmod>2018-07-22T07:27:01.712Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2018/07/01/tensorflow%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</loc>
     
     <lastmod>2018-07-06T13:29:02.467Z</lastmod>
