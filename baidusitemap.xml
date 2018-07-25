@@ -4,8 +4,23 @@
 
     
   <url>
+    <loc>http://yoursite.com/2018/06/30/Ubuntu%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</loc>
+    <lastmod>2018-07-25T14:19:07.383Z</lastmod>
+    <data>
+        <display>
+        <title>Ubuntu相关问题</title>
+        <pubTime>2018-06-30T14:04:58.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2018/07/22/jupyter-notebook-install/</loc>
-    <lastmod>2018-07-22T07:27:01.712Z</lastmod>
+    <lastmod>2018-07-25T14:14:19.142Z</lastmod>
     <data>
         <display>
         <title>jupyter_notebook_install</title>
@@ -40,21 +55,6 @@
         <display>
         <title>博客运行问题及解决</title>
         <pubTime>2018-07-01T04:36:04.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2018/06/30/Ubuntu%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</loc>
-    <lastmod>2018-06-30T15:05:02.553Z</lastmod>
-    <data>
-        <display>
-        <title>Ubuntu相关问题</title>
-        <pubTime>2018-06-30T14:04:58.000Z</pubTime>
         
          
            
