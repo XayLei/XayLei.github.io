@@ -104,7 +104,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/07/22/jupyter-notebook-install/index.html">
 <meta property="og:site_name" content="XayLei&#39;s blog">
 <meta property="og:description" content="在Ubuntu上安装jupyter notebook 首先将pip更新到最新版，更新pip时会遇到一个问题 Traceback (most recent call last): File “/usr/bin/pip3”, line 9, in from pip import main 解决方法： 修改 /usr/bin/pip 文件 from pip import main if __name__">
-<meta property="og:updated_time" content="2018-07-25T14:14:19.142Z">
+<meta property="og:updated_time" content="2018-07-25T14:29:17.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jupyter_notebook_install">
 <meta name="twitter:description" content="在Ubuntu上安装jupyter notebook 首先将pip更新到最新版，更新pip时会遇到一个问题 Traceback (most recent call last): File “/usr/bin/pip3”, line 9, in from pip import main 解决方法： 修改 /usr/bin/pip 文件 from pip import main if __name__">
@@ -360,7 +360,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  317
+                  327
                 </span>
               
 
@@ -425,10 +425,11 @@ pip-autoremove jupyter -y
 </code></pre><p>安装成功后，在终端输入</p>
 <pre><code>jupyter notebook
 </code></pre><p>即可启动浏览器，打开jupyter,使用过程中不能关闭此终端</p>
-<p>当需要使用numpy和pandas包时，直接在终端中使用pip安装即可</p>
+<p>当需要使用机器学习各种包时，直接在终端中使用pip安装即可</p>
 <pre><code>sudo pip install numpy
 sudo pip install pandas
 sudo apt-get install python-matplotlib
+sudo apt-get install python-sklearn
 </code></pre><p><a href="https://www.cnblogs.com/tademeng/p/7451125.html" target="_blank" rel="external">关于在ubuntu平台下使用apt-get命令下载速度太慢的问题解决</a></p>
 <p>入门使用：</p>
 <p>选择合适的文件夹，然后点击右上角new，选择Python2，打开一个cell，正确命名，即可开始使用</p>
