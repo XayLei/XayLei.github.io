@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-02-10T14:19:23.844Z</updated>
+  <updated>2019-02-16T14:02:25.493Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2019年NO.7WEEK总结</title>
+    <link href="http://yoursite.com/2019/02/16/2019%E5%B9%B4NO-7WEEK%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2019/02/16/2019年NO-7WEEK总结/</id>
+    <published>2019-02-16T13:37:00.000Z</published>
+    <updated>2019-02-16T14:02:25.493Z</updated>
+    
+    <content type="html"><![CDATA[<p>上周说了要思考今年的计划，但是每天一下班回来都9点了，虽然与大厂比下班够早了，但还是没有一回来就立即学习或码字的冲动，电视跟前坐个大概三、四十分钟，开电脑玩两把LOL就差不多11点了。虽然感觉这样不对，但是真的，也说不上累，就是没有要学习的欲望，希望自己能尽快养成习惯，自律起来，不要浪费时间。</p><p>不管写什么，或者写的好不好，心底里是想养成写博客这个习惯的 ，把自己学到的，在脑子里有印象的东西写下来，也算是个开始。一开始就每天坚持都写，我自己觉着都不现实，坚持不下来。那我就先尝试着每周写一次吧，算是对每一周做个总结，都干了些什么，学了些什么。</p><p>工作上的事就不写了。上周，在网上找到了一个博客，有LeetCode所有的详细题解，博主还开了个微信号，关注了以后，可以在微信上很方便的看到所有题的题解。想着下班有空了就看一道，上周把LeetCode上1、2题抽空做了下，在笔记本上用笔撸了一遍。剩下的慢慢刷，愿望是把所有的题都刷一遍。、</p><p>剩下就是在infoQ上看技术新闻，现在大多都是关于云服务，分布式和微服务方面的技术新闻，确实都很火，公司也都在用。看到的印象最深的应该就是一篇关于混沌工程的NETFLIX文章，第一次见识到混沌工程，一种全新的主动测试理念，2010年就提出来了，这都快10年了，自己竟然第一次听说，眼界确实是太窄了，后面还要加强了。</p><p>在GITHUB上浏览到了一个库，里面放了各种编程语言的教学项目，全部都是英文的，准备空余时间照着做一下，并把英文翻译成中文更新到自己的博客上，顺便练练自己的英语。很期待自己能实现这个想法，相信对自己能力的提升帮助会很大。</p><p>对了，还复习了一遍链表逆序的写法，使用三个链表节点引用实现，还有，双向链表没有逆序意义，请不要白痴的问别人逆序的链表是单向链表还是双向链表。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;上周说了要思考今年的计划，但是每天一下班回来都9点了，虽然与大厂比下班够早了，但还是没有一回来就立即学习或码字的冲动，电视跟前坐个大概三、四十分钟，开电脑玩两把LOL就差不多11点了。虽然感觉这样不对，但是真的，也说不上累，就是没有要学习的欲望，希望自己能尽快养成习惯，自律
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>农历猪年上班前一晚</title>
@@ -486,31 +507,6 @@ File “/usr/bin/pip3”, line
     
     
       <category term="java" scheme="http://yoursite.com/tags/java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>&#39;eclipse相关问题&#39;</title>
-    <link href="http://yoursite.com/2017/06/02/eclipse%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2017/06/02/eclipse相关问题/</id>
-    <published>2017-06-02T07:21:41.000Z</published>
-    <updated>2017-12-01T04:17:30.037Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="1、-在Eclipse中显示-project和-classpath和-setting目录"><a href="#1、-在Eclipse中显示-project和-classpath和-setting目录" class="headerlink" title="1、 在Eclipse中显示.project和.classpath和.setting目录"></a>1、 在Eclipse中显示.project和.classpath和.setting目录</h3><p>选中工程，选择Filters</p><p><img src="http://img.blog.csdn.net/20141124115218046?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2FuZ2hhbnRvbmc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p><p>取消.resources勾选，点击OK.显示.settings文件夹, .classpath 文件, .project文件, .gitignore文件</p><p><img src="http://img.blog.csdn.net/20141124115818232?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2FuZ2hhbnRvbmc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt=""></p><p>设置结束</p><h3 id="2、java项目下的bin文件夹不显示"><a href="#2、java项目下的bin文件夹不显示" class="headerlink" title="2、java项目下的bin文件夹不显示"></a>2、java项目下的bin文件夹不显示</h3><p>打开“Window”-“Show View”-“Navigator”就可以打开了</p><h3 id="3、Eclipse中设置在创建新类时自动生成注释"><a href="#3、Eclipse中设置在创建新类时自动生成注释" class="headerlink" title="3、Eclipse中设置在创建新类时自动生成注释"></a>3、Eclipse中设置在创建新类时自动生成注释</h3><p>windows–&gt;preference </p><p>Java–&gt;Code Style–&gt;Code Templates</p><p>code–&gt;new Java files </p><p>编辑它 </p><p>${filecomment} </p><p>${package_declaration}</p><pre><code>/** * @author 作者 E-mail: * @version 创建时间：${date} ${time} * 类说明 */</code></pre><p>${typecomment} </p><p>${type_declaration} </p><h3 id="4、在Eclipse中自动生成接口和JUnit测试类"><a href="#4、在Eclipse中自动生成接口和JUnit测试类" class="headerlink" title="4、在Eclipse中自动生成接口和JUnit测试类"></a>4、在Eclipse中自动生成接口和JUnit测试类</h3><p><a href="http://jingyan.baidu.com/article/ab69b270d63f572ca6189f51.html" target="_blank" rel="external">“百度经验”</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;1、-在Eclipse中显示-project和-classpath和-setting目录&quot;&gt;&lt;a href=&quot;#1、-在Eclipse中显示-project和-classpath和-setting目录&quot; class=&quot;headerlink&quot; title=&quot;1、 在
-      
-    
-    </summary>
-    
-      <category term="IDE" scheme="http://yoursite.com/categories/IDE/"/>
-    
-    
-      <category term="eclipse" scheme="http://yoursite.com/tags/eclipse/"/>
     
   </entry>
   
