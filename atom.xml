@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-02T13:06:19.585Z</updated>
+  <updated>2019-03-03T15:00:02.570Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Lua学习随笔</title>
+    <link href="http://yoursite.com/2019/03/03/Lua%E5%AD%A6%E4%B9%A0%E9%9A%8F%E7%AC%94/"/>
+    <id>http://yoursite.com/2019/03/03/Lua学习随笔/</id>
+    <published>2019-03-03T14:29:59.000Z</published>
+    <updated>2019-03-03T15:00:02.570Z</updated>
+    
+    <content type="html"><![CDATA[<p>昨天刚立了FLAG，今天就来还愿了。因为是工作中接触到的，已经用了几次，比较熟悉。昨晚在晚上大概搜了下，看了两个教程，看进去了，今早又看了将近两小时，看到了些基础的东西。</p><p>我是在Windows上练习LUA，所以只用下个软件就可以开始了，非常方便。<a href="http://static.runoob.com/download/LuaForWindows_v5.1.4-46.exe" target="_blank" rel="external">下载入口</a></p><p>下载后安装即可，使用方法就是首先打开SciTE，然后在里面直接敲代码，保存为以lua结尾的文件，按F5就可以看到运行结果了。</p><p>首先是注释，单行注释是</p><pre><code>--单行注释</code></pre><p>多行注释：</p><pre><code>--[[多行注释多行注释--]]</code></pre><p>lua中变量不需要声明类型，默认所有变量都是全局变量，如果需要局部变量，需要使用local显式声明。</p><pre><code>a = 5               -- 全局变量local b = 5         -- 局部变量</code></pre><p>lua中两个点“..”表示对字符串进行连接</p><pre><code>print(&quot;字符串1&quot; .. “字符串2”)   --字符串1字符串2</code></pre><p>Lua可以对多个变量同时赋值，变量列表和值列表的各个元素用逗号分开，赋值语句右边的值会依次赋给左边的变量。</p><pre><code>a, b = 10, 2*x       -- a=10; b=2*x</code></pre><p>当变量与值的个数不一致时：</p><pre><code>a. 变量个数 &gt; 值的个数             按变量个数补足nilb. 变量个数 &lt; 值的个数             多余的值会被忽略</code></pre><p>对 table 的索引使用方括号 []。Lua 也提供了 . 操作。</p><pre><code>t[i]t.i                 -- 当索引为字符串类型时的一种简化写法gettable_event(t,i) -- 采用索引访问本质上是一个类似这样的函数调用</code></pre><p>在 Lua 里，table 的创建是通过”构造表达式”来完成，最简单构造表达式是{}</p><pre><code>-- 创建一个空的 tablelocal tbl1 = {}-- 直接初始表local tbl2 = {&quot;apple&quot;, &quot;pear&quot;, &quot;orange&quot;, &quot;grape&quot;}</code></pre><p>lua中的函数，可以类似变量进行互相赋值</p><pre><code>function factorial1(n)   if n == 0 then       return 1   else       return n * factorial1(n - 1)   endendprint(factorial1(5))factorial2 = factorial1print(factorial2(5))</code></pre><p>boolean 类型只有两个可选值：true（真） 和 false（假），Lua 把 false 和 nil 看作是”假”，其他的都为”真”:</p><p>Lua 编程语言中数值for循环语法格式:</p><pre><code>for var=exp1,exp2,exp3 do      &lt;执行体&gt;  end </code></pre><p>var 从 exp1 变化到 exp2，每次变化以 exp3 为步长递增 var，并执行一次 “执行体”。exp3 是可选的，如果不指定，默认为1。</p><p>Lua 编程语言中 repeat…until 循环语法格式:</p><pre><code>repeat  statementsuntil( condition )</code></pre><p>循环条件判断语句（condition）在循环体末尾部分，所以在条件进行判断前循环体都会执行一次。</p><p>如果条件判断语句（condition）为 false，循环会重新开始执行，直到条件判断语句（condition）为 true 才会停止执行。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;昨天刚立了FLAG，今天就来还愿了。因为是工作中接触到的，已经用了几次，比较熟悉。昨晚在晚上大概搜了下，看了两个教程，看进去了，今早又看了将近两小时，看到了些基础的东西。&lt;/p&gt;
+&lt;p&gt;我是在Windows上练习LUA，所以只用下个软件就可以开始了，非常方便。&lt;a href
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>2019年NO-9WEEK总结</title>
@@ -479,31 +501,6 @@ File “/usr/bin/pip3”, line
     
     
       <category term="TCP" scheme="http://yoursite.com/tags/TCP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>maven相关问题</title>
-    <link href="http://yoursite.com/2017/06/06/maven%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2017/06/06/maven相关问题/</id>
-    <published>2017-06-06T11:28:15.000Z</published>
-    <updated>2017-12-01T04:22:12.782Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="第一次安装和使用maven"><a href="#第一次安装和使用maven" class="headerlink" title="第一次安装和使用maven"></a>第一次安装和使用maven</h2><p>第一，虽然eclipse for Java EE里面自带了maven的插件，但是这个插件的版本比较旧。最好还是在自己电脑上再装一次maven，然后在eclipse里面设置一下使用external maven。设置方法是：window -&gt; preference -&gt; maven -&gt; installations点击add按钮，选择maven安装的路径，然后把它勾选上。</p><p>第二，maven作为一个项目管理工具确实非常好用，但是在国内这个网络条件下实在是让人恼火。之前oschina的中央仓库可用，现在oschina的maven服务器关了，一直没找到国内镜像来替代。今天发现阿里云公开了一个中央仓库，大家可以试试。</p><p>修改maven根目录下的conf文件夹中的setting.xml文件，内容如下：</p><pre><code>&lt;mirrors&gt;    &lt;mirror&gt;          &lt;id&gt;alimaven&lt;/id&gt;          &lt;name&gt;aliyun maven&lt;/name&gt;          &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;          &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;            &lt;/mirror&gt;&lt;/mirrors&gt;</code></pre><p>第三，eclipse里面的maven插件m2eclipse有点问题，每次打开的时候都会去下载maven的索引文件。而这个索引文件非常大，下载速度又很慢，所以卡在Updating index central|<a href="http://repo1.maven.org/maven2这个地方。其实可以把这个关掉的。window" target="_blank" rel="external">http://repo1.maven.org/maven2这个地方。其实可以把这个关掉的。window</a> -&gt; preference -&gt; maven然后把download repository index updates on startup去掉即可。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;第一次安装和使用maven&quot;&gt;&lt;a href=&quot;#第一次安装和使用maven&quot; class=&quot;headerlink&quot; title=&quot;第一次安装和使用maven&quot;&gt;&lt;/a&gt;第一次安装和使用maven&lt;/h2&gt;&lt;p&gt;第一，虽然eclipse for Java EE里面
-      
-    
-    </summary>
-    
-      <category term="框架" scheme="http://yoursite.com/categories/%E6%A1%86%E6%9E%B6/"/>
-    
-    
-      <category term="maven" scheme="http://yoursite.com/tags/maven/"/>
     
   </entry>
   
