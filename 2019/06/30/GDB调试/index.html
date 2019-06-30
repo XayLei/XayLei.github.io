@@ -104,7 +104,7 @@
 <meta property="og:url" content="http://yoursite.com/2019/06/30/GDB调试/index.html">
 <meta property="og:site_name" content="XayLei&#39;s blog">
 <meta property="og:description" content="一、什么是GDBgdb是GNU debugger的缩写，是编程调试工具。 功能：  启动程序，可以按照用户自定义的要求随心所欲的运行程序。   可让被调试的程序在用户所指定的调试断点处停住（断点可以是条件表达式）。当程序停  住时，可以检查此时程序中所发生的事。比如，可以打印变量的值。动态改变  变量程序的执行环境。   二、段错误段错误是由于访问非法地址而产生的错误。 产生原因： 1.内存访问越">
-<meta property="og:updated_time" content="2019-06-30T03:31:38.093Z">
+<meta property="og:updated_time" content="2019-06-30T06:59:54.582Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GDB调试">
 <meta name="twitter:description" content="一、什么是GDBgdb是GNU debugger的缩写，是编程调试工具。 功能：  启动程序，可以按照用户自定义的要求随心所欲的运行程序。   可让被调试的程序在用户所指定的调试断点处停住（断点可以是条件表达式）。当程序停  住时，可以检查此时程序中所发生的事。比如，可以打印变量的值。动态改变  变量程序的执行环境。   二、段错误段错误是由于访问非法地址而产生的错误。 产生原因： 1.内存访问越">
@@ -360,7 +360,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  645
+                  953
                 </span>
               
 
@@ -376,7 +376,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  4
                 </span>
               
             </div>
@@ -425,6 +425,21 @@
 <h2 id="三、core文件"><a href="#三、core文件" class="headerlink" title="三、core文件"></a>三、core文件</h2><p>在程序崩溃时，一般会生成一个文件叫core文件。core文件记录的是程序崩溃时的内存映像，并加入调试信息，core文件生成过程叫做core dump（核心已转储）。系统默认不会生成该文件。</p>
 <p>发生core dump之后, 用gdb进行查看core文件的内容, 以定位文件中引发core dump的行.</p>
 <pre><code>gdb [exec file] [core file]
+</code></pre><p>进入gdb后, 用bt命令查看backtrace以检查发生程序运行到哪里, 来定位core文件-&gt;行.</p>
+<p>GDB中键入where，也会看到程序崩溃时堆栈信息（当前函数之前的所有已调用函数的列表（包括当前函数），gdb只显示最近几个）</p>
+<h2 id="四、配置"><a href="#四、配置" class="headerlink" title="四、配置"></a>四、配置</h2><p>1、可以将core文件统一生成到/corefile目录下，产生的文件名为core-命令名-pid-时间戳</p>
+<pre><code>sudo sh -c &apos;echo &quot;/corefile/core-%e-%p-%t&quot; &gt;/proc/sys/kernel/core_pattern&apos;
+</code></pre><p>%p - insert pid into filename 添加pid</p>
+<p>%u - insert current uid into filename 添加当前uid</p>
+<p>%g - insert current gid into filename 添加当前gid</p>
+<p>%s - insert signal that caused the coredump into the filename 添加导致产生core的信号</p>
+<p>%t - insert UNIX time that the coredump occurred into filename 添加core文件生成的unix时间</p>
+<p>%h - insert hostname where the coredump happened into filename 添加主机名</p>
+<p>%e - insert coredumping executable name into filename 添加命令名</p>
+<p>2、/proc/sys/kernel/core_uses_pid可以控制core文件的问价名是否添加PID作为扩展，文件的内容为1，标识添加PID作为扩展，生成的core文件格式为core.XXXX;为0则表示生成的core文件统一命名为core</p>
+<pre><code>sudo sh -c &apos;echo &quot;1&quot; &gt; /proc/sys/kernel/core_uses_pid&apos;
+</code></pre><p>3、在.bash_profile和/etc/profile文件末尾添加</p>
+<pre><code>ulimit -c unlimited
 </code></pre>
       
     </div>
@@ -676,7 +691,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是GDB"><span class="nav-number">1.</span> <span class="nav-text">一、什么是GDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、段错误"><span class="nav-number">2.</span> <span class="nav-text">二、段错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、core文件"><span class="nav-number">3.</span> <span class="nav-text">三、core文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是GDB"><span class="nav-number">1.</span> <span class="nav-text">一、什么是GDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、段错误"><span class="nav-number">2.</span> <span class="nav-text">二、段错误</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、core文件"><span class="nav-number">3.</span> <span class="nav-text">三、core文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、配置"><span class="nav-number">4.</span> <span class="nav-text">四、配置</span></a></li></ol></div>
             
 
           </div>
@@ -711,7 +726,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">21.5k</span>
+    <span title="Site words total count">21.9k</span>
   
 </div>
 
