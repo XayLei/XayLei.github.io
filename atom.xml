@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-03-31T12:22:42.898Z</updated>
+  <updated>2019-06-30T03:31:38.093Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GDB调试</title>
+    <link href="http://yoursite.com/2019/06/30/GDB%E8%B0%83%E8%AF%95/"/>
+    <id>http://yoursite.com/2019/06/30/GDB调试/</id>
+    <published>2019-06-30T03:24:19.000Z</published>
+    <updated>2019-06-30T03:31:38.093Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、什么是GDB"><a href="#一、什么是GDB" class="headerlink" title="一、什么是GDB"></a>一、什么是GDB</h2><p>gdb是GNU debugger的缩写，是编程调试工具。</p><p>功能：</p><ul><li>启动程序，可以按照用户自定义的要求随心所欲的运行程序。</li></ul><ul><li><p>可让被调试的程序在用户所指定的调试断点处停住（断点可以是条件表达式）。<br>当程序停</p></li><li><p>住时，可以检查此时程序中所发生的事。比如，可以打印变量的值。<br>动态改变</p></li><li><p>变量程序的执行环境。</p></li></ul><h2 id="二、段错误"><a href="#二、段错误" class="headerlink" title="二、段错误"></a>二、段错误</h2><p>段错误是由于访问非法地址而产生的错误。</p><p>产生原因：</p><p>1.内存访问越界</p><p> a) 由于使用错误的下标，导致数组访问越界</p><p> b) 搜索字符串时，依靠字符串结束符来判断字符串是否结束，但是字符串没有正常的使用结束符</p><p> c) 使用strcpy, strcat, sprintf, strcmp, strcasecmp等字符串操作函数，将目标字符串读/写爆。应该使用strncpy, strlcpy, strncat, strlcat, snprintf, strncmp, strncasecmp等函数防止读写越界。</p><p>2 多线程程序使用了线程不安全的函数。</p><p>3 多线程读写的数据未加锁保护。对于会被多个线程同时访问的全局数据，应该注意加锁保护，否则很容易造成core dump</p><p>4 非法指针</p><p>a) 使用空指针</p><p>b) 随意使用指针转换。一个指向一段内存的指针，除非确定这段内存原先就分配为某种结构或类型，或者这种结构或类型的数组，否则不要将它转换为这种结构或类型 的指针，而应该将这段内存拷贝到一个这种结构或类型中，再访问这个结构或类型。这是因为如果这段内存的开始地址不是按照这种结构或类型对齐的，那么访问它 时就很容易因为bus error而core dump.</p><p>5 堆栈溢出.不要使用大的局部变量（因为局部变量都分配在栈上），这样容易造成堆栈溢出，破坏系统的栈和堆结构，导致出现莫名其妙的错误。</p><h2 id="三、core文件"><a href="#三、core文件" class="headerlink" title="三、core文件"></a>三、core文件</h2><p>在程序崩溃时，一般会生成一个文件叫core文件。core文件记录的是程序崩溃时的内存映像，并加入调试信息，core文件生成过程叫做core dump（核心已转储）。系统默认不会生成该文件。</p><p>发生core dump之后, 用gdb进行查看core文件的内容, 以定位文件中引发core dump的行.</p><pre><code>gdb [exec file] [core file]</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;一、什么是GDB&quot;&gt;&lt;a href=&quot;#一、什么是GDB&quot; class=&quot;headerlink&quot; title=&quot;一、什么是GDB&quot;&gt;&lt;/a&gt;一、什么是GDB&lt;/h2&gt;&lt;p&gt;gdb是GNU debugger的缩写，是编程调试工具。&lt;/p&gt;
+&lt;p&gt;功能：&lt;/p&gt;
+&lt;u
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>2019年NO-13WEEK总结</title>
@@ -474,29 +497,6 @@ File “/usr/bin/pip3”, line
     
     
       <category term="JSTL" scheme="http://yoursite.com/tags/JSTL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>阿里文娱面试题</title>
-    <link href="http://yoursite.com/2017/06/13/%E9%98%BF%E9%87%8C%E6%96%87%E5%A8%B1%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
-    <id>http://yoursite.com/2017/06/13/阿里文娱面试题/</id>
-    <published>2017-06-13T02:08:56.000Z</published>
-    <updated>2017-12-01T04:25:01.681Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="Java中的8种基本数据类型"><a href="#Java中的8种基本数据类型" class="headerlink" title="Java中的8种基本数据类型"></a>Java中的8种基本数据类型</h3><p>类型：二进制位数，所占字节（1字节=8bit位），数据范围</p><p>byte：8位，1字节，最大存储数据量是255，存放的数据范围是-128~127之间。</p><p>short：16位，2字节，最大数据存储量是65536，数据范围是-32768~32767之间。</p><p>int：32位，4字节，最大数据存储容量是2的32次方减1，数据范围是负的2的31次方到正的2的31次方减1。</p><p>long：64位，8字节，最大数据存储容量是2的64次方减1，数据范围为负的2的63次方到正的2的63次方减1。</p><p>float：32位，4字节，数据范围在3.4e-45~1.4e38，直接赋值时必须在数字后加上f或F。</p><p>double：64位，8字节，数据范围在4.9e-324~1.8e308，赋值时可以加d或D也可以不加。</p><p>boolean：1位，1字节，只有true和false两个取值。</p><p>char：16位，2字节，存储Unicode码，用单引号赋值。</p><h3 id="汉字可以转换为char吗？"><a href="#汉字可以转换为char吗？" class="headerlink" title="汉字可以转换为char吗？"></a>汉字可以转换为char吗？</h3><p>可以！</p><p>char是按照字符存储的，不管英文还是中文，固定占用占用2个字节，用来储存Unicode字符。范围在0-65536。unicode编码字符集中包含了汉字，所以，char型变量中当然可以存储汉字啦。不过，如果某个特殊的汉字没有被包含在unicode编码字符集中，那么，这个char型变量中就不能存储这个特殊汉字。</p><p>Unicode（统一码、万国码、单一码）是一种在计算机上使用的字符编码。它为每种语言中的每个字符设定了统一并且唯一的二进制编码，以满足跨语言、跨平台进行文本转换、处理的要求。</p><p>###数据库中的数据类型 ###</p><p><strong>数值类型</strong></p><table><tbody><tr><th width="10%">类型</th><th width="15%"><br>大小</th><th width="30%">范围（有符号）</th><th width="30%">范围（无符号）<br></th><th width="15%">用途</th></tr><tr><td>TINYINT</td><td>1 字节</td><td>(-128，127)</td><td>(0，255)</td><td>小整数值</td><br></tr><br><tr><br><td><br>SMALLINT<br></td><br><td><br>2 字节<br></td><br><td><br>(-32 768，32 767)<br></td><br><td><br>(0，65 535)<br></td><br><td><br>大整数值<br></td><br></tr><br><tr><br><td><br>MEDIUMINT<br></td><br><td><br>3 字节<br></td><br><td><br>(-8 388 608，8 388 607)<br></td><br><td><br>(0，16 777 215)<br></td><br><td><br>大整数值<br></td><br></tr><br><tr><br><td><br>INT或INTEGER<br></td><br><td><br>4 字节<br></td><br><td><br>(-2 147 483 648，2 147 483 647)<br></td><br><td><br>(0，4 294 967 295)<br></td><br><td><br>大整数值<br></td><br></tr><br><tr><br><td><br>BIGINT<br></td><br><td><br>8 字节<br></td><br><td><br>(-9 233 372 036 854 775 808，9 223 372 036 854 775 807)<br></td><br><td><br>(0，18 446 744 073 709 551 615)<br></td><br><td><br>极大整数值<br></td><br></tr><br><tr><br><td><br>FLOAT<br></td><br><td><br>4 字节<br></td><br><td><br>(-3.402 823 466 E+38，-1.175 494 351 E-38)，0，(1.175 494 351 E-38，3.402 823 466 351 E+38)<br></td><br><td><br>0，(1.175 494 351 E-38，3.402 823 466 E+38)<br></td><br><td><br>单精度<br>浮点数值<br></td><br></tr><br><tr><br><td><br>DOUBLE<br></td><br><td><br>8 字节<br></td><br><td><br>(-1.797 693 134 862 315 7 E+308，-2.225 073 858 507 201 4 E-308)，0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)<br></td><br><td><br>0，(2.225 073 858 507 201 4 E-308，1.797 693 134 862 315 7 E+308)<br></td><br><td><br>双精度<br>浮点数值<br></td><br></tr><br><tr><br><td><br>DECIMAL<br></td><br><td><br>对DECIMAL(M,D) ，如果M&gt;D，为M+2否则为D+2<br></td><br><td><br>依赖于M和D的值<br></td><br><td><br>依赖于M和D的值<br></td><br><td><br>小数值<br></td><br></tr><br></tbody><br></table><br><strong>日期和时间类型</strong><br><table><br><tbody><br><tr><br><th width="10%"><br>类型<br></th><br><th width="10%"><br>大小<br>(字节)<br></th><br><th width="40%"><br>范围<br></th><br><th width="20%"><br>格式<br></th><br><th><br>用途<br></th><br></tr><br><tr><br><td width="10%"><br>DATE<br></td><br><td width="10%"><br>3<br></td><br><td><br>1000-01-01/9999-12-31<br></td><br><td><br>YYYY-MM-DD<br></td><br><td><br>日期值<br></td><br></tr><br><tr><br><td width="10%"><br>TIME<br></td><br><td width="10%"><br>3<br></td><br><td><br>‘-838:59:59’/‘838:59:59’<br></td><br><td><br>HH:MM:SS<br></td><br><td><br>时间值或持续时间<br></td><br></tr><br><tr><br><td width="10%"><br>YEAR<br></td><br><td width="10%"><br>1<br></td><br><td><br>1901/2155<br></td><br><td><br>YYYY<br></td><br><td><br>年份值<br></td><br></tr><br><tr><br><td width="10%"><br>DATETIME<br></td><br><td width="10%"><br>8<br></td><br><td width="40%"><br>1000-01-01 00:00:00/9999-12-31 23:59:59<br></td><br><td><br>YYYY-MM-DD HH:MM:SS<br></td><br><td><br>混合日期和时间值<br></td><br></tr><br><tr><br><td width="10%"><br>TIMESTAMP<br></td><br><td width="10%"><br>4<br></td><br><td width="40%"><br>1970-01-01 00:00:00/2037 年某时<br></td><br><td><br>YYYYMMDD HHMMSS<br></td><br><td><br>混合日期和时间值，时间戳<br></td><br></tr><br></tbody><br></table><br><strong>字符串类型</strong><br><table class="reference"><br><tbody><br><tr><br><th width="20%"><br>类型<br></th><br><th width="25%"><br>大小<br></th><br><th width="55%"><br>用途<br></th><br></tr><br><tr><br><td><br>CHAR<br></td><br><td><br>0-255字节<br></td><br><td><br>定长字符串<br></td><br></tr><br><tr><br><td><br>VARCHAR<br></td><br><td><br>0-65535 字节<br></td><br><td><br>变长字符串<br></td><br></tr><br><tr><br><td><br>TINYBLOB<br></td><br><td><br>0-255字节<br></td><br><td><br>不超过 255 个字符的二进制字符串<br></td><br></tr><br><tr><br><td><br>TINYTEXT<br></td><br><td><br>0-255字节<br></td><br><td><br>短文本字符串<br></td><br></tr><br><tr><br><td><br>BLOB<br></td><br><td><br>0-65 535字节<br></td><br><td><br>二进制形式的长文本数据<br></td><br></tr><br><tr><br><td><br>TEXT<br></td><br><td><br>0-65 535字节<br></td><br><td><br>长文本数据<br></td><br></tr><br><tr><br><td><br>MEDIUMBLOB<br></td><br><td><br>0-16 777 215字节<br></td><br><td><br>二进制形式的中等长度文本数据<br></td><br></tr><br><tr><br><td><br>MEDIUMTEXT<br></td><br><td><br>0-16 777 215字节<br></td><br><td><br>中等长度文本数据<br></td><br></tr><br><tr><br><td><br>LONGBLOB<br></td><br><td><br>0-4 294 967 295字节<br></td><br><td><br>二进制形式的极大文本数据<br></td><br></tr><br><tr><br><td><br>LONGTEXT<br></td><br><td><br>0-4 294 967 295字节<br></td><br><td><br>极大文本数据<br></td><br></tr><br></tbody><br></table><blockquote><p><a href="http://www.runoob.com/mysql/mysql-data-types.html" target="_blank" rel="external">http://www.runoob.com/mysql/mysql-data-types.html</a></p></blockquote><h3 id="java与javac的区别"><a href="#java与javac的区别" class="headerlink" title="java与javac的区别"></a>java与javac的区别</h3><p>1，javac命令用来编译java文件，例如编写一个Test.java文件，使用javac Test.java可以执行编译操作，将生成一个Test.class文件。</p><p>2，java命令可以执行生成的class文件，使用java Test可以执行编写的代码。</p><h3 id="如何在cmd编译Java程序时倒入其他包？"><a href="#如何在cmd编译Java程序时倒入其他包？" class="headerlink" title="如何在cmd编译Java程序时倒入其他包？"></a>如何在cmd编译Java程序时倒入其他包？</h3><blockquote><p><a href="https://benweizhu.github.io/blog/2014/04/07/write-java-code-without-ide/" target="_blank" rel="external">https://benweizhu.github.io/blog/2014/04/07/write-java-code-without-ide/</a></p></blockquote><h3 id="java中如何将一个字符转换为ascii码"><a href="#java中如何将一个字符转换为ascii码" class="headerlink" title="java中如何将一个字符转换为ascii码"></a>java中如何将一个字符转换为ascii码</h3><p>方法1：</p><pre><code>char   c   =   &apos;a &apos;； byte   b   =(byte)c；</code></pre><p>方法2：</p><pre><code>直接将这个字符转化为int型就可以得到ascii码值char c   =   &apos;a &apos;； int  b   =   c； //字符的ascii码值 </code></pre><p>同理将一个ascii码转换为相应的字符：</p><p>   例如：字符a</p><pre><code>int d = 97;    char e = (char)d;</code></pre><h3 id="Java中的进制转换"><a href="#Java中的进制转换" class="headerlink" title="Java中的进制转换"></a>Java中的进制转换</h3><p>1）十进制转成十六进制：</p><p>Integer.toHexString(int i) </p><p>2）十进制转成八进制 </p><p>Integer.toOctalString(int i) </p><p>3）十进制转成二进制 </p><p>Integer.toBinaryString(int i)</p><p>4）十六进制转成十进制 </p><p>Integer.valueOf(“FFFF”,16).toString() </p><p>5）八进制转成十进制 </p><p>Integer.valueOf(“876”,8).toString() </p><p>6）二进制转十进制 </p><p>Integer.valueOf(“0101”,2).toString() </p><p>7）有什么方法可以直接将2,8,16进制直接转换为10进制的吗? </p><p>java.lang.Integer类 </p><p>parseInt(String s, int radix) </p><h3 id="“-java比较文件内容是否相同的方法”"><a href="#“-java比较文件内容是否相同的方法”" class="headerlink" title=" “ java比较文件内容是否相同的方法”"></a><a href="http://blog.csdn.net/very365_1208/article/details/8824033" target="_blank" rel="external"> “ java比较文件内容是否相同的方法”</a></h3><h3 id="MySQL数据库引擎"><a href="#MySQL数据库引擎" class="headerlink" title="MySQL数据库引擎"></a>MySQL数据库引擎</h3><p><a href="http://www.cnblogs.com/lina1006/archive/2011/04/29/2032894.html" target="_blank" rel="external">浅谈MySql的存储引擎（表类型）</a></p><p><a href="http://blog.csdn.net/souldak/article/details/10943835" target="_blank" rel="external">Mysql数据库引擎类型与特性对比</a></p><p>还有一些关于数据库如何写自增主键的问题，和数据结构的问题，这些需要详细复习，例如哈夫曼树，搜索所用的数据结构等，单词树就是trie树，这个也用于搜索引擎。</p><p>都是些非常非常基础的问题，其它的问题都知道，但就是回答的不是很好，记得不清楚，还需要复习。</p><p>面试官还说JSP中的对象等问题也要熟。总之，基础！！！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;Java中的8种基本数据类型&quot;&gt;&lt;a href=&quot;#Java中的8种基本数据类型&quot; class=&quot;headerlink&quot; title=&quot;Java中的8种基本数据类型&quot;&gt;&lt;/a&gt;Java中的8种基本数据类型&lt;/h3&gt;&lt;p&gt;类型：二进制位数，所占字节（1字节=8bit
-      
-    
-    </summary>
-    
-    
-      <category term="其余" scheme="http://yoursite.com/tags/%E5%85%B6%E4%BD%99/"/>
     
   </entry>
   
